@@ -12,8 +12,9 @@ public class ExploderEnemy : MonoBehaviour
     private Color color;
     private float distanceToPlayer;
     private float playerRelativeX;
-    private float speed = 0.1f;
+    private float speed = 0.0005f;
     public Vector2 velocity = new Vector2(1, 0);
+    public bool isExploding = false;
 
 
     // Start is called before the first frame update
@@ -30,8 +31,12 @@ public class ExploderEnemy : MonoBehaviour
 
 
     void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+    {   
+        if (!isExploding)
+        {
+            rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+        }
+        
     }
     // Update is called once per frame
     void Update()
@@ -48,12 +53,10 @@ public class ExploderEnemy : MonoBehaviour
 
         if (Mathf.Abs(distanceToPlayer)<4){
             StartCoroutine(Explode());
+            isExploding = true;
         } else{
-            if (color.a > 0.2f){
-                color.a -= speed * 2* Time.deltaTime;
-            } else if (color.a>0.1f){
-                color.a=0.1f;
-            }
+            isExploding = false;
+            color.a=0.1f;
             sr.color = color;
         }
 
@@ -62,10 +65,17 @@ public class ExploderEnemy : MonoBehaviour
 
     IEnumerator Explode()
     {       
-        while (sr.color.a<1){
+        while (sr.color.a<1 ){
             color.a +=  speed * Time.deltaTime;
             sr.color = color;
             yield return null;
+        }
+
+        if (isExploding)
+        {   
+            Debug.Log("Exploded");
+            Debug.Log(distanceToPlayer);
+            Destroy(gameObject);
         }
     }
 
