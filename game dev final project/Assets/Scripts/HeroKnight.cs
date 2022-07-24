@@ -16,6 +16,7 @@ public class HeroKnight : MonoBehaviour {
     private Sensor_HeroKnight   m_wallSensorR2;
     private Sensor_HeroKnight   m_wallSensorL1;
     private Sensor_HeroKnight   m_wallSensorL2;
+    private GameObject   m_meleeSensor;
     private bool                m_isWallSliding = false;
     private bool                m_grounded = false;
     private bool                m_rolling = false;
@@ -37,6 +38,9 @@ public class HeroKnight : MonoBehaviour {
         m_wallSensorR2 = transform.Find("WallSensor_R2").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL1 = transform.Find("WallSensor_L1").GetComponent<Sensor_HeroKnight>();
         m_wallSensorL2 = transform.Find("WallSensor_L2").GetComponent<Sensor_HeroKnight>();
+        m_meleeSensor = this.transform.Find("MeleeSensor").gameObject;
+        m_meleeSensor.SetActive(false);
+
     }
 
     // Update is called once per frame
@@ -75,12 +79,15 @@ public class HeroKnight : MonoBehaviour {
         {
             GetComponent<SpriteRenderer>().flipX = false;
             m_facingDirection = 1;
+            m_meleeSensor.transform.localPosition = new Vector3(0,0,0);
+
         }
             
         else if (inputX < 0)
         {
             GetComponent<SpriteRenderer>().flipX = true;
             m_facingDirection = -1;
+            m_meleeSensor.transform.localPosition = new Vector3(-1.65f,0,0);
         }
 
         // Move
@@ -121,6 +128,8 @@ public class HeroKnight : MonoBehaviour {
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+            m_meleeSensor.SetActive(true);
+            StartCoroutine(DisableMelee());
 
             // Reset timer
             m_timeSinceAttack = 0.0f;
@@ -191,5 +200,11 @@ public class HeroKnight : MonoBehaviour {
             // Turn arrow in correct direction
             dust.transform.localScale = new Vector3(m_facingDirection, 1, 1);
         }
+    }
+
+    IEnumerator DisableMelee()
+    {   
+        yield return new WaitForSeconds(0.25f);
+        m_meleeSensor.SetActive(false);
     }
 }
