@@ -12,6 +12,7 @@ public class MoleratController : MonoBehaviour
     private SpriteRenderer sprite;
     private float force = 5f;
     private float currTransparency = 0.1f;
+    private bool onGround = true;
 
     // Start is called before the first frame update
     void Start()
