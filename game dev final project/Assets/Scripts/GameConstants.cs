@@ -10,8 +10,13 @@ public  class GameConstants : ScriptableObject
     public int totalBlueprints = 0;
 
     // for HP Decay calculation
-    public float startingPlayerHP = 100.0f;
-    public float startingTimer = 600.0f;
+    public int startingPlayerHP = 100;
+    public int startingTimer = 600;
+
+    // for Player movement
+    public int startingPlayerMaxSpeed = 5;
+    public int startingPlayerJumpSpeed = 10;
+    public int startingPlayerForce = 100;
 
     // for Consumables cost
     public int ductTapeScrapCost = 15;
