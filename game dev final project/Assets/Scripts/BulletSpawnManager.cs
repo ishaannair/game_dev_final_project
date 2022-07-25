@@ -5,13 +5,12 @@ using UnityEngine;
 public class BulletSpawnManager : MonoBehaviour
 {
     public GameConstants gameConstants;
-    public GunType currentGun;
     public IntVariable magazine;
     private float cooldownTimer;
     // Start is called before the first frame update
     void Start()
     {
-        switch(currentGun){
+        switch(gameConstants.gunType){
             case GunType.blaster:
                 magazine.SetValue(gameConstants.blasterAmmoClip);
                 cooldownTimer = gameConstants.blasterReloadTime;
@@ -79,7 +78,7 @@ public class BulletSpawnManager : MonoBehaviour
         }
         magazine.ApplyChange(-1);
         if(magazine.Value == 0){
-            switch(currentGun){
+            switch(gameConstants.gunType){
                 case GunType.blaster:
                     magazine.SetValue(gameConstants.blasterAmmoClip);
                     break;

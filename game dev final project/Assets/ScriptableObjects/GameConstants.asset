@@ -37,10 +37,11 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
+  gunType: 2
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  reloadTime: 0
+  onCooldown: 1
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100

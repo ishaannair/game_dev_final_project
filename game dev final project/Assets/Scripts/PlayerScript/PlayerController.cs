@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-        // Start is called before the first frame update
+    // Start is called before the first frame update
+    public GameConstants gameConstants;
     public float speed;
     private Rigidbody2D PlayerBody;
     public float maxSpeed = 10;
@@ -48,7 +49,26 @@ public class PlayerController : MonoBehaviour
         PlayerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         GameObject NewBullets = Instantiate(Bullets, new Vector3(0, 0, 0), Quaternion.identity);
-
+        if(gameConstants.gunType == GunType.shotgun){
+        Destroy(NewGun);
+         NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
+        NewGun.transform.parent =transform;
+        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        }
+        else if(gameConstants.gunType == GunType.blaster){
+            Destroy(NewGun);
+            NewGun = Instantiate(BlasterGun, new Vector3(0, 0, 0), Quaternion.identity);
+            NewGun.transform.parent =transform;
+            NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        }
+        else if(gameConstants.gunType == GunType.rocketlauncher){
+            Destroy(NewGun);
+            NewGun = Instantiate(RocketGun, new Vector3(0, 0, 0), Quaternion.identity);
+            NewGun.transform.parent =transform;
+            NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        }
+        NewGun.SetActive(false);
+        
       
         // grandChild= GameObject.Find("Gun");
 
@@ -74,11 +94,14 @@ public class PlayerController : MonoBehaviour
           onGroundState = false;
          }
         if (Input.GetKeyDown("1")){
+            NewGun.SetActive(false);
             playerWeapon=1;
             Debug.Log("weapon 1");
         }
         if (Input.GetKeyDown("2")){
+            NewGun.SetActive(true);
             playerWeapon=0;
+
             Debug.Log("weapon 2");
         }
     }
@@ -103,24 +126,24 @@ public class PlayerController : MonoBehaviour
             //     playerAnimator.SetBool("SycthCut", SlashActivated);
             // }
         }
-        if(Input.GetKeyDown("r")){
-        Destroy(NewGun);
-         NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
-        NewGun.transform.parent =transform;
-        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
-      }
-    if(Input.GetKeyDown("t")){
-        Destroy(NewGun);
-         NewGun = Instantiate(BlasterGun, new Vector3(0, 0, 0), Quaternion.identity);
-        NewGun.transform.parent =transform;
-        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
-      }
-    if(Input.GetKeyDown("y")){
-        Destroy(NewGun);
-        NewGun = Instantiate(RocketGun, new Vector3(0, 0, 0), Quaternion.identity);
-        NewGun.transform.parent =transform;
-        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
-      }
+        // if(Input.GetKeyDown("r")){
+        // Destroy(NewGun);
+        //  NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
+        // NewGun.transform.parent =transform;
+        // NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        // }
+        // if(Input.GetKeyDown("t")){
+        //     Destroy(NewGun);
+        //     NewGun = Instantiate(BlasterGun, new Vector3(0, 0, 0), Quaternion.identity);
+        //     NewGun.transform.parent =transform;
+        //     NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        // }
+        // if(Input.GetKeyDown("y")){
+        //     Destroy(NewGun);
+        //     NewGun = Instantiate(RocketGun, new Vector3(0, 0, 0), Quaternion.identity);
+        //     NewGun.transform.parent =transform;
+        //     NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+        // }
         //Dashing 
         if (Input.GetKeyDown("e")){
             // dashing skill

@@ -104,8 +104,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1022171327
+  m_SortingLayer: 3
   m_SortingOrder: 10
   m_Sprite: {fileID: -2467041043869801362, guid: 123d54a09b5e49a7b77ca17b4009834c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -140,6 +140,14 @@ PrefabInstance:
     - target: {fileID: 5054542919844039840, guid: 9f23308265220524d99d5cf60e23ac46, type: 3}
       propertyPath: m_Name
       value: Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054542919844039842, guid: 9f23308265220524d99d5cf60e23ac46, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5054542919844039842, guid: 9f23308265220524d99d5cf60e23ac46, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1597650173
       objectReference: {fileID: 0}
     - target: {fileID: 5054542919844039845, guid: 9f23308265220524d99d5cf60e23ac46, type: 3}
       propertyPath: m_RootOrder

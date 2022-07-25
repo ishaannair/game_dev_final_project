@@ -1403,6 +1403,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameConstants: {fileID: 0}
   type: 2
 --- !u!212 &502970381
 SpriteRenderer:
@@ -1753,6 +1754,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   currentGun: 0
+  magazine: {fileID: 0}
 --- !u!4 &811363355
 Transform:
   m_ObjectHideFlags: 0
@@ -3113,6 +3115,11 @@ MonoBehaviour:
   SlashDuration: 0.2
   SlashCooldownDuration: 0.1
   faceRightState: 0
+  GunHandler: {fileID: 0}
+  RocketGun: {fileID: 0}
+  ShotGun: {fileID: 0}
+  BlasterGun: {fileID: 0}
+  Bullets: {fileID: 0}
 --- !u!61 &1849741804
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3154,7 +3161,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -3944,7 +3951,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e357c49f87f33a14797e1f06a1d28a22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 0}
   currentGun: 2
+  magazine: {fileID: 0}
 --- !u!1 &2065624577
 GameObject:
   m_ObjectHideFlags: 0

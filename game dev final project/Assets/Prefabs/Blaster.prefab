@@ -163,6 +163,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   type: 0
 --- !u!114 &-3761180418412304918
 MonoBehaviour:
