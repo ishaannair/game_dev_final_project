@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4174031241253789607}
   - component: {fileID: 1433478384653019452}
   - component: {fileID: 1089601653947176098}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e0222a2aaf4ab4b8cadd1682db830a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 10, y: 0}
+  velocity0: {x: 10, y: 0}
+  velocity10: {x: 9.84808, y: 1.73648}
+  velocity5: {x: 9.96195, y: 0.87156}
+  velocity350: {x: 9.84808, y: -1.73648}
+  velocity355: {x: 9.96195, y: -0.87156}
 --- !u!61 &1089601653947176098
 BoxCollider2D:
   m_ObjectHideFlags: 0
