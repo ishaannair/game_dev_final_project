@@ -30,16 +30,20 @@ public class PlayerController : MonoBehaviour
     private  Animator playerAnimator;
     private bool dash;
     
-    private int playerWeapon=1; 
-
+    public static int playerWeapon=1; 
+    public GameObject grandChild;
+    private GameObject ParentGameObject;
     // Start is called before the first frame update
     void  Start()
     {
+        // ParentGameObject= this.gameObject.transform.parent;
         playerAnimator  =  GetComponent<Animator>();
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
         PlayerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        // grandChild = ParentGameObject.transform.Find("Gun").gameObject;
+        // grandChild.SetActive(false);
     }
     void FixedUpdate(){
         // dynamic rigidbody
@@ -77,8 +81,10 @@ public class PlayerController : MonoBehaviour
               // toggle state
         // Slashing
         if (Input.GetMouseButtonDown(0)){
+            if (playerWeapon==1){
             ActivateSlash();
             Debug.Log("Pressed primary button.");
+            }
             // if (playerWeapon==1){
             //     playerAnimator.SetBool("Swordcut", SlashActivated);
             // }
