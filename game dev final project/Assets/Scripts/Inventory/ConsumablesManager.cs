@@ -63,10 +63,10 @@ public class ConsumablesManager : MonoBehaviour
         consumablesIcons[index].SetActive(true);
     }
 
-    public void AddConsumable(Consumables c)
+    public void AddConsumable(Consumables c, int index)
     {
-        consumablesInventory.Add(c, (int)c.index);
-        AddConsumablesUI((int)c.index, c.consumablesSprite);
+        consumablesInventory.Add(c, (int)index);
+        AddConsumablesUI((int)index, c.consumablesSprite);
     }
 
     public void OnApplicationQuit()

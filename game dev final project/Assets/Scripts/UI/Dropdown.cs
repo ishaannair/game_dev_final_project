@@ -7,12 +7,15 @@ public class Dropdown : MonoBehaviour
 {
     public GameObject dropdownImage;
     public Sprite currentSprite;
+    public Consumables consumable;
     public GameObject item1;
 
     public GameObject item2;
     public GameObject item3;
     public GameObject item4;
-
+    public CustomConsumableEvent onCraft;
+    public List<Consumables> consumablesList;
+    public int dropdownIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +24,13 @@ public class Dropdown : MonoBehaviour
     }
 
     public void switchFunc() {
-        dropdownImage.GetComponent<Image>().sprite = currentSprite;
+        for (int i = 0; i < 4; i ++){
+            if (currentSprite == consumablesList[i].consumablesSprite){
+                // Debug.Log("Same Sprite");
+                onCraft.Invoke(consumablesList[i], dropdownIndex);
+            }
+        }
+        // dropdownImage.GetComponent<Image>().sprite = currentSprite;
         item1.SetActive(false);
         item2.SetActive(false);
         item3.SetActive(false);

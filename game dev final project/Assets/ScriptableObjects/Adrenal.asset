@@ -16,7 +16,7 @@ MonoBehaviour:
 
 '
   index: 1
-  consumablesTexture: {fileID: 21300000, guid: a5f16b5b2f08b494ea8e1f1f19b70939, type: 2}
+  consumablesSprite: {fileID: 21300000, guid: a5f16b5b2f08b494ea8e1f1f19b70939, type: 2}
   healthBooster: 0
   damageSpeedBooster: 15
   slowDecayBooster: 0

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: ThermalPaste
   m_EditorClassIdentifier: 
   DeveloperDescription: Decreases ranged cooldown for a moderate amount of time.
-  index: 0
-  consumablesTexture: {fileID: 21300000, guid: b8f8a7bc4ebae8f4594ca98347e1b9e8, type: 2}
+  index: 3
+  consumablesSprite: {fileID: 21300000, guid: b8f8a7bc4ebae8f4594ca98347e1b9e8, type: 2}
   healthBooster: 0
   damageSpeedBooster: 0
   slowDecayBooster: 0
