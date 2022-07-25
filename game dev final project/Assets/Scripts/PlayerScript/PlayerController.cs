@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public FloatVariable health;
     public FloatVariable decay;
 
+    private bool OnDeath;
     //Dashing Variables 
      public bool IsDashAvailable = true;
     private bool DashActivated=false;
@@ -114,6 +115,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("OnGround", onGroundState);
         playerAnimator.SetBool("OnDash", DashActivated);
         playerAnimator.SetBool("Swordcut", SlashActivated);
+        playerAnimator.SetBool("OnDeath", OnDeath);
               // toggle state
         // Slashing
         if (Input.GetMouseButtonDown(0)){
@@ -159,6 +161,9 @@ public class PlayerController : MonoBehaviour
       if (Input.GetKeyDown("d") && !gameConstants.playerFaceRightState){
           gameConstants.playerFaceRightState = true;
           playerSprite.flipX = true;
+      }
+      if(health.Value<=0.0f){
+        OnDeath=true;
       }
     //   weapon swap
 
