@@ -31,19 +31,30 @@ public class PlayerController : MonoBehaviour
     private bool dash;
     
     public static int playerWeapon=1; 
-    public GameObject grandChild;
+    public GameObject GunHandler;
     private GameObject ParentGameObject;
+    public GameObject RocketGun;
+     public GameObject ShotGun;
+      public GameObject BlasterGun;
+      public GameObject Bullets;
+      private  GameObject NewGun;
     // Start is called before the first frame update
     void  Start()
     {
-        // ParentGameObject= this.gameObject.transform.parent;
+        // ParentGameObject= transform;
         playerAnimator  =  GetComponent<Animator>();
         // Set to be 30 FPS
         Application.targetFrameRate =  30;
         PlayerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
-        // grandChild = ParentGameObject.transform.Find("Gun").gameObject;
-        // grandChild.SetActive(false);
+        GameObject NewBullets = Instantiate(Bullets, new Vector3(0, 0, 0), Quaternion.identity);
+
+      
+        // grandChild= GameObject.Find("Gun");
+
+        // GunHandler = this.gameObject.transform.Find("Gun").gameObject;
+        // GunHandler.SetActive(false);
+
     }
     void FixedUpdate(){
         // dynamic rigidbody
@@ -92,6 +103,24 @@ public class PlayerController : MonoBehaviour
             //     playerAnimator.SetBool("SycthCut", SlashActivated);
             // }
         }
+        if(Input.GetKeyDown("r")){
+        Destroy(NewGun);
+         NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
+        NewGun.transform.parent =transform;
+        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+      }
+    if(Input.GetKeyDown("t")){
+        Destroy(NewGun);
+         NewGun = Instantiate(BlasterGun, new Vector3(0, 0, 0), Quaternion.identity);
+        NewGun.transform.parent =transform;
+        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+      }
+    if(Input.GetKeyDown("y")){
+        Destroy(NewGun);
+        NewGun = Instantiate(RocketGun, new Vector3(0, 0, 0), Quaternion.identity);
+        NewGun.transform.parent =transform;
+        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+      }
         //Dashing 
         if (Input.GetKeyDown("e")){
             // dashing skill
@@ -106,6 +135,8 @@ public class PlayerController : MonoBehaviour
           faceRightState = true;
           playerSprite.flipX = true;
       }
+    //   weapon swap
+
     }
 
 

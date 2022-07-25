@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Melee
   - Ground
+  - Gun
   layers:
   - Default
   - TransparentFX
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Bullet
     uniqueID: 1704254731
+    locked: 0
+  - name: arm
+    uniqueID: 1022171327
     locked: 0
