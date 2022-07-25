@@ -45,18 +45,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110402d7b702f504ea37365dcb78a7df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+  playerHealth: {fileID: 0}
   playerMeleeDamage: {fileID: 11400000, guid: 591eaa3d1b5b2674bbb43ca12b76f786, type: 2}
   playerRangedDamage: {fileID: 11400000, guid: c451f751b1a678e49abfdbf27f834446, type: 2}
   playerMoveSpeed: {fileID: 11400000, guid: c7d7baf69a74de44f9e7217cc04f3194, type: 2}
-  playerHealthDecay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
+  playerHealthDecay: {fileID: 0}
   playerCooldown: {fileID: 11400000, guid: 5c9b111a38ee60a4da98ae19e7a6c6f7, type: 2}
   consumablesInventory: {fileID: 11400000, guid: 15df424ff5b915140aac1d0bf107af1c, type: 2}
   consumablesIcons:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  defaultSprite: {fileID: 21300040, guid: d405b1b445e36bc4b84c8b1e5735cf5b, type: 3}
+  defaultSprite: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &6068390246372868859
 MonoBehaviour:
   m_ObjectHideFlags: 0
