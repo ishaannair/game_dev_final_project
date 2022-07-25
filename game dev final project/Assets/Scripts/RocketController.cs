@@ -18,10 +18,11 @@ public class RocketController : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground")  || col.gameObject.CompareTag("Enemy")){
-            Debug.Log("Collided with barrier/ground");
+            Debug.Log("Collided with something");
             this.gameObject.SetActive(false);
-            Collider[] hitColliders = Physics.OverlapSphere(this.gameObject.transform.position, 15);
-            Debug.Log(hitColliders);
+            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y), 2.25f);
+            // Debug.Log(this.gameObject.transform.position);
+            // Debug.Log(hitColliders.Length);
         }
     }
 
