@@ -10,6 +10,16 @@ public class MeleeSensor : MonoBehaviour
         
     }
 
+    void OnEnable()
+    {
+        Debug.Log("Melee Spawned");
+    }
+
+    void OnDisable()
+    {
+        Debug.Log("Melee Despawned");
+    }
+
     // Update is called once per frame
     void Update()
     {

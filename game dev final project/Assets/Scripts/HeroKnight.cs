@@ -114,7 +114,7 @@ public class HeroKnight : MonoBehaviour {
             m_animator.SetTrigger("Hurt");
 
         //Attack
-        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.25f && !m_rolling)
+        else if(Input.GetMouseButtonDown(0) && m_timeSinceAttack > 0.5f && !m_rolling)
         {
             m_currentAttack++;
 
@@ -128,6 +128,7 @@ public class HeroKnight : MonoBehaviour {
 
             // Call one of three attack animations "Attack1", "Attack2", "Attack3"
             m_animator.SetTrigger("Attack" + m_currentAttack);
+            Debug.Log("Melee Start!");
             m_meleeSensor.SetActive(true);
             StartCoroutine(DisableMelee());
 
@@ -204,7 +205,27 @@ public class HeroKnight : MonoBehaviour {
 
     IEnumerator DisableMelee()
     {   
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(1f);
         m_meleeSensor.SetActive(false);
+        Debug.Log("Melee Stopped");
     }
+    
+    /* void OnCollisionEnter2D(Collision2D col)
+    {   
+        if (col.gameObject.CompareTag("Enemy")){
+            
+            if (transform.position.x<col.transform.position.x)
+            {   
+                Debug.Log("Player Collide Left!");
+                m_body2d.velocity = new Vector2(0,0);
+                m_body2d.AddForce(new Vector2(-200.0f, 10.0f), ForceMode2D.Impulse);
+                Debug.Log(m_body2d.velocity);
+            } else
+            {   
+                Debug.Log("Player Collide Right!");
+                m_body2d.velocity = new Vector3(0,0,0);
+                m_body2d.AddForce(new Vector2(20.0f, 10.0f), ForceMode2D.Impulse);
+            }  
+        }
+    } */
 }

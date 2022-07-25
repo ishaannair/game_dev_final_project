@@ -181,7 +181,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8413529789942519730, guid: a4b4a6d32bcb19248a754d6602ffc7e4, type: 3}
       propertyPath: m_LocalScale.x
@@ -3423,7 +3423,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1870811981820940060
+--- !u!1001 &1977145709
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3432,15 +3432,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2074481168373833946, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2074481168373833946, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.04
+      value: 9.16
       objectReference: {fileID: 0}
     - target: {fileID: 2074481168373833946, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.95
+      value: -2.87
       objectReference: {fileID: 0}
     - target: {fileID: 2074481168373833946, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -3477,18 +3477,6 @@ PrefabInstance:
     - target: {fileID: 6257982182129756768, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
       propertyPath: m_Name
       value: SpitterEnemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 7811538324601351791, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
-      propertyPath: prefab
-      value: 
-      objectReference: {fileID: 5309784537866622846, guid: 88652b69978c8544fb282370a6eae543, type: 3}
-    - target: {fileID: 8930642218743276600, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
-      propertyPath: m_Size.y
-      value: 1.8971825
-      objectReference: {fileID: 0}
-    - target: {fileID: 8930642218743276600, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}
-      propertyPath: m_Offset.y
-      value: -0.10859108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 73e404b8e509c54449404b3b2dd16bc0, type: 3}

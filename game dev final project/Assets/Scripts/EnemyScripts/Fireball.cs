@@ -5,7 +5,7 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public Vector2 velocity = new Vector2(3, 0);
+    private Vector2 velocity = new Vector2(6, 0);
 
     private GameObject playerObj = null;
     private Rigidbody2D rb;
