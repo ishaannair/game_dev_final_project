@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum BulletType{
-    basicBullet =  0,
-    ricochetBullet =  1
+    blasterBullet =  0,
+    shotgunBullet =  1,
+    rocket = 2,
 }
 
 [System.Serializable]
@@ -51,28 +52,28 @@ public class BulletPooler : MonoBehaviour
         }
     }
 
-    public  GameObject GetBullet(BulletType type)
+    public  List<GameObject> GetBullet(BulletType type)
     {
+        List<GameObject> returnedBullets = new List<GameObject>();
+        int bulletCount;
+        switch(type){
+            case BulletType.shotgunBullet:
+                bulletCount = 5;
+                break;
+            default:
+                bulletCount = 1;
+                break;
+        }
+        Debug.Log(bulletCount);
         // return inactive pooled object if it matches the type
         for (int i =  0; i  <  pooledBullets.Count; i++)
         {
+            Debug.Log("Looking for Bullet for loop");
             if (!pooledBullets[i].gameObject.activeInHierarchy  &&  pooledBullets[i].type  ==  type)
             {
-                return  pooledBullets[i].gameObject;
-            }
-        }
-
-        foreach (Bullet item in bulletsToPool)
-        {
-            if (item.type == type)
-            {
-                if (item.expandPool)
-                {
-                    GameObject pickup = (GameObject)Instantiate(item.prefab);
-                    pickup.SetActive(false);
-                    pickup.transform.parent  =  this.transform;
-                    pooledBullets.Add(new  ExistingBullet(pickup, item.type));
-                    return  pickup;
+                returnedBullets.Add(pooledBullets[i].gameObject);
+                if(returnedBullets.Count == bulletCount){
+                    return returnedBullets;
                 }
             }
         }
