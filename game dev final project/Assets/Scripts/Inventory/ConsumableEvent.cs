@@ -8,10 +8,10 @@ public class ConsumableEvent : ScriptableObject
     private readonly List<ConsumableEventListener> eventListeners = 
         new List<ConsumableEventListener>();
 
-    public void Raise(Consumables c)
+    public void Raise(Consumables c, int index)
     {
         for(int i = eventListeners.Count -1; i >= 0; i--)
-            eventListeners[i].OnEventRaised(c);
+            eventListeners[i].OnEventRaised(c, index);
     }
 
     public void RegisterListener(ConsumableEventListener listener)

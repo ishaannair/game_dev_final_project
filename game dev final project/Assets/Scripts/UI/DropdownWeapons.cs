@@ -11,6 +11,8 @@ public class DropdownWeapons : MonoBehaviour
 
     public GameObject item2;
     public GameObject item3;
+    public GunType currGunType;
+    public GameConstants gameConstants;
 
 
     // Start is called before the first frame update
@@ -21,6 +23,7 @@ public class DropdownWeapons : MonoBehaviour
 
     public void switchWeap() {
         dropdownImage.GetComponent<Image>().sprite = currentSprite;
+        gameConstants.gunType = currGunType;
         item1.SetActive(false);
         item2.SetActive(false);
         item3.SetActive(false);

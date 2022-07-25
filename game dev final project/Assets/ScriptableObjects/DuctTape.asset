@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeveloperDescription: Restores a small amount of HP
   index: 0
-  consumablesTexture: {fileID: 21300000, guid: 8e7649119838bfd43b374b65d6ed7cec, type: 2}
+  consumablesSprite: {fileID: 21300000, guid: 8e7649119838bfd43b374b65d6ed7cec, type: 2}
   healthBooster: 10
   damageSpeedBooster: 0
   slowDecayBooster: 0

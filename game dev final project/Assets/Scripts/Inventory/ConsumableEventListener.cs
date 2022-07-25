@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 
 [System.Serializable]
-public class CustomConsumableEvent : UnityEvent<Consumables>
+public class CustomConsumableEvent : UnityEvent<Consumables,int>
 {
 }
 
@@ -21,8 +21,8 @@ public class ConsumableEventListener : MonoBehaviour
         Event.UnregisterListener(this);
     }
 
-    public void OnEventRaised(Consumables p)
+    public void OnEventRaised(Consumables c, int index)
     {
-        Response.Invoke(p);
+        Response.Invoke(c, index);
     }
 }

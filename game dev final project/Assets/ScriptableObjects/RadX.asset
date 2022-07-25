@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: RadX
   m_EditorClassIdentifier: 
   DeveloperDescription: Decreases HP decay for a moderate amount of time
-  index: 0
-  consumablesTexture: {fileID: 21300000, guid: f403ec87a40db8b40a879485522272bc, type: 2}
+  index: 2
+  consumablesSprite: {fileID: 21300000, guid: f403ec87a40db8b40a879485522272bc, type: 2}
   healthBooster: 0
   damageSpeedBooster: 0
   slowDecayBooster: 50
