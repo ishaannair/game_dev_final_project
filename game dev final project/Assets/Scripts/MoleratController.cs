@@ -39,7 +39,6 @@ public class MoleratController : MonoBehaviour
     IEnumerator findPlayer() {
         while (true) {
             sprite.enabled = true;
-            onGround = false;
             currTransparency = 0.1f;
             sprite.color = new Color(1,1,1,currTransparency);
             playerPos = GameObject.Find("HeroKnight").transform.position;
