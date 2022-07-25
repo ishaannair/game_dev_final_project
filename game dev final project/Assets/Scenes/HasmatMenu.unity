@@ -1020,6 +1020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: Weapons
+  maxSlots: 10
 --- !u!114 &127395217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8383,6 +8384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parent: Items
+  maxSlots: 10
 --- !u!114 &2119849707
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class AddItem : MonoBehaviour
     private int nextItemNum = 1;
     private string nextItemName;
     public string parent;
+    public int maxSlots;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,9 @@ public class AddItem : MonoBehaviour
     }
 
     public void addItem() {
+        if (nextItemNum >= maxSlots) {
+            this.gameObject.SetActive(false);
+        }
         Transform img = nextSlot.transform.Find("Image");
         img.gameObject.SetActive(true);
         nextItemNum += 1;
