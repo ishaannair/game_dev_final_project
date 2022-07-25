@@ -78,5 +78,20 @@ public class BulletPooler : MonoBehaviour
             }
         }
         return null;
+
+        // foreach (Bullet item in bulletsToPool)
+        // {
+        //     if (item.type == type)
+        //     {
+        //         if (item.expandPool)
+        //         {
+        //             GameObject pickup = (GameObject)Instantiate(item.prefab);
+        //             pickup.SetActive(false);
+        //             pickup.transform.parent  =  this.transform;
+        //             pooledBullets.Add(new  ExistingBullet(pickup, item.type));
+        //             return  pickup;
+        //         }
+        //     }
+        // }
     }
 }
