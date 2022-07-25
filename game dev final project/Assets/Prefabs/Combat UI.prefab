@@ -256,7 +256,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   magazine: {fileID: 11400000, guid: 5ab9e637d76a4b1449edef5c14dd6643, type: 2}
-  cooldown: {fileID: 11400000, guid: 93966a9c2c8df8140ab7f3eb15fd7042, type: 2}
 --- !u!1 &3132844726210412577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1476,6 +1475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3132844727201107837}
   - component: {fileID: 3132844727201107826}
+  - component: {fileID: 6237185325541846572}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -1555,6 +1555,20 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6237185325541846572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3132844727201107836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58ac67b638a96164ab766cd41af981b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
 --- !u!1 &3132844727214866964
 GameObject:
   m_ObjectHideFlags: 0

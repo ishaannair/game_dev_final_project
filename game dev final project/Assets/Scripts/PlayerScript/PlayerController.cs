@@ -6,28 +6,22 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameConstants gameConstants;
-    public float speed;
     private Rigidbody2D PlayerBody;
-    public float maxSpeed = 10;
-    public float upSpeed = 10;
     private bool onGroundState = true;
+    public FloatVariable health;
+    public FloatVariable decay;
 
     //Dashing Variables 
      public bool IsDashAvailable = true;
     private bool DashActivated=false;
-    public float DashDuration = 0.5f;
-    public float DashCooldownDuration = 0.1f;
     //  End
     
     //Slashing Variables 
      public bool IsSlashAvailable = true;
     public static bool SlashActivated=false;
-    public float SlashDuration = 0.2f;
-    public float SlashCooldownDuration = 0.1f;
     //  End
     private SpriteRenderer playerSprite;
-
-    public bool faceRightState = false;   
+  
     private  Animator playerAnimator;
     private bool dash;
     
@@ -35,10 +29,10 @@ public class PlayerController : MonoBehaviour
     public GameObject GunHandler;
     private GameObject ParentGameObject;
     public GameObject RocketGun;
-     public GameObject ShotGun;
-      public GameObject BlasterGun;
-      public GameObject Bullets;
-      private  GameObject NewGun;
+    public GameObject ShotGun;
+    public GameObject BlasterGun;
+    public GameObject Bullets;
+    private  GameObject NewGun;
     // Start is called before the first frame update
     void  Start()
     {
@@ -49,9 +43,13 @@ public class PlayerController : MonoBehaviour
         PlayerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         GameObject NewBullets = Instantiate(Bullets, new Vector3(0, 0, 0), Quaternion.identity);
+        health.SetValue(gameConstants.startingTimer);
+        decay.SetValue(gameConstants.startingDecay);
+
+        // Spawn guns
         if(gameConstants.gunType == GunType.shotgun){
         Destroy(NewGun);
-         NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
+        NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
         NewGun.transform.parent =transform;
         NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
         }
@@ -68,6 +66,7 @@ public class PlayerController : MonoBehaviour
             NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
         }
         NewGun.SetActive(false);
+        gameConstants.onCooldown = false;
         
       
         // grandChild= GameObject.Find("Gun");
@@ -77,12 +76,15 @@ public class PlayerController : MonoBehaviour
 
     }
     void FixedUpdate(){
+        // health decay calculation
+        health.ApplyChange(-(decay.Value * Time.fixedDeltaTime));
+
         // dynamic rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(moveHorizontal) > 0){
             Vector2 movement = new Vector2(moveHorizontal, 0);
-            if (PlayerBody.velocity.magnitude < maxSpeed)
-                    PlayerBody.AddForce(movement * speed);
+            if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
+                    PlayerBody.AddForce(movement * gameConstants.playerSpeed);
         }
         if (Input.GetKeyUp("a") || Input.GetKeyUp("d")){
             // stop
@@ -90,7 +92,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (Input.GetKeyDown("space") && onGroundState){
-          PlayerBody.AddForce(Vector2.up * upSpeed, ForceMode2D.Impulse);
+          PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
           onGroundState = false;
          }
         if (Input.GetKeyDown("1")){
@@ -149,13 +151,13 @@ public class PlayerController : MonoBehaviour
             // dashing skill
                 ActivateDodge();
             }
-      if (Input.GetKeyDown("a") && faceRightState){
-          faceRightState = false;
+      if (Input.GetKeyDown("a") && gameConstants.playerFaceRightState){
+          gameConstants.playerFaceRightState = false;
           playerSprite.flipX = false;
       }
 
-      if (Input.GetKeyDown("d") && !faceRightState){
-          faceRightState = true;
+      if (Input.GetKeyDown("d") && !gameConstants.playerFaceRightState){
+          gameConstants.playerFaceRightState = true;
           playerSprite.flipX = true;
       }
     //   weapon swap
@@ -187,7 +189,7 @@ public class PlayerController : MonoBehaviour
          DashActivated=true;// a variable that counters the shift key to prevent any clashes within the 2 abilities.
          // made it here then ability is available to use...
 
-        maxSpeed = 30f;
+        gameConstants.startingPlayerMaxSpeed = 30f;
          // start the cooldown timer
          StartCoroutine(D_Activation());//used to deploy the ability.
          StartCoroutine(D_StartCooldown());// After ablity is deployed put certain time for cooldown.
@@ -196,15 +198,15 @@ public class PlayerController : MonoBehaviour
     public IEnumerator D_Activation()
      {
          IsDashAvailable = false;
-         yield return new WaitForSeconds(DashDuration);
-         maxSpeed = 10f;
+         yield return new WaitForSeconds(gameConstants.playerDashDuration);
+         gameConstants.startingPlayerMaxSpeed = 10f;
          DashActivated=false;
          
      }
           public IEnumerator D_StartCooldown()
      {
          IsDashAvailable = false;
-         yield return new WaitForSeconds(DashCooldownDuration);
+         yield return new WaitForSeconds(gameConstants.playerDashCooldownDuration);
         
          IsDashAvailable = true;
      }
@@ -230,16 +232,20 @@ public class PlayerController : MonoBehaviour
      {
         
          IsSlashAvailable = false;
-         yield return new WaitForSeconds(SlashDuration);
+         yield return new WaitForSeconds(gameConstants.playerSlashDuration);
 
          SlashActivated=false;
          IsSlashAvailable = true;
          
      }
+
+    public void TakeDamage(float damage){
+        decay.ApplyChange(damage);
+    }
     //       public IEnumerator S_StartCooldown()
     //  {
     //      IsSlashAvailable = false;
-    //      yield return new WaitForSeconds(SlashCooldownDuration);
+    //      yield return new WaitForSeconds(gameConstants.playerSlashCooldownDuration);
         
          
     //  }

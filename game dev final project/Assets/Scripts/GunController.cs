@@ -23,6 +23,7 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        this.gameObject.GetComponent<SpriteRenderer>().flipX = gameConstants.playerFaceRightState;
         if (Input.GetKeyDown(KeyCode.Mouse0)){
             switch(type)
             {
