@@ -5,6 +5,7 @@ using UnityEngine;
 public enum GunType{
     blaster = 0,
     shotgun = 1,
+    rocketlauncher = 2,
 }
 
 public class GunController : MonoBehaviour
@@ -31,6 +32,10 @@ public class GunController : MonoBehaviour
                 case GunType.shotgun:
                     Debug.Log("Shooting shotgun");
                     onShoot.Invoke(BulletType.shotgunBullet);
+                    break;
+                case GunType.rocketlauncher:
+                    Debug.Log("Shooting rocket launcher");
+                    onShoot.Invoke(BulletType.rocket);
                     break;
                 default:
                     Debug.Log("Not one of the gun types");
