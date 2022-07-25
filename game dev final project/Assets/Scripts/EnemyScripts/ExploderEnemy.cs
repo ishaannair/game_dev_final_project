@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ExploderEnemy : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class ExploderEnemy : MonoBehaviour
     public Vector2 velocity = new Vector2(1, 0);
     public bool isExploding = false;
 
+    public UnityEvent onEnemyHit;
+
+    private float enemyHealth;
+    private float enemyMaxHealth = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +32,7 @@ public class ExploderEnemy : MonoBehaviour
         color = this.GetComponent<SpriteRenderer>().color;
         color.a = 0.1f;
         sr.color = color;
+        enemyHealth = enemyMaxHealth;
     }
 
 
@@ -36,6 +42,7 @@ public class ExploderEnemy : MonoBehaviour
         {
             rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
         }
+       //Debug.Log("FU"+ enemyHealth);
         
     }
     // Update is called once per frame
@@ -60,7 +67,13 @@ public class ExploderEnemy : MonoBehaviour
             sr.color = color;
         }
 
-       
+        
+        if (enemyHealth<=0f)
+        {   
+            Debug.Log("enemyDied");
+            Destroy(gameObject);
+        }       
+        //Debug.Log("U"+ enemyHealth);
     }
 
     IEnumerator Explode()
@@ -94,10 +107,18 @@ public class ExploderEnemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player")){
-            Debug.Log("Collided with Player");
+        if (col.gameObject.CompareTag("Melee")){
+            enemyHealth -=10f;
+            onEnemyHit.Invoke();
         }
     }
+
+    public void OnHitResponse()
+    {
+        
+        Debug.Log("Event"+ enemyHealth);
+    }
+
 }
