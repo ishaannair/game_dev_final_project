@@ -55,6 +55,10 @@ public class BulletController : MonoBehaviour
             Debug.Log("Collided with Enemy");
             this.gameObject.SetActive(false);
         }
+        if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground")){
+            Debug.Log("Collided with barrier/ground");
+            this.gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

@@ -10,13 +10,14 @@ public enum GunType{
 
 public class GunController : MonoBehaviour
 {
-    
     public CustomBulletEvent onShoot;
+    public GameConstants gameConstants;
     public GunType type;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameConstants.onCooldown=false;
+        gameConstants.gunType = type;
     }
 
     // Update is called once per frame

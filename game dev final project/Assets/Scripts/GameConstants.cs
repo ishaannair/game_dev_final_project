@@ -44,16 +44,21 @@ public  class GameConstants : ScriptableObject
     public int level3UpgradeBlueprintsCost = 3;
     public int level3UpgradeScrapCost = 100;
 
-    
+    // for Weapon equipped
+
+    public GunType gunType = GunType.blaster;
+
     // for Weapon Cooldowns
     public float blasterReloadTime = 15.0f;
     public float shotgunReloadTime = 20.0f;
     public float rocketReloadTime = 30.0f;
+    public bool onCooldown = false;
 
     // for Weapon Damage
     public float blasterDamage = 10.0f;
     public float shotgunDamage = 15.0f;
     public float rocketDamage = 100.0f;
+    public float rocketRadius = 2.25f;
 
     // for Weapon Capacity/Ammo Count
     public  int blasterAmmoClip = 12;

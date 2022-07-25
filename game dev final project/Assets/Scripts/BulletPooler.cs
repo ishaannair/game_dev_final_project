@@ -43,7 +43,6 @@ public class BulletPooler : MonoBehaviour
         {
             for (int i =  0; i  <  item.amount; i++)
             {
-                // this 'pickup' a local variable, but Unity will not remove it since it exists in the scene
                 GameObject pickup = (GameObject)Instantiate(item.prefab);
                 pickup.SetActive(false);
                 pickup.transform.parent  =  this.transform;

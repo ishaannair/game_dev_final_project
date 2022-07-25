@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class BulletSpawnManager : MonoBehaviour
 {
+    public GameConstants gameConstants;
     public GunType currentGun;
-    private int magazine;
-    private int cooldownTimer;
-    private bool cooldown = false;
+    public IntVariable magazine;
+    private float cooldownTimer;
     // Start is called before the first frame update
     void Start()
     {
         switch(currentGun){
             case GunType.blaster:
-                magazine = 12;
-                cooldownTimer = 15;
+                magazine.SetValue(gameConstants.blasterAmmoClip);
+                cooldownTimer = gameConstants.blasterReloadTime;
                 break;
             case GunType.shotgun:
-                magazine = 6;
-                cooldownTimer = 20;
+                magazine.SetValue(gameConstants.shotgunAmmoClip);
+                cooldownTimer = gameConstants.shotgunReloadTime;
                 break;
             case GunType.rocketlauncher:
-                magazine = 2;
-                cooldownTimer = 30;
+                magazine.SetValue(gameConstants.rocketAmmoClip);
+                cooldownTimer = gameConstants.rocketReloadTime;
                 break;
             default:
-                magazine = 0;
+                magazine.SetValue(0);
                 cooldownTimer = 0;
                 break;
         }
@@ -38,7 +38,7 @@ public class BulletSpawnManager : MonoBehaviour
     }
     public void spawnFromPooler(BulletType i)
     {
-        if(cooldown){
+        if(gameConstants.onCooldown){
             return;
         }
         List<GameObject> items = BulletPooler.SharedInstance.GetBullet(i);
@@ -77,29 +77,29 @@ public class BulletSpawnManager : MonoBehaviour
         {
             Debug.Log("not enough items in the pool!");
         }
-        magazine--;
-        if(magazine == 0){
+        magazine.ApplyChange(-1);
+        if(magazine.Value == 0){
             switch(currentGun){
                 case GunType.blaster:
-                    magazine = 12;
+                    magazine.SetValue(gameConstants.blasterAmmoClip);
                     break;
                 case GunType.shotgun:
-                    magazine = 6;
+                    magazine.SetValue(gameConstants.shotgunAmmoClip);
                     break;
                 case GunType.rocketlauncher:
-                    magazine = 2;
+                    magazine.SetValue(gameConstants.rocketAmmoClip);
                     break;
                 default:
-                    magazine = 0;
+                    magazine.SetValue(0);
                     break;
             }
-            cooldown = true;
+            gameConstants.onCooldown = true;
             StartCoroutine(gunCooldown());
         }
         Debug.Log(magazine);
     }
     IEnumerator gunCooldown(){
         yield return new WaitForSeconds(cooldownTimer);
-        cooldown = false;
+        gameConstants.onCooldown = false;
     }
 }
