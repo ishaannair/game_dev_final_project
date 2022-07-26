@@ -8,6 +8,7 @@ public class SpitterEnemy : MonoBehaviour
     public  GameObject prefab;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
+    private Animator anim;
     private float distanceToPlayer;
     private float playerRelativeX;
     private bool attackAvailable = true;
@@ -18,7 +19,9 @@ public class SpitterEnemy : MonoBehaviour
     {
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         health = gameConstants.spitterHealth;
+
     }
 
     // Update is called once per frame
@@ -26,14 +29,20 @@ public class SpitterEnemy : MonoBehaviour
     {
         CalculateDistanceToPlayer();
         if (Mathf.Abs(distanceToPlayer)<20 && attackAvailable){
-            Instantiate(prefab, transform.position + new Vector3(3*Mathf.Sign(distanceToPlayer),0,0), Quaternion.identity);
+            anim.SetTrigger("Attack");
+            Instantiate(prefab, transform.position + new Vector3(1.5f*Mathf.Sign(distanceToPlayer),0,0), Quaternion.identity);
             attackAvailable = false;
-            StartCoroutine(JumpCountdown());
+            StartCoroutine(SpitCountdown());
         }
+
+        if (enemyHealth<=0f)
+        {   
+            anim.SetTrigger("Death");
+        }       
        
     }
 
-    IEnumerator JumpCountdown()
+    IEnumerator SpitCountdown()
     {
         yield return new WaitForSeconds(attackCooldown);
         attackAvailable = true;
@@ -52,10 +61,11 @@ public class SpitterEnemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Player")){
-            Debug.Log("Collided with Player");
+        if (col.gameObject.CompareTag("Melee")){
+            enemyHealth -=10f;
+            Debug.Log("Enemy Health: "+ enemyHealth);
         }
     }
     

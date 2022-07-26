@@ -12,9 +12,10 @@ public class ExploderEnemy : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Color color;
+    private Animator anim;
     private float distanceToPlayer;
     private float playerRelativeX;
-    private float speed = 0.0005f;
+    private float speed = 0.025f;
     public Vector2 velocity = new Vector2(1, 0);
     public bool isExploding = false;
 
@@ -28,6 +29,7 @@ public class ExploderEnemy : MonoBehaviour
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
         //circle = this.transform.GetChild(0).gameObject;
         color = this.GetComponent<SpriteRenderer>().color;
         color.a = 0.1f;
@@ -52,13 +54,13 @@ public class ExploderEnemy : MonoBehaviour
         CalculateDistanceToPlayer();
 
         if (Mathf.Sign(distanceToPlayer)>0){
-            sr.flipX = true;
+            sr.flipX = false;
         } else
         {
-            sr.flipX = false;
+            sr.flipX = true;
         }
 
-        if (Mathf.Abs(distanceToPlayer)<4){
+        if (Mathf.Abs(distanceToPlayer)<3){
             StartCoroutine(Explode());
             isExploding = true;
         } else{
@@ -86,13 +88,9 @@ public class ExploderEnemy : MonoBehaviour
 
         if (isExploding)
         {   
-            Debug.Log("Exploded");
-            // Debug.Log(distanceToPlayer);
-            Destroy(gameObject);
+            anim.SetTrigger("Explode");
         }
     }
-
-
 
     void CalculateDistanceToPlayer()
     {   
@@ -111,21 +109,7 @@ public class ExploderEnemy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Melee")){
             enemyHealth -=10f;
-            onEnemyHit.Invoke();
+            Debug.Log("Enemy Health: "+ enemyHealth);
         }
     }
-
-    public void OnHitResponse()
-    {
-        
-        Debug.Log("Event"+ enemyHealth);
-    }
-
-    public void TakeDamage(float damage){
-        enemyHealth -= damage;
-        if(enemyHealth <= 0){
-            Destroy(this.gameObject);
-        }
-    }
-
 }

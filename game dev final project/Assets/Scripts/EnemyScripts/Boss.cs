@@ -16,8 +16,8 @@ public class Boss : MonoBehaviour
     private bool attackAvailable = true;
     private int attackCooldown = 6;
     private float bossHealth;
-    private float maxBossHealth = 200;
-    private Vector2 velocity = new Vector2(1, 0);
+    private float maxBossHealth = 100f;
+    private Vector2 velocity = new Vector2(3, 0);
     private int state=0;
     private bool isAttacking = false;
 
@@ -68,11 +68,11 @@ public class Boss : MonoBehaviour
             }
         }
 
-        //if (Time.timeScale==1.0f && !isAttacking)
-        //{   
-        //    state = getState();
-       //     anim.SetInteger("state", state);
-        //}
+        if (bossHealth<=0f)
+        {   
+            Debug.Log("enemyDied");
+            Destroy(gameObject);
+        }       
     }
 
 
@@ -138,6 +138,7 @@ public class Boss : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Melee")){
             bossHealth-=10f;
+            Debug.Log("Boss Health" + bossHealth);
         }
     }
 
