@@ -69,6 +69,18 @@ public class ConsumablesManager : MonoBehaviour
         AddConsumablesUI((int)index, c.consumablesSprite);
     }
 
+    void RemoveConsumablesUI(int index)
+    {
+        consumablesIcons[index].GetComponent<Image>().sprite = null;
+        consumablesIcons[index].SetActive(false);
+    }
+
+    public void RemoveConsumable(Consumables c, int index)
+    {
+        consumablesInventory.Remove((int)index);
+        RemoveConsumablesUI((int)index);
+    }
+
     public void OnApplicationQuit()
     {
         ResetValues();

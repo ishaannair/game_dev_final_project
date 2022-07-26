@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -35,6 +37,15 @@ public class PlayerController : MonoBehaviour
     public GameObject Bullets;
     private  GameObject NewGun;
     // Start is called before the first frame update
+    public CustomConsumableEvent onConsumeItem;
+    public List<Consumables> consumablesList;
+    public GameObject consumable1;
+    public GameObject consumable2;
+    public GameObject consumable3;
+
+
+
+
     void  Start()
     {
         // ParentGameObject= transform;
@@ -106,6 +117,31 @@ public class PlayerController : MonoBehaviour
             playerWeapon=0;
 
             Debug.Log("weapon 2");
+        }
+
+        if (Input.GetKeyDown("3")){
+            for (int i = 0; i < 4; i ++){
+                if (consumable1.GetComponent<Image>().sprite == consumablesList[i].consumablesSprite){
+                    onConsumeItem.Invoke(consumablesList[i], 0);
+                }
+            }
+            Debug.Log("consumable 1");
+        }
+        if (Input.GetKeyDown("4")){
+            for (int i = 0; i < 4; i ++){
+                if (consumable2.GetComponent<Image>().sprite == consumablesList[i].consumablesSprite){
+                    onConsumeItem.Invoke(consumablesList[i], 1);
+                }
+            }
+            Debug.Log("consumable 2");
+        }
+        if (Input.GetKeyDown("5")){
+            for (int i = 0; i < 4; i ++){
+                if (consumable3.GetComponent<Image>().sprite == consumablesList[i].consumablesSprite){
+                    onConsumeItem.Invoke(consumablesList[i], 2);
+                }
+            }
+            Debug.Log("consumable 3");
         }
     }
     // Update is called once per frame

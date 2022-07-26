@@ -2288,6 +2288,10 @@ PrefabInstance:
       propertyPath: consumablesIcons.Array.data[2]
       value: 
       objectReference: {fileID: 1192768088}
+    - target: {fileID: 6068390246372868859, guid: 62cd13ba4b89a5b40ad47886853125a5, type: 3}
+      propertyPath: Response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RemoveConsumable
+      objectReference: {fileID: 0}
     - target: {fileID: 6068390246372868860, guid: 62cd13ba4b89a5b40ad47886853125a5, type: 3}
       propertyPath: m_Name
       value: ConsumablesManager
@@ -2936,6 +2940,29 @@ MonoBehaviour:
   ShotGun: {fileID: 5695583752603944916, guid: 93bedbdc889877044b63dabc3a06f2e2, type: 3}
   BlasterGun: {fileID: 5695583752603944916, guid: 4bec65e0bedc1b44598f33a249305fa4, type: 3}
   Bullets: {fileID: 2838732120616737357, guid: 0e9bd4d4a35768c40b36013831cd0366, type: 3}
+  onConsumeItem:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: bac8f86846f630047b1d5b5f1a8012b5, type: 2}
+        m_TargetAssemblyTypeName: ConsumableEvent, Assembly-CSharp
+        m_MethodName: Raise
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  consumablesList:
+  - {fileID: 11400000, guid: 5c98f99b832a59845b42901877e46b15, type: 2}
+  - {fileID: 11400000, guid: 9c67a90531c82f043931be48cd133955, type: 2}
+  - {fileID: 11400000, guid: 74df388b5c28eaf4ba9b844db80a248c, type: 2}
+  - {fileID: 11400000, guid: db3fa4d78c78da041ae7a9d7edef4345, type: 2}
+  consumable1: {fileID: 1458903929}
+  consumable2: {fileID: 1866228858}
+  consumable3: {fileID: 1192768088}
 --- !u!61 &1849741804
 BoxCollider2D:
   m_ObjectHideFlags: 0
