@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1089601653947176098}
   m_Layer: 6
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3e0222a2aaf4ab4b8cadd1682db830a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   velocity0: {x: 10, y: 0}
   velocity10: {x: 9.84808, y: 1.73648}
   velocity5: {x: 9.96195, y: 0.87156}

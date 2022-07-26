@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpitterEnemy : MonoBehaviour
 {
-
+    public GameConstants gameConstants;
     public  GameObject prefab;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -12,11 +12,13 @@ public class SpitterEnemy : MonoBehaviour
     private float playerRelativeX;
     private bool attackAvailable = true;
     private float attackCooldown = 5;
+    private float health;
     // Start is called before the first frame update
     void Start()
     {
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        health = gameConstants.spitterHealth;
     }
 
     // Update is called once per frame
@@ -54,6 +56,13 @@ public class SpitterEnemy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
+        }
+    }
+    
+    public void TakeDamage(float damage){
+        health -= damage;
+        if(health <= 0){
+            Destroy(this.gameObject);
         }
     }
 }

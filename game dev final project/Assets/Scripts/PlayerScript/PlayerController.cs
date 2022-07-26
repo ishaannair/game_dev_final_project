@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private bool onGroundState = true;
     public FloatVariable health;
     public FloatVariable decay;
+    public bool invul = false;
 
     private bool OnDeath;
     //Dashing Variables 
@@ -262,7 +263,34 @@ public class PlayerController : MonoBehaviour
          }
          SlashActivated=true;// a variable that counters the shift key to prevent any clashes within the 2 abilities.
          // made it here then ability is available to use...
-        
+         Collider2D[] hitColliders;
+        if(gameConstants.playerFaceRightState){
+            hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x + 0.4f, this.transform.position.y), 0.9f);
+        }else{
+            hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x - 0.4f, this.transform.position.y), 0.9f);
+        }
+        JumperEnemy jumperScript;
+        ExploderEnemy exploderScript;
+        SpitterEnemy spitterScript;
+        for(int i = 0; i < hitColliders.Length; i++){
+            Collider2D col = hitColliders[i];
+            if(!col.gameObject.CompareTag("Enemy")){
+                continue;
+            }
+            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+            if(jumperScript == null){
+                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                if(exploderScript == null){
+                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                    spitterScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                    continue;
+                }
+                exploderScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                continue;
+            }
+            jumperScript.TakeDamage(gameConstants.meleeLevel1Damage);
+            continue;
+        }
      
          // start the cooldown timer
          StartCoroutine(S_Activation());//used to deploy the ability.
@@ -281,7 +309,17 @@ public class PlayerController : MonoBehaviour
      }
 
     public void TakeDamage(float damage){
-        decay.ApplyChange(damage);
+        if(!invul){
+            decay.ApplyChange(damage);
+            invul = true;
+            StartCoroutine(InvulFrames());
+            Debug.Log(decay.Value);
+        }
+    }
+
+    IEnumerator InvulFrames(){
+        yield return new WaitForSeconds(1.0f);
+        invul = false;
     }
     //       public IEnumerator S_StartCooldown()
     //  {

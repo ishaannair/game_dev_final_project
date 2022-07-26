@@ -82,4 +82,9 @@ public  class GameConstants : ScriptableObject
     public  float meleeLevel2Damage =  20.0f;
     public  float meleeLevel3Damage =  30.0f;
 
+
+    // for Enemy values
+    public float jumperHealth = 20.0f;
+    public float spitterHealth = 20.0f;
+    public float exploderHealth = 20.0f;
 }

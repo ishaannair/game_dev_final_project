@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class ExploderEnemy : MonoBehaviour
 {
+    public GameConstants gameConstants;
     public  GameObject prefab;
     private  GameObject  circle;
     private GameObject playerObj = null;
@@ -20,7 +21,6 @@ public class ExploderEnemy : MonoBehaviour
     public UnityEvent onEnemyHit;
 
     private float enemyHealth;
-    private float enemyMaxHealth = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +32,7 @@ public class ExploderEnemy : MonoBehaviour
         color = this.GetComponent<SpriteRenderer>().color;
         color.a = 0.1f;
         sr.color = color;
-        enemyHealth = enemyMaxHealth;
+        enemyHealth = gameConstants.exploderHealth;
     }
 
 
@@ -87,7 +87,7 @@ public class ExploderEnemy : MonoBehaviour
         if (isExploding)
         {   
             Debug.Log("Exploded");
-            Debug.Log(distanceToPlayer);
+            // Debug.Log(distanceToPlayer);
             Destroy(gameObject);
         }
     }
@@ -119,6 +119,13 @@ public class ExploderEnemy : MonoBehaviour
     {
         
         Debug.Log("Event"+ enemyHealth);
+    }
+
+    public void TakeDamage(float damage){
+        enemyHealth -= damage;
+        if(enemyHealth <= 0){
+            Destroy(this.gameObject);
+        }
     }
 
 }

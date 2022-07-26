@@ -32,6 +32,7 @@ public class Spit : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
+            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
             Destroy(gameObject);
         }
     }

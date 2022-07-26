@@ -16,9 +16,16 @@ MonoBehaviour:
   totalBlueprints: 0
   startingPlayerHP: 100
   startingTimer: 600
+  startingDecay: 1
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
+  playerSpeed: 20
+  playerFaceRightState: 1
+  playerDashDuration: 0.5
+  playerDashCooldownDuration: 0.1
+  playerSlashDuration: 0.2
+  playerSlashCooldownDuration: 0.1
   ductTapeScrapCost: 15
   adrenalScrapCost: 25
   radXScrapCost: 35
@@ -37,11 +44,11 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 2
+  gunType: 0
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 1
+  onCooldown: 0
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100
@@ -53,3 +60,6 @@ MonoBehaviour:
   meleeLevel1Damage: 10
   meleeLevel2Damage: 20
   meleeLevel3Damage: 30
+  jumperHealth: 20
+  spitterHealth: 20
+  exploderHealth: 20

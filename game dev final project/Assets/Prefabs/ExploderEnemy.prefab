@@ -147,24 +147,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64472fe1ef0b4b84f9aadb028378bfb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
+  prefab: {fileID: 5309784537866622846, guid: 64a06b1af96bc944293246ea5de9393c, type: 3}
   velocity: {x: 1, y: 0}
   isExploding: 0
-  onPlayerCollision:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 5d420a69aa3533845a8a494c447ba343, type: 2}
-        m_TargetAssemblyTypeName: GameEvent, Assembly-CSharp
-        m_MethodName: Raise
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   onEnemyHit:
     m_PersistentCalls:
       m_Calls:

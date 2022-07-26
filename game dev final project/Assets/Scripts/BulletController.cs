@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    public GameConstants gameConstants;
     private Rigidbody2D rigidBody;
     public Vector2 velocity0 = new Vector2(10, 0);
     public Vector2 velocity10 = new Vector2(9.84808f, 1.73648f);
@@ -27,7 +28,7 @@ public class BulletController : MonoBehaviour
 
     void FixedUpdate()
     {
-        Debug.Log(this.gameObject.transform.eulerAngles.z);
+        // Debug.Log(this.gameObject.transform.eulerAngles.z);
         switch(Mathf.RoundToInt(this.gameObject.transform.eulerAngles.z)){
             case 0:
                 rigidBody.MovePosition(rigidBody.position + direction*velocity0 * Time.fixedDeltaTime);
@@ -59,8 +60,43 @@ public class BulletController : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col)
     {
+        JumperEnemy jumperScript;
+        ExploderEnemy exploderScript;
+        SpitterEnemy spitterScript;
         if (col.gameObject.CompareTag("Enemy")){
             Debug.Log("Collided with Enemy");
+            switch(gameConstants.gunType){
+                case GunType.blaster:
+                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                    if(jumperScript == null){
+                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                        if(exploderScript == null){
+                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                            spitterScript.TakeDamage(gameConstants.blasterDamage);
+                            break;
+                        }
+                        exploderScript.TakeDamage(gameConstants.blasterDamage);
+                        break;
+                    }
+                    jumperScript.TakeDamage(gameConstants.blasterDamage);
+                    break;
+                case GunType.shotgun:
+                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                    if(jumperScript == null){
+                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                        if(exploderScript == null){
+                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                            spitterScript.TakeDamage(gameConstants.blasterDamage);
+                            break;
+                        }
+                        exploderScript.TakeDamage(gameConstants.blasterDamage);
+                        break;
+                    }
+                    jumperScript.TakeDamage(gameConstants.blasterDamage);
+                    break;
+                default:
+                    break;
+            }
             this.gameObject.SetActive(false);
         }
         if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground")){

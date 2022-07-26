@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class JumperEnemy : MonoBehaviour
 {
+    public GameConstants gameConstants;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private float distanceToPlayer;
     private float playerRelativeX;
+    private float health;
 
     private bool jumpAvailable = true;
     private int jumpCooldown = 5;
@@ -19,7 +21,7 @@ public class JumperEnemy : MonoBehaviour
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-
+        health = gameConstants.jumperHealth;
     }
 
     // Update is called once per frame
@@ -63,6 +65,15 @@ public class JumperEnemy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
+            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+        }
+    }
+
+    public void TakeDamage(float damage){
+        health -= damage;
+        Debug.Log("Jumper took damage");
+        if(health <= 0){
+            Destroy(this.gameObject);
         }
     }
 }
