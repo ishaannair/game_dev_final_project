@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5342392536986624174}
   - component: {fileID: 4668191982148552831}
   - component: {fileID: 7073328621936586805}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Jumper
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -147,7 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0054206b1eacb6042bcc87b5065d29a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 1, y: 0}
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
+  velocity: 3
 --- !u!95 &7073328621936586805
 Animator:
   serializedVersion: 4

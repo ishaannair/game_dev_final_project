@@ -31,8 +31,6 @@ public class JumperEnemy : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         health = gameConstants.jumperHealth;
         anim = GetComponent<Animator>();
-
-        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -62,7 +60,7 @@ public class JumperEnemy : MonoBehaviour
             }
         }
 
-        if (currentHealth<=0f)
+        if (health<=0f)
         {   
             Debug.Log("enemyDied");
             Destroy(gameObject);
@@ -122,8 +120,8 @@ public class JumperEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Melee")){
-            currentHealth-=10f;
-            Debug.Log("Enemy's current health: " + currentHealth);
+            // currentHealth-=10f;
+            // Debug.Log("Enemy's current health: " + currentHealth);
         }
     }
 }

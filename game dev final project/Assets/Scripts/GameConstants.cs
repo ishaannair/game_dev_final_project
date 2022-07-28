@@ -75,6 +75,14 @@ public  class GameConstants : ScriptableObject
     public  int blasterAmmoClip = 12;
     public  int shotgunAmmoClip = 6;
     public  int rocketAmmoClip =  2;
+
+    // for Weapon sprite position
+    public Vector3 shotgunLeftSprite = new Vector3(-0.12f, -0.01f, 0.0f);
+    public Vector3 shotgunRightSprite = new Vector3(0.09f, -0.01f, 0.0f);
+
+    // for Weapon pool position
+    public Vector3 shotgunLeftPool= new Vector3(0.403f, 0.035f, 0.0f);
+    public Vector3 shotgunRightPool = new Vector3(-0.395f, 0.035f, 0.0f);
     
     // for Melee Weapon 
     public  int meleeLevel = 1;

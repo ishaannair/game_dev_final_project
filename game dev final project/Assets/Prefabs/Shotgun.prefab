@@ -49,6 +49,7 @@ MonoBehaviour:
     prefab: {fileID: 7703089599684785904, guid: ec9f7fd2386ddc64eb1d42b9904bb29a, type: 3}
     expandPool: 0
     type: 1
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
 --- !u!1 &5054542919844039840
 GameObject:
   m_ObjectHideFlags: 0

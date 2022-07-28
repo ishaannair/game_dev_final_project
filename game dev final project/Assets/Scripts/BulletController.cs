@@ -6,6 +6,7 @@ public class BulletController : MonoBehaviour
 {
     public GameConstants gameConstants;
     private Rigidbody2D rigidBody;
+    private SpriteRenderer sprite;
     public Vector2 velocity0 = new Vector2(10, 0);
     public Vector2 velocity10 = new Vector2(9.84808f, 1.73648f);
     public Vector2 velocity5 = new Vector2(9.96195f, 0.87156f);
@@ -17,12 +18,18 @@ public class BulletController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
-        if(MovementControler.statusPublic){
+        sprite = GetComponent<SpriteRenderer>();
+    }
+    
+    void OnEnable()
+    {
+        if(gameConstants.playerFaceRightState){
             direction=new Vector2(1,1);
-
+            sprite.flipX = false;
         }
         else{
-            direction=new Vector2(-1,1);;
+            direction=new Vector2(-1,1);
+            sprite.flipX = true;
         }
     }
 

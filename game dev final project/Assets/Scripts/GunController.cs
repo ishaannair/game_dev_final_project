@@ -13,17 +13,40 @@ public class GunController : MonoBehaviour
     public CustomBulletEvent onShoot;
     public GameConstants gameConstants;
     public GunType type;
+    private SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
         gameConstants.onCooldown=false;
         gameConstants.gunType = type;
+        sprite = this.gameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        this.gameObject.GetComponent<SpriteRenderer>().flipX = gameConstants.playerFaceRightState;
+        switch(type)
+            {
+                case GunType.blaster:
+                    sprite.flipX = gameConstants.playerFaceRightState;
+                    onShoot.Invoke(BulletType.blasterBullet);
+                    break;
+                case GunType.shotgun:
+                    sprite.flipX = gameConstants.playerFaceRightState;
+                    if(gameConstants.playerFaceRightState){
+                        this.transform.localPosition = gameConstants.shotgunRightSprite;
+                    }else{
+                        this.transform.localPosition = gameConstants.shotgunLeftSprite;
+                    }
+                    break;
+                case GunType.rocketlauncher:
+                    sprite.flipX = gameConstants.playerFaceRightState;
+                    onShoot.Invoke(BulletType.rocket);
+                    break;
+                default:
+                    sprite.flipX = gameConstants.playerFaceRightState;
+                    break;
+            }
         if (Input.GetKeyDown(KeyCode.Mouse0)){
             switch(type)
             {

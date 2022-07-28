@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
         GameObject NewBullets = Instantiate(Bullets, new Vector3(0, 0, 0), Quaternion.identity);
         health.SetValue(gameConstants.startingTimer);
         decay.SetValue(gameConstants.startingDecay);
+        gameConstants.playerFaceRightState = false;
 
         // Spawn guns
         if(gameConstants.gunType == GunType.shotgun){
@@ -95,9 +96,10 @@ public class PlayerController : MonoBehaviour
         // dynamic rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(moveHorizontal) > 0){
-            Vector2 movement = new Vector2(moveHorizontal, 0);
-            if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
-                    PlayerBody.AddForce(movement * gameConstants.playerSpeed);
+            Vector2 movement = new Vector2(moveHorizontal * gameConstants.playerSpeed, PlayerBody.velocity.y);
+            // if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
+            //         PlayerBody.AddForce(movement * gameConstants.playerSpeed);
+            PlayerBody.velocity = movement;
         }
         if (Input.GetKeyUp("a") || Input.GetKeyUp("d")){
             // stop

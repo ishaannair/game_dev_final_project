@@ -21,7 +21,7 @@ public class ExploderEnemy : MonoBehaviour
 
     public UnityEvent onEnemyHit;
 
-    private float enemyHealth;
+    private float health;
 
     // Start is called before the first frame update
     void Start()
@@ -34,7 +34,7 @@ public class ExploderEnemy : MonoBehaviour
         color = this.GetComponent<SpriteRenderer>().color;
         color.a = 0.1f;
         sr.color = color;
-        enemyHealth = gameConstants.exploderHealth;
+        health = gameConstants.exploderHealth;
     }
 
 
@@ -70,7 +70,7 @@ public class ExploderEnemy : MonoBehaviour
         }
 
         
-        if (enemyHealth<=0f)
+        if (health<=0f)
         {   
             Debug.Log("enemyDied");
             Destroy(gameObject);
@@ -108,8 +108,15 @@ public class ExploderEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Melee")){
-            enemyHealth -=10f;
-            Debug.Log("Enemy Health: "+ enemyHealth);
+            // enemyHealth -=10f;
+            // Debug.Log("Enemy Health: "+ enemyHealth);
+        }
+    }
+    public void TakeDamage(float damage){
+        health -= damage;
+        Debug.Log("Jumper took damage");
+        if(health <= 0){
+            Destroy(this.gameObject);
         }
     }
 }

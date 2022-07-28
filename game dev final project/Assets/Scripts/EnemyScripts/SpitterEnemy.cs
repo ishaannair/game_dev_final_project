@@ -35,7 +35,7 @@ public class SpitterEnemy : MonoBehaviour
             StartCoroutine(SpitCountdown());
         }
 
-        if (enemyHealth<=0f)
+        if (health<=0f)
         {   
             anim.SetTrigger("Death");
         }       
@@ -64,8 +64,8 @@ public class SpitterEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Melee")){
-            enemyHealth -=10f;
-            Debug.Log("Enemy Health: "+ enemyHealth);
+            // enemyHealth -=10f;
+            // Debug.Log("Enemy Health: "+ enemyHealth);
         }
     }
     

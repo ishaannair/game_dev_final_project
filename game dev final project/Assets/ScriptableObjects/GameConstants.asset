@@ -20,8 +20,8 @@ MonoBehaviour:
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
-  playerSpeed: 20
-  playerFaceRightState: 1
+  playerSpeed: 5
+  playerFaceRightState: 0
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
   playerSlashDuration: 0.2
@@ -44,7 +44,7 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 0
+  gunType: 1
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
