@@ -256,6 +256,7 @@ MonoBehaviour:
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   health: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
   decay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
+  invul: 0
   IsDashAvailable: 1
   IsSlashAvailable: 1
   GunHandler: {fileID: 0}
@@ -263,6 +264,13 @@ MonoBehaviour:
   ShotGun: {fileID: 5695583752603944916, guid: 93bedbdc889877044b63dabc3a06f2e2, type: 3}
   BlasterGun: {fileID: 5695583752603944916, guid: 4bec65e0bedc1b44598f33a249305fa4, type: 3}
   Bullets: {fileID: 2838732120616737357, guid: 0e9bd4d4a35768c40b36013831cd0366, type: 3}
+  onConsumeItem:
+    m_PersistentCalls:
+      m_Calls: []
+  consumablesList: []
+  consumable1: {fileID: 0}
+  consumable2: {fileID: 0}
+  consumable3: {fileID: 0}
 --- !u!1 &8090507983685398777
 GameObject:
   m_ObjectHideFlags: 0

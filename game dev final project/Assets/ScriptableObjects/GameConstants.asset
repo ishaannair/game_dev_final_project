@@ -15,7 +15,7 @@ MonoBehaviour:
   totalScrap: 0
   totalBlueprints: 0
   startingPlayerHP: 100
-  startingTimer: 600
+  startingTimer: 1
   startingDecay: 1
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10

@@ -203,10 +203,17 @@ public class PlayerController : MonoBehaviour
       }
       if(health.Value<=0.0f){
         OnDeath=true;
-      }
-    //   weapon swap
+        if (this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsTag("OnDeath")){
+            if(this.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    Debug.Log("death ended");
+                    this.gameObject.SetActive(false);
+                    
+                }
+        }
 
-    }
+      }
+      }
 
 
 
