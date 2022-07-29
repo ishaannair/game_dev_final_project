@@ -35,12 +35,10 @@ public class BulletPooler : MonoBehaviour
     public  List<ExistingBullet> pooledBullets;
     public static BulletPooler SharedInstance;
     public GameConstants gameConstants;
-    private bool prevFaceRightState;
 
     void  Awake()
     {
         SharedInstance = this;
-        prevFaceRightState = gameConstants.playerFaceRightState;
         pooledBullets  =  new  List<ExistingBullet>();
         foreach (Bullet item in  bulletsToPool)
         {
@@ -52,51 +50,6 @@ public class BulletPooler : MonoBehaviour
                 pooledBullets.Add(new  ExistingBullet(pickup, item.type));
             }
         }
-    }
-
-    void Update()
-    {
-        switch(gameConstants.gunType)
-            {
-                case GunType.blaster:
-                    if(gameConstants.playerFaceRightState){
-                        this.transform.localPosition = new Vector3(-0.395f, 0.035f, 0.0f);
-                    }else{
-                        this.transform.localPosition = new Vector3(0.403f, 0.035f, 0.0f);
-                    }
-                    break;
-                case GunType.shotgun:
-                    if(gameConstants.playerFaceRightState){
-                        this.transform.localPosition = gameConstants.shotgunRightPool;
-                        if(prevFaceRightState != gameConstants.playerFaceRightState){
-                            foreach(Transform child in this.transform){
-                                Vector3 bulletPoolOffset = gameConstants.shotgunRightPool - gameConstants.shotgunLeftPool + gameConstants.shotgunLeftSprite - gameConstants.shotgunRightSprite;
-                                Debug.Log(bulletPoolOffset);
-                                child.position += bulletPoolOffset;
-                            }
-                        }
-                    }else{
-                        this.transform.localPosition = gameConstants.shotgunLeftPool;
-                        if(prevFaceRightState != gameConstants.playerFaceRightState){
-                            foreach(Transform child in this.transform){
-                                Vector3 bulletPoolOffset = gameConstants.shotgunLeftPool - gameConstants.shotgunRightPool + gameConstants.shotgunRightSprite - gameConstants.shotgunLeftSprite;
-                                Debug.Log(bulletPoolOffset);
-                                child.position += bulletPoolOffset;
-                            }
-                        }
-                    }
-                    break;
-                case GunType.rocketlauncher:
-                    if(gameConstants.playerFaceRightState){
-                        this.transform.localPosition = new Vector3(-0.395f, 0.035f, 0.0f);
-                    }else{
-                        this.transform.localPosition = new Vector3(0.403f, 0.035f, 0.0f);
-                    }
-                    break;
-                default:
-                    break;
-            }
-        prevFaceRightState = gameConstants.playerFaceRightState;
     }
 
     public  List<GameObject> GetBullet(BulletType type)

@@ -29,7 +29,11 @@ public class GunController : MonoBehaviour
             {
                 case GunType.blaster:
                     sprite.flipX = gameConstants.playerFaceRightState;
-                    onShoot.Invoke(BulletType.blasterBullet);
+                    if(gameConstants.playerFaceRightState){
+                        this.transform.localPosition = gameConstants.blasterRightSprite;
+                    }else{
+                        this.transform.localPosition = gameConstants.blasterLeftSprite;
+                    }
                     break;
                 case GunType.shotgun:
                     sprite.flipX = gameConstants.playerFaceRightState;
@@ -41,7 +45,11 @@ public class GunController : MonoBehaviour
                     break;
                 case GunType.rocketlauncher:
                     sprite.flipX = gameConstants.playerFaceRightState;
-                    onShoot.Invoke(BulletType.rocket);
+                    if(gameConstants.playerFaceRightState){
+                        this.transform.localPosition = gameConstants.rocketRightSprite;
+                    }else{
+                        this.transform.localPosition = gameConstants.rocketLeftSprite;
+                    }
                     break;
                 default:
                     sprite.flipX = gameConstants.playerFaceRightState;

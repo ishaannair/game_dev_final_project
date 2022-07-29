@@ -7,25 +7,31 @@ public class RocketController : MonoBehaviour
     private Rigidbody2D rigidBody;
     private bool checkdirection;
     public Vector2 velocity = new Vector2(7, 0);
-    public SpriteRenderer bulletRender;
+    private SpriteRenderer sprite;
+    public GameConstants gameConstants;
+    private Vector2 direction;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        rigidBody = GetComponent<Rigidbody2D>(); 
-        checkdirection=MovementControler.statusPublic;
-        bulletRender = GetComponent<SpriteRenderer>();
+        rigidBody = GetComponent<Rigidbody2D>();
+        sprite = GetComponent<SpriteRenderer>();
         
+    }
+
+    void OnEnable()
+    {
+        if(gameConstants.playerFaceRightState){
+            direction=new Vector2(1,1);
+            sprite.flipX = false;
+        }
+        else{
+            direction=new Vector2(-1,1);
+            sprite.flipX = true;
+        }
     }
     void FixedUpdate()
     {
-        if (checkdirection){
-            rigidBody.MovePosition(rigidBody.position + velocity * Time.fixedDeltaTime);
-     
-        }
-        else{
-            rigidBody.MovePosition(rigidBody.position -velocity * Time.fixedDeltaTime);
-            
-        }
+        rigidBody.MovePosition(rigidBody.position + velocity * direction * Time.fixedDeltaTime);
     }
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -33,19 +39,25 @@ public class RocketController : MonoBehaviour
             Debug.Log("Collided with something");
             this.gameObject.SetActive(false);
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y), 2.25f);
+            foreach(Collider2D hitCol in hitColliders){
+                if(hitCol.CompareTag("Enemy")){
+                    JumperEnemy jumperScript;
+                    ExploderEnemy exploderScript;
+                    SpitterEnemy spitterScript;
+                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                    if(jumperScript == null){
+                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                        if(exploderScript == null){
+                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                            spitterScript.TakeDamage(gameConstants.rocketDamage);
+                        }
+                        exploderScript.TakeDamage(gameConstants.rocketDamage);
+                    }
+                    jumperScript.TakeDamage(gameConstants.rocketDamage);
+                }
+            }
             // Debug.Log(this.gameObject.transform.position);
             // Debug.Log(hitColliders.Length);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (checkdirection){
-            bulletRender.flipX = false;
-        }
-        else{
-            bulletRender.flipX = true;
         }
     }
 }

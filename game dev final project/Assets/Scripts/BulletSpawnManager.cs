@@ -48,7 +48,25 @@ public class BulletSpawnManager : MonoBehaviour
             foreach (GameObject item in items){
                 Debug.Log(index);
                 // item.transform.position = new Vector3(0, 0, -5);
-                item.transform.localPosition = new Vector3(0, 0, 0);
+                if(i == BulletType.shotgunBullet){
+                    if(gameConstants.playerFaceRightState){
+                        item.transform.localPosition = gameConstants.shotgunRightPool;
+                    }else{
+                        item.transform.localPosition = gameConstants.shotgunLeftPool;
+                    }
+                }else if(i == BulletType.blasterBullet){
+                    if(gameConstants.playerFaceRightState){
+                        item.transform.localPosition = gameConstants.blasterRightPool;
+                    }else{
+                        item.transform.localPosition = gameConstants.blasterLeftPool;
+                    }
+                }else if(i == BulletType.rocket){
+                    if(gameConstants.playerFaceRightState){
+                        item.transform.localPosition = gameConstants.rocketRightPool;
+                    }else{
+                        item.transform.localPosition = gameConstants.rocketLeftPool;
+                    }
+                }
                 if(i == BulletType.shotgunBullet){
                     switch(index){
                         case 1:

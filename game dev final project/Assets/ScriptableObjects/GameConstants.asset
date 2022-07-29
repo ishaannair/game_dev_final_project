@@ -44,7 +44,7 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 1
+  gunType: 2
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
@@ -56,6 +56,18 @@ MonoBehaviour:
   blasterAmmoClip: 12
   shotgunAmmoClip: 6
   rocketAmmoClip: 2
+  shotgunLeftSprite: {x: -0.12, y: -0.01, z: 0}
+  shotgunRightSprite: {x: 0.09, y: -0.01, z: 0}
+  blasterLeftSprite: {x: -0.033, y: -0.058, z: 0}
+  blasterRightSprite: {x: 0.053, y: -0.058, z: 0}
+  rocketLeftSprite: {x: 0.105, y: -0.046, z: 0}
+  rocketRightSprite: {x: -0.078, y: -0.046, z: 0}
+  shotgunLeftPool: {x: 0.403, y: 0.035, z: 0}
+  shotgunRightPool: {x: -0.395, y: 0.035, z: 0}
+  blasterRightPool: {x: -0.8, y: 0.027, z: 0}
+  blasterLeftPool: {x: 0.789, y: 0.027, z: 0}
+  rocketRightPool: {x: -0.688, y: 0.019, z: 0}
+  rocketLeftPool: {x: 0.692, y: 0.019, z: 0}
   meleeLevel: 1
   meleeLevel1Damage: 10
   meleeLevel2Damage: 20

@@ -62,10 +62,10 @@ public class PlayerController : MonoBehaviour
 
         // Spawn guns
         if(gameConstants.gunType == GunType.shotgun){
-        Destroy(NewGun);
-        NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
-        NewGun.transform.parent =transform;
-        NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
+            Destroy(NewGun);
+            NewGun = Instantiate(ShotGun, new Vector3(0, 0, 0), Quaternion.identity);
+            NewGun.transform.parent =transform;
+            NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
         }
         else if(gameConstants.gunType == GunType.blaster){
             Destroy(NewGun);

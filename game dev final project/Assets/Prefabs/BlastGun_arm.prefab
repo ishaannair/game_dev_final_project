@@ -138,6 +138,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5695583752603944917}
     m_Modifications:
+    - target: {fileID: 988155285574484711, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988155285574484711, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 988155286204923868, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -197,6 +205,10 @@ PrefabInstance:
     - target: {fileID: 988155286204923870, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
       propertyPath: m_Name
       value: Blaster
+      objectReference: {fileID: 0}
+    - target: {fileID: 988155286204923871, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
+      propertyPath: m_FlipX
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 988155286204923871, guid: 406a8cd95f85cb342ab1717e037779f9, type: 3}
       propertyPath: m_SortingLayer
