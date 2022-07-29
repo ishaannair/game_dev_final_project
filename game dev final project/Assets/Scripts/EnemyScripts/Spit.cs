@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spit : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public Vector2 velocity = new Vector2(3, 0);
+    public Vector2 velocity;
 
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -30,7 +30,8 @@ public class Spit : MonoBehaviour
     void FixedUpdate()
     {   
         if (!isBeingSpawned){
-            rigidBody.MovePosition(rigidBody.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+            //rigidBody.MovePosition(rigidBody.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+            rigidBody.MovePosition(rigidBody.position + velocity*6 * Time.fixedDeltaTime);
         }
     }
 
@@ -62,12 +63,7 @@ public class Spit : MonoBehaviour
         float xDist = playerObj.transform.position.x - this.transform.position.x;
         float yDist = playerObj.transform.position.y - this.transform.position.y;
 
-        if (playerObj.transform.position.x<this.transform.position.x)
-        {
-            distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
-        } else{
-            distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
-        }
+        velocity = new Vector2(xDist,yDist).normalized;
     }
 }
 

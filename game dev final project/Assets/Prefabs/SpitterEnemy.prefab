@@ -11,10 +11,14 @@ GameObject:
   - component: {fileID: 2074481168373833946}
   - component: {fileID: 1646829171515782891}
   - component: {fileID: 8930642218743276600}
-  - component: {fileID: 6393170375676295697}
   - component: {fileID: 7811538324601351791}
   - component: {fileID: 2431595594658374801}
+<<<<<<< Updated upstream
   m_Layer: 0
+=======
+  - component: {fileID: 4513391836487908298}
+  m_Layer: 8
+>>>>>>> Stashed changes
   m_Name: SpitterEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -114,27 +118,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.38543326, y: 0.40653703}
   m_EdgeRadius: 0
---- !u!50 &6393170375676295697
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6257982182129756768}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 5
-  m_LinearDrag: 1
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!114 &7811538324601351791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,3 +151,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &4513391836487908298
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6257982182129756768}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

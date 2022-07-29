@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 281f54f789f70bd4496ee3eeffbefff3
+guid: 2fb41d1264d15bc4a9fa0ad7d1d6eeb1
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 0
+    enableMipMap: 1
     sRGBTexture: 1
     linearTexture: 0
     fadeOut: 0
@@ -66,10 +66,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 16384
+    maxTextureSize: 2048
     resizeAlgorithm: 1
     textureFormat: -1
-    textureCompression: 2
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: hell-hound-idle_0
+      name: hellhound_idle_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 152
         y: 0
-        width: 64
-        height: 32
+        width: 500
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ff992d296fe90f74d9735f8098210734
-      internalID: -445759835
+      spriteID: 0594e74d2e87db743b087c54959b6ed8
+      internalID: -1570863236
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hell-hound-idle_1
+      name: hellhound_idle_1
       rect:
         serializedVersion: 2
-        x: 64
+        x: 986
         y: 0
-        width: 64
-        height: 32
+        width: 512
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a477bc1de30229e48972090f56308123
-      internalID: -1932347103
+      spriteID: 0d24963af9ffd3d4ba22b531b752f5eb
+      internalID: -425535821
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hell-hound-idle_2
+      name: hellhound_idle_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 1790
         y: 0
-        width: 64
-        height: 32
+        width: 515
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6e324168d4d1ab4c81b96617cf9372e
-      internalID: -510416095
+      spriteID: a912491d11f375b4bbaba8199eb06a0a
+      internalID: -455432507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hell-hound-idle_3
+      name: hellhound_idle_3
       rect:
         serializedVersion: 2
-        x: 192
+        x: 2624
         y: 0
-        width: 64
-        height: 32
+        width: 512
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c9f3461e5aee9774b8f8f926e6add188
-      internalID: -794531640
+      spriteID: ba3bb80936bb491428a977a0ddfd5077
+      internalID: 1532352539
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hell-hound-idle_4
+      name: hellhound_idle_4
       rect:
         serializedVersion: 2
-        x: 256
+        x: 3455
         y: 0
-        width: 64
-        height: 32
+        width: 512
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48afd026aaed519469b9bc5526287f95
-      internalID: 1331620786
+      spriteID: 6cdb2618d63a44744aa41c4108a13586
+      internalID: -1911148857
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: hell-hound-idle_5
+      name: hellhound_idle_5
       rect:
         serializedVersion: 2
-        x: 320
+        x: 4274
         y: 0
-        width: 64
-        height: 32
+        width: 527
+        height: 416
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3c24a55d4fcdad740af3dfe606876e81
-      internalID: -1936275829
+      spriteID: 9cc546398e1e52e43b5195dd88f0cec9
+      internalID: 1593640586
       vertices: []
       indices: 
       edges: []
@@ -240,12 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hell-hound-idle_3: -794531640
-      hell-hound-idle_0: -445759835
-      hell-hound-idle_1: -1932347103
-      hell-hound-idle_5: -1936275829
-      hell-hound-idle_2: -510416095
-      hell-hound-idle_4: 1331620786
+      hellhound_idle_2: -455432507
+      hellhound_idle_0: -1570863236
+      hellhound_idle_3: 1532352539
+      hellhound_idle_5: 1593640586
+      hellhound_idle_4: -1911148857
+      hellhound_idle_1: -425535821
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

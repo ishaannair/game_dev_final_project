@@ -89,6 +89,19 @@ public class JumperEnemy : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
+<<<<<<< Updated upstream
+=======
+            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+        }
+    }
+
+    public void TakeDamage(float damage){
+        health -= damage;
+        rb.AddForce(new Vector3(-20*Math.Sign(distanceToPlayer),0,0), ForceMode2D.Impulse);
+        Debug.Log("Jumper took damage");
+        if(health <= 0){
+            Destroy(this.gameObject);
+>>>>>>> Stashed changes
         }
     }
 
@@ -114,4 +127,6 @@ public class JumperEnemy : MonoBehaviour
             Debug.Log("Enemy's current health: " + currentHealth);
         }
     }
+
+    
 }

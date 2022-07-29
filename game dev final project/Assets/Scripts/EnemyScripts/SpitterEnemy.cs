@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpitterEnemy : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class SpitterEnemy : MonoBehaviour
     {
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
         anim = GetComponent<Animator>();
         enemyHealth = enemyMaxHealth;
 
@@ -29,7 +31,7 @@ public class SpitterEnemy : MonoBehaviour
     void Update()
     {
         CalculateDistanceToPlayer();
-        if (Mathf.Abs(distanceToPlayer)<20 && attackAvailable){
+        if (Mathf.Abs(distanceToPlayer)<15 && attackAvailable){
             anim.SetTrigger("Attack");
             Instantiate(prefab, transform.position + new Vector3(1.5f*Mathf.Sign(distanceToPlayer),0,0), Quaternion.identity);
             attackAvailable = false;
@@ -65,8 +67,31 @@ public class SpitterEnemy : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Melee")){
+<<<<<<< Updated upstream
             enemyHealth -=10f;
             Debug.Log("Enemy Health: "+ enemyHealth);
+=======
+            // enemyHealth -=10f;
+            // Debug.Log("Enemy Health: "+ enemyHealth);
+        }
+    }
+    
+    public void TakeDamage(float damage){
+        health -= damage;
+        StartCoroutine(Knockback());
+        if(health <= 0){
+            Destroy(this.gameObject);
+>>>>>>> Stashed changes
+        }
+    }
+
+    IEnumerator Knockback()
+    {   
+        float time = 0.2f;
+        while (time>0){
+            time -=  Time.deltaTime;
+            transform.position += new Vector3(Math.Sign(distanceToPlayer)*10f*Time.deltaTime,0,0);
+            yield return null;
         }
     }
 }
