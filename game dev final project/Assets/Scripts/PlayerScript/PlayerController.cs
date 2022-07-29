@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 
 public class PlayerController : MonoBehaviour
@@ -43,6 +44,7 @@ public class PlayerController : MonoBehaviour
     public GameObject consumable1;
     public GameObject consumable2;
     public GameObject consumable3;
+    public UnityEvent onPlayerDeath;
 
 
 
@@ -146,6 +148,7 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("consumable 3");
         }
+
     }
     // Update is called once per frame
     void Update()
@@ -203,6 +206,7 @@ public class PlayerController : MonoBehaviour
       }
       if(health.Value<=0.0f){
         OnDeath=true;
+        onPlayerDeath.Invoke();
       }
     //   weapon swap
 

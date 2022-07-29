@@ -15,13 +15,13 @@ MonoBehaviour:
   totalScrap: 0
   totalBlueprints: 0
   startingPlayerHP: 100
-  startingTimer: 600
+  startingTimer: 1
   startingDecay: 1
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
   playerSpeed: 5
-  playerFaceRightState: 0
+  playerFaceRightState: 1
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
   playerSlashDuration: 0.2
