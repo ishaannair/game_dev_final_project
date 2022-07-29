@@ -221,7 +221,7 @@ public class PlayerController : MonoBehaviour
 
 
 //   Custom functions
-// attacking -->
+// DASH -->
     private void ActivateDodge(){
          // if not available to use (still cooling down) just exit
          Debug.Log("dash");
@@ -232,7 +232,7 @@ public class PlayerController : MonoBehaviour
          }
          DashActivated=true;// a variable that counters the shift key to prevent any clashes within the 2 abilities.
          // made it here then ability is available to use...
-
+        invul=true;
         gameConstants.startingPlayerMaxSpeed = 30f;
          // start the cooldown timer
          StartCoroutine(D_Activation());//used to deploy the ability.
@@ -245,6 +245,7 @@ public class PlayerController : MonoBehaviour
          yield return new WaitForSeconds(gameConstants.playerDashDuration);
          gameConstants.startingPlayerMaxSpeed = 10f;
          DashActivated=false;
+         invul=false;
          
      }
           public IEnumerator D_StartCooldown()

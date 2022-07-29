@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletsToPool:
   - amount: 2
-    prefab: {fileID: 7921231073786836900, guid: 56798f1a151ca4542bcccc1f8d32f18b, type: 3}
+    prefab: {fileID: 1353348502092787288, guid: ae185c4f215bafa41bd92adfdaf26d9b, type: 3}
     expandPool: 0
     type: 2
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
