@@ -13,12 +13,12 @@ public enum ConsumablesIndex
 public class ConsumablesManager : MonoBehaviour
 {
     // reference of all player stats affected
-    public IntVariable playerHealth;
+    public FloatVariable playerHealth;
     public IntVariable playerMeleeDamage;
     public IntVariable playerRangedDamage;
 
     public IntVariable playerMoveSpeed;
-    public IntVariable playerHealthDecay;
+    public FloatVariable playerHealthDecay;
     public IntVariable playerCooldown;
 
     public ConsumablesInventory consumablesInventory;
@@ -76,9 +76,60 @@ public class ConsumablesManager : MonoBehaviour
     }
 
     public void RemoveConsumable(Consumables c, int index)
-    {
+    {   
+        if (c.healthBooster>0){
+            // Debug.Log("health");
+            playerHealth.ApplyChange(c.healthBooster); // Increase current hp value
+        } else if (c.damageSpeedBooster>0){
+            // Debug.Log("damage");
+
+            // Increase damage and move speed
+            playerMeleeDamage.ApplyChange(c.damageSpeedBooster);
+            playerRangedDamage.ApplyChange(c.damageSpeedBooster);
+            playerMoveSpeed.ApplyChange(c.damageSpeedBooster);
+            StartCoroutine(removeEffect("adrenal", c));
+        } else if (c.cooldownBooster>0){
+            // Debug.Log("cooldown");
+            playerCooldown.ApplyChange(c.cooldownBooster); // Decrease cooldowns
+            StartCoroutine(removeEffect("thermal", c));
+        } else if (c.slowDecayBooster>0){
+            // Debug.Log("decay");
+            if (playerHealthDecay.Value - c.slowDecayBooster < 0){
+                float originalHealthDecay = playerHealthDecay.Value;
+                playerHealthDecay.ApplyChange(-playerHealthDecay.Value); // Stops negative health decay (causes player to heal over time)
+                StartCoroutine(removeEffect("radX", c, originalHealthDecay));
+            } else{
+                playerHealthDecay.ApplyChange(-c.slowDecayBooster); // Decrease the decay
+                StartCoroutine(removeEffect("radX", c));
+            }
+        }
         consumablesInventory.Remove((int)index);
         RemoveConsumablesUI((int)index);
+    }
+
+    IEnumerator removeEffect(string consumableType, Consumables c){
+        // Debug.Log(c.duration);
+        yield return new WaitForSeconds(c.duration);
+        if (consumableType == "adrenal"){
+            // Debug.Log("damage dropping");
+            playerMeleeDamage.ApplyChange(-c.damageSpeedBooster);
+            playerRangedDamage.ApplyChange(-c.damageSpeedBooster);
+            playerMoveSpeed.ApplyChange(-c.damageSpeedBooster);
+        } else if (consumableType == "thermal"){
+            // Debug.Log("cooldown dropping");
+            playerCooldown.ApplyChange(-c.cooldownBooster);
+        } else if (consumableType == "radX"){
+            // Debug.Log("decay dropping");
+            playerHealthDecay.ApplyChange(c.slowDecayBooster);
+        }
+    }
+
+    IEnumerator removeEffect(string consumableType, Consumables c, float value){
+        yield return new WaitForSeconds(c.duration);
+        if (consumableType == "radX"){
+            // Debug.Log("decay dropping");
+            playerHealthDecay.ApplyChange(value);
+        }
     }
 
     public void OnApplicationQuit()

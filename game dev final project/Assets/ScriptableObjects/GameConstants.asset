@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalScrap: 0
   totalBlueprints: 0
-  startingPlayerHP: 100
-  startingTimer: 1
+  startingPlayerHP: 1000
+  startingTimer: 100
   startingDecay: 1
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
