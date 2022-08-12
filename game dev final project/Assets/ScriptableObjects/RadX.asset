@@ -17,6 +17,6 @@ MonoBehaviour:
   consumablesSprite: {fileID: 21300000, guid: f403ec87a40db8b40a879485522272bc, type: 2}
   healthBooster: 0
   damageSpeedBooster: 0
-  slowDecayBooster: 50
+  slowDecayBooster: 25
   cooldownBooster: 0
-  duration: 30
+  duration: 25

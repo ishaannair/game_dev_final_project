@@ -19,4 +19,4 @@ MonoBehaviour:
   damageSpeedBooster: 0
   slowDecayBooster: 0
   cooldownBooster: 50
-  duration: 30
+  duration: 15

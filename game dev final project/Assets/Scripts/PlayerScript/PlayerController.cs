@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     public GameObject consumable3;
     public UnityEvent onPlayerDeath;
 
+    public FloatVariable playerMeleeDamage;
+    public FloatVariable playerMoveSpeed;
 
 
 
@@ -61,6 +63,8 @@ public class PlayerController : MonoBehaviour
         health.SetValue(gameConstants.startingTimer);
         decay.SetValue(gameConstants.startingDecay);
         gameConstants.playerFaceRightState = false;
+        playerMeleeDamage.SetValue(gameConstants.meleeLevel1Damage); // Create function to check upgrades if more levels are created
+        playerMoveSpeed.SetValue(gameConstants.playerSpeed);
 
         // Spawn guns
         if(gameConstants.gunType == GunType.shotgun){
@@ -98,7 +102,7 @@ public class PlayerController : MonoBehaviour
         // dynamic rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(moveHorizontal) > 0){
-            Vector2 movement = new Vector2(moveHorizontal * gameConstants.playerSpeed, PlayerBody.velocity.y);
+            Vector2 movement = new Vector2(moveHorizontal * playerMoveSpeed.Value, PlayerBody.velocity.y);
             // if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
             //         PlayerBody.AddForce(movement * gameConstants.playerSpeed);
             PlayerBody.velocity = movement;
@@ -288,13 +292,13 @@ public class PlayerController : MonoBehaviour
                 exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
                 if(exploderScript == null){
                     spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                    spitterScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                    spitterScript.TakeDamage(playerMeleeDamage.Value);
                     continue;
                 }
-                exploderScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                exploderScript.TakeDamage(playerMeleeDamage.Value);
                 continue;
             }
-            jumperScript.TakeDamage(gameConstants.meleeLevel1Damage);
+            jumperScript.TakeDamage(playerMeleeDamage.Value);
             continue;
         }
      

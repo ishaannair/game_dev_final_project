@@ -427,6 +427,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1594127304}
     - target: {fileID: 8090507983345830167, guid: 93268543163b9a74689813aed061716a, type: 3}
+      propertyPath: playerMoveSpeed
+      value: 
+      objectReference: {fileID: 11400000, guid: c7d7baf69a74de44f9e7217cc04f3194, type: 2}
+    - target: {fileID: 8090507983345830167, guid: 93268543163b9a74689813aed061716a, type: 3}
+      propertyPath: playerMeleeDamage
+      value: 
+      objectReference: {fileID: 11400000, guid: 096511a948b94bb42a8f983b81308326, type: 2}
+    - target: {fileID: 8090507983345830167, guid: 93268543163b9a74689813aed061716a, type: 3}
       propertyPath: consumablesList.Array.size
       value: 4
       objectReference: {fileID: 0}

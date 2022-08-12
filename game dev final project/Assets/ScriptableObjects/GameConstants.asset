@@ -15,8 +15,8 @@ MonoBehaviour:
   totalScrap: 0
   totalBlueprints: 0
   startingPlayerHP: 1000
-  startingTimer: 100
-  startingDecay: 1
+  startingTimer: 1000
+  startingDecay: 50
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
@@ -48,7 +48,7 @@ MonoBehaviour:
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 0
+  onCooldown: 1
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100

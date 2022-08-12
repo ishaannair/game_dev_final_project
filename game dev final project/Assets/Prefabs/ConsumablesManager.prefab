@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
-  playerMeleeDamage: {fileID: 11400000, guid: 591eaa3d1b5b2674bbb43ca12b76f786, type: 2}
+  playerMeleeDamage: {fileID: 11400000, guid: 096511a948b94bb42a8f983b81308326, type: 2}
   playerRangedDamage: {fileID: 11400000, guid: c451f751b1a678e49abfdbf27f834446, type: 2}
   playerMoveSpeed: {fileID: 11400000, guid: c7d7baf69a74de44f9e7217cc04f3194, type: 2}
   playerHealthDecay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}

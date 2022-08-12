@@ -14,10 +14,10 @@ public class ConsumablesManager : MonoBehaviour
 {
     // reference of all player stats affected
     public FloatVariable playerHealth;
-    public IntVariable playerMeleeDamage;
-    public IntVariable playerRangedDamage;
+    public FloatVariable playerMeleeDamage;
+    public FloatVariable playerRangedDamage;
 
-    public IntVariable playerMoveSpeed;
+    public FloatVariable playerMoveSpeed;
     public FloatVariable playerHealthDecay;
     public IntVariable playerCooldown;
 
@@ -89,8 +89,10 @@ public class ConsumablesManager : MonoBehaviour
             playerMoveSpeed.ApplyChange(c.damageSpeedBooster);
             StartCoroutine(removeEffect("adrenal", c));
         } else if (c.cooldownBooster>0){
-            // Debug.Log("cooldown");
-            playerCooldown.ApplyChange(c.cooldownBooster); // Decrease cooldowns
+            Debug.Log("cooldown");
+            playerCooldown.ApplyChange(-c.cooldownBooster); // Decrease cooldowns
+            Debug.Log(playerCooldown.Value);
+
             StartCoroutine(removeEffect("thermal", c));
         } else if (c.slowDecayBooster>0){
             // Debug.Log("decay");
@@ -116,8 +118,10 @@ public class ConsumablesManager : MonoBehaviour
             playerRangedDamage.ApplyChange(-c.damageSpeedBooster);
             playerMoveSpeed.ApplyChange(-c.damageSpeedBooster);
         } else if (consumableType == "thermal"){
-            // Debug.Log("cooldown dropping");
-            playerCooldown.ApplyChange(-c.cooldownBooster);
+            Debug.Log("cooldown dropping");
+            playerCooldown.ApplyChange(c.cooldownBooster);
+            Debug.Log(playerCooldown.Value);
+
         } else if (consumableType == "radX"){
             // Debug.Log("decay dropping");
             playerHealthDecay.ApplyChange(c.slowDecayBooster);

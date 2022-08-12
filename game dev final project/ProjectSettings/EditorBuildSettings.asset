@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/character initialisation.unity
     guid: abc840cf2bf789b429a68bcb35ac9d6c
   - enabled: 1
-    path: Assets/Scenes/InventoryScene.unity
+    path: Assets/Scenes/Final Game/InventoryScene.unity
     guid: 90c69ab2a7f03c245b4ccba983f20961
   - enabled: 1
     path: Assets/Scenes/Final_map.unity
     guid: 6a29c6451d17f474b9ac9a8b81b13ccf
+  - enabled: 1
+    path: Assets/Scenes/Final Game/Another Map 1.unity
+    guid: ef4249dd7a282594fb44457e8587fd66
+  - enabled: 1
+    path: Assets/Scenes/Final Game/UpgradesScene.unity
+    guid: 6762340e381a99d479b826b22addae8c
   m_configObjects: {}
