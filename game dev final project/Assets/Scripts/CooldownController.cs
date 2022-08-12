@@ -8,7 +8,12 @@ public class CooldownController : MonoBehaviour
     public GameConstants gameConstants;
     public IntVariable magazine;
     private Slider slider;
-    private float cooldownTimer = 0;
+    public FloatVariable cooldownTimer;
+
+    void Awake()
+    {
+        cooldownTimer.SetValue(0.0f);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -19,26 +24,26 @@ public class CooldownController : MonoBehaviour
     void FixedUpdate()
     {
         if(gameConstants.onCooldown){
-            if(cooldownTimer == 0){
+            if(cooldownTimer.Value == 0){
                 switch(gameConstants.gunType){
                     case GunType.blaster:
                         slider.maxValue = gameConstants.blasterReloadTime;
-                        cooldownTimer = gameConstants.blasterReloadTime;
+                        cooldownTimer.SetValue(gameConstants.blasterReloadTime);
                         break;
                     case GunType.shotgun:
                         slider.maxValue = gameConstants.shotgunReloadTime;
-                        cooldownTimer = gameConstants.shotgunReloadTime;
+                        cooldownTimer.SetValue(gameConstants.shotgunReloadTime);
                         break;
                     case GunType.rocketlauncher:
                         slider.maxValue = gameConstants.rocketReloadTime;
-                        cooldownTimer = gameConstants.rocketReloadTime;
+                        cooldownTimer.SetValue(gameConstants.rocketReloadTime);
                         break;
                     default:
                         break;
                 }
             }
-            cooldownTimer -= Time.fixedDeltaTime;
-            slider.value = slider.maxValue - (cooldownTimer - Time.fixedDeltaTime);
+            cooldownTimer.ApplyChange(-Time.fixedDeltaTime);
+            slider.value = slider.maxValue - (cooldownTimer.Value - Time.fixedDeltaTime);
         }
     }
 
@@ -46,7 +51,7 @@ public class CooldownController : MonoBehaviour
     void Update()
     {
         if(!gameConstants.onCooldown){
-            cooldownTimer = 0;
+            cooldownTimer.SetValue(0.0f);
             switch(gameConstants.gunType){
                 case GunType.blaster:
                     slider.maxValue = gameConstants.blasterAmmoClip;
