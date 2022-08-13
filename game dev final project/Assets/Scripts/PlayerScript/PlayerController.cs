@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
             //         PlayerBody.AddForce(movement * gameConstants.playerSpeed);
             PlayerBody.velocity = movement;
         }
-        if (Input.GetKeyUp("a") || Input.GetKeyUp("d")){
+        if (Input.GetKeyUp("a") && !Input.GetKeyDown("d") || Input.GetKeyUp("d") && !Input.GetKeyDown("a")){
             // stop
             PlayerBody.velocity = Vector2.zero;
         }
