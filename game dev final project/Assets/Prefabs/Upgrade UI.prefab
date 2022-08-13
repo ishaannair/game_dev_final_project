@@ -631,7 +631,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enables Sprint
+  m_Text: Enables Dodge
 --- !u!1 &980417220290571995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1649,7 +1649,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: bootUpgradeSprint
+          m_StringArgument: bootUpgradeDodge
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5258170932523261894
@@ -2547,8 +2547,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -104.99997}
-  m_SizeDelta: {x: 132.158, y: 80.5278}
+  m_AnchoredPosition: {x: 0, y: -115.228546}
+  m_SizeDelta: {x: 132.158, y: 100.985}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3672301120499554859
 CanvasRenderer:
@@ -2591,7 +2591,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Double Swing Every 3 Hits
+  m_Text: Double Melee Damage Every 3 Hits
 --- !u!1 &6765272030716880206
 GameObject:
   m_ObjectHideFlags: 0

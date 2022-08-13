@@ -48,6 +48,12 @@ public class PlayerController : MonoBehaviour
 
     public FloatVariable playerMeleeDamage;
     public FloatVariable playerMoveSpeed;
+    private int hitCounter = 0;
+    private bool doubleJumpAvailable = false;
+    public bool isJumpAvailable = true;
+    public bool dodgeAvailable = false;
+
+
 
 
 
@@ -87,6 +93,14 @@ public class PlayerController : MonoBehaviour
         }
         NewGun.SetActive(false);
         gameConstants.onCooldown = false;
+
+        if (gameConstants.bootUpgradeDblJmp){
+            doubleJumpAvailable = true;
+        }
+
+        if (gameConstants.bootUpgradeDodge){
+            dodgeAvailable = true;
+        }
         
       
         // grandChild= GameObject.Find("Gun");
@@ -98,7 +112,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate(){
         // health decay calculation
         health.ApplyChange(-(decay.Value * Time.fixedDeltaTime));
-
+        
         // dynamic rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
         if (Mathf.Abs(moveHorizontal) > 0){
@@ -112,10 +126,17 @@ public class PlayerController : MonoBehaviour
             PlayerBody.velocity = Vector2.zero;
         }
 
-        if (Input.GetKeyDown("space") && onGroundState){
-          PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
-          onGroundState = false;
-         }
+        if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable){
+            PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
+            onGroundState = false;
+            StartCoroutine(JumpCooldown());
+        }
+
+        if (Input.GetKeyDown("space") && !onGroundState && doubleJumpAvailable && isJumpAvailable){
+            PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed * 1.1f, ForceMode2D.Impulse);
+            doubleJumpAvailable = false;
+        }
+
         if (Input.GetKeyDown("1")){
             NewGun.SetActive(false);
             playerWeapon=1;
@@ -194,10 +215,10 @@ public class PlayerController : MonoBehaviour
         //     NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
         // }
         //Dashing 
-        if (Input.GetKeyDown("e")){
+        if (Input.GetKeyDown("e") && dodgeAvailable && onGroundState){
             // dashing skill
-                ActivateDodge();
-            }
+            ActivateDodge();
+        }
       if (Input.GetKeyDown("a") && gameConstants.playerFaceRightState){
           gameConstants.playerFaceRightState = false;
           playerSprite.flipX = false;
@@ -207,6 +228,7 @@ public class PlayerController : MonoBehaviour
           gameConstants.playerFaceRightState = true;
           playerSprite.flipX = true;
       }
+
       if(health.Value<=0.0f){
         OnDeath=true;
         onPlayerDeath.Invoke();
@@ -222,12 +244,32 @@ public class PlayerController : MonoBehaviour
   {
       if (col.gameObject.CompareTag("Ground")) {
       onGroundState = true;
-      Debug.Log("true");
+
+      if (gameConstants.bootUpgradeDblJmp){
+        doubleJumpAvailable = true;
+      }
+
+    //   Debug.Log("true");
       }
   }
 
 
 //   Custom functions
+
+// Double Jump
+    private IEnumerator JumpCooldown(){
+        isJumpAvailable = false;
+        yield return new WaitForSeconds(gameConstants.playerJumpDuration);
+        isJumpAvailable = true;
+    }
+
+    // private IEnumerator DoubleJump(){
+    //     Debug.Log("doubling");
+    //     yield return new WaitForSeconds(gameConstants.playerJumpDuration);
+    //     PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
+    //     doubleJumpAvailable = false;
+    // }
+
 // DASH -->
     private void ActivateDodge(){
          // if not available to use (still cooling down) just exit
@@ -240,27 +282,33 @@ public class PlayerController : MonoBehaviour
          DashActivated=true;// a variable that counters the shift key to prevent any clashes within the 2 abilities.
          // made it here then ability is available to use...
         invul=true;
-        gameConstants.startingPlayerMaxSpeed = 30f;
+        // gameConstants.startingPlayerMaxSpeed = 30f;
          // start the cooldown timer
          StartCoroutine(D_Activation());//used to deploy the ability.
          StartCoroutine(D_StartCooldown());// After ablity is deployed put certain time for cooldown.
-        
      }
     public IEnumerator D_Activation()
      {
+         isJumpAvailable = false;
          IsDashAvailable = false;
+         playerMoveSpeed.SetValue(playerMoveSpeed.Value * 2);
+         Debug.Log(playerMoveSpeed.Value);
          yield return new WaitForSeconds(gameConstants.playerDashDuration);
-         gameConstants.startingPlayerMaxSpeed = 10f;
+        //  gameConstants.startingPlayerMaxSpeed = 10f;
+         playerMoveSpeed.SetValue(playerMoveSpeed.Value*0.5f);
+         Debug.Log(playerMoveSpeed.Value);
+
          DashActivated=false;
          invul=false;
-         
+         isJumpAvailable = true;
+
      }
           public IEnumerator D_StartCooldown()
      {
          IsDashAvailable = false;
          yield return new WaitForSeconds(gameConstants.playerDashCooldownDuration);
-        
          IsDashAvailable = true;
+
      }
 // Slashing -->
     private void ActivateSlash(){
@@ -290,7 +338,19 @@ public class PlayerController : MonoBehaviour
             if(!col.gameObject.CompareTag("Enemy")){
                 continue;
             }
-            
+
+            float meleeDamage = playerMeleeDamage.Value;
+            if (hitCounter >= 3){
+                meleeDamage *= 2.0f;
+                hitCounter = 0;
+                // Debug.Log("we hitting big big");
+                // Debug.Log(hitCounter);
+            } else if (hitCounter < 3){
+                hitCounter++;
+                // Debug.Log("incrementing hit counter");
+                // Debug.Log(hitCounter);
+            }
+
             bossMiniScript = col.gameObject.GetComponent<BossMini>();
             if(bossMiniScript == null)
             {
@@ -301,19 +361,19 @@ public class PlayerController : MonoBehaviour
                         exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
                         if(exploderScript == null){
                             spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(playerMeleeDamage.Value);
+                            spitterScript.TakeDamage(meleeDamage);
                             continue;
                         }
-                        exploderScript.TakeDamage(playerMeleeDamage.Value);
+                        exploderScript.TakeDamage(meleeDamage);
                         continue;
                     }
-                    jumperScript.TakeDamage(playerMeleeDamage.Value);
+                    jumperScript.TakeDamage(meleeDamage);
                     continue;
                 }
-                bossScript.TakeDamage(playerMeleeDamage.Value);
+                bossScript.TakeDamage(meleeDamage);
                 continue;
             }
-            bossMiniScript.TakeDamage(playerMeleeDamage.Value);
+            bossMiniScript.TakeDamage(meleeDamage);
             continue;
            
             

@@ -20,10 +20,13 @@ public  class GameConstants : ScriptableObject
     public float startingPlayerJumpSpeed = 10;
     public float startingPlayerForce = 100;
     public float playerSpeed = 20;
-    public bool playerFaceRightState = false;
+    public bool playerFaceRightState = false;   
+
+    // for Player Jump
+    public float playerJumpDuration = 1.0f;
 
     // for Player Dash
-    public float playerDashDuration = 0.5f;
+    public float playerDashDuration = 0.25f;
     public float playerDashCooldownDuration = 0.1f;
 
     // for Player Slash
@@ -118,7 +121,7 @@ public  class GameConstants : ScriptableObject
     public bool gloveUpgradeDblDmg = false;
     public bool gloveUpgradeMeleeDmg = false;
     public bool bootUpgradeDblJmp = false;
-    public bool bootUpgradeSprint = false;
+    public bool bootUpgradeDodge = false;
     public bool bootUpgradeDecay = false;
     // for Game Mechanics
     public float enemySightlines = 15f;
