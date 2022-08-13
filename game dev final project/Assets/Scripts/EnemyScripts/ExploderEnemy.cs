@@ -133,7 +133,7 @@ public class ExploderEnemy : MonoBehaviour
                 break;
         }
         health -= damage;
-        Debug.Log("Exploder Health: "+ health, + " took " + damage + " damage");
+        Debug.Log("Exploder Health: "+ health + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }

@@ -116,7 +116,7 @@ public class JumperEnemy : MonoBehaviour
                 break;
         }
         health -= damage;
-        Debug.Log("Jumper Health: "+ health, + " took " + damage + " damage");
+        Debug.Log("Jumper Health: "+ health + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }

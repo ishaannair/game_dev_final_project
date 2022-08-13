@@ -91,7 +91,7 @@ public class SpitterEnemy : MonoBehaviour
                 break;
         }
         health -= damage;
-        Debug.Log("Spitter Health: "+ health, + " took " + damage + " damage");
+        Debug.Log("Spitter Health: "+ health + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }
