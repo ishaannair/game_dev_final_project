@@ -16,7 +16,7 @@ MonoBehaviour:
   totalBlueprints: 0
   startingPlayerHP: 100
   startingTimer: 1
-  startingDecay: 1
+  startingDecay: 0.00001
   startingPlayerMaxSpeed: 5
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
@@ -75,3 +75,4 @@ MonoBehaviour:
   jumperHealth: 20
   spitterHealth: 20
   exploderHealth: 20
+  enemySightlines: 15

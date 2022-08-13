@@ -5,9 +5,10 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    private Vector2 velocity = new Vector2(6, 0);
+    private Vector2 velocity = new Vector2(0, 6);
 
     private GameObject playerObj = null;
+    public  GameObject prefab;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Color color;
@@ -24,13 +25,15 @@ public class Fireball : MonoBehaviour
         color = this.GetComponent<SpriteRenderer>().color;
         color.a = 0.1f;
         sr.color = color;
+        transform.rotation *= Quaternion.Euler(0,0,90);
+        
         StartCoroutine(Spawning());
     }
 
     void FixedUpdate()
     {   
         if (!isBeingSpawned){
-            rigidBody.MovePosition(rigidBody.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+            rigidBody.MovePosition(rigidBody.position + Mathf.Sign(-3f)*velocity * Time.fixedDeltaTime);
         }
     }
 
@@ -46,13 +49,15 @@ public class Fireball : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {   
-        if (col.gameObject.CompareTag("Barrier")){
+        if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground") ){
             Debug.Log("Collided with barrier");
+            Instantiate(prefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
+            Instantiate(prefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

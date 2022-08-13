@@ -278,24 +278,41 @@ public class PlayerController : MonoBehaviour
         JumperEnemy jumperScript;
         ExploderEnemy exploderScript;
         SpitterEnemy spitterScript;
+        BossMini bossMiniScript;
+        Boss bossScript;
         for(int i = 0; i < hitColliders.Length; i++){
             Collider2D col = hitColliders[i];
+
             if(!col.gameObject.CompareTag("Enemy")){
                 continue;
             }
-            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
-            if(jumperScript == null){
-                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
-                if(exploderScript == null){
-                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                    spitterScript.TakeDamage(gameConstants.meleeLevel1Damage);
+            bossMiniScript = col.gameObject.GetComponent<BossMini>();
+            if(bossMiniScript == null)
+            {
+                bossScript = col.gameObject.GetComponent<Boss>();
+                if (bossScript == null){
+                     jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                    if(jumperScript == null){
+                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                        if(exploderScript == null){
+                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                            spitterScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                            continue;
+                        }
+                        exploderScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                        continue;
+                    }
+                    jumperScript.TakeDamage(gameConstants.meleeLevel1Damage);
                     continue;
                 }
-                exploderScript.TakeDamage(gameConstants.meleeLevel1Damage);
+                bossScript.TakeDamage(gameConstants.meleeLevel1Damage);
                 continue;
             }
-            jumperScript.TakeDamage(gameConstants.meleeLevel1Damage);
+            bossMiniScript.TakeDamage(gameConstants.meleeLevel1Damage);
             continue;
+           
+            
+           
         }
      
          // start the cooldown timer

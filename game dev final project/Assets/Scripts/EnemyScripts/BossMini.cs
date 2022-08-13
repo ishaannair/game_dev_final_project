@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
-public class Boss : MonoBehaviour
+public class BossMini : MonoBehaviour
 {
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -10,24 +11,22 @@ public class Boss : MonoBehaviour
     private Animator anim;
     private GameObject   m_meleeSensor;
     public  GameObject prefab;
-    public GameConstants gameConstants;
+    public GameObject boss;
     private float distanceToPlayer;
     private float playerRelativeX;
+    public UnityEvent onBossMiniDeath;
 
-    private bool fireballAvailable = true;
-    private bool meleeAvailable = true;
-    private float fireballCooldown = 6f;
-    private float meleeCooldown = 3f;
+    private bool attackAvailable = true;
+    private int attackCooldown = 6;
     private float bossHealth;
-    private float maxBossHealth = 20f;
+    private float maxBossHealth = 30f;
     private Vector2 velocity = new Vector2(3, 0);
     private int state=0;
     private bool isAttacking = false;
-    private bool isFullySpawned = false;
 
     private int fireballAmount = 4;
 
-    private enum MovementState {idle, walking, cleaving, throwing, death,spawning}
+    private enum MovementState {idle, walking, cleaving, throwing, death}
 
     // Start is called before the first frame update
     void Start()
@@ -40,24 +39,14 @@ public class Boss : MonoBehaviour
 
         m_meleeSensor = this.transform.Find("MeleeSensor").gameObject;
         m_meleeSensor.SetActive(false);
-
-        StartCoroutine(Spawning());
-
     }
 
-    IEnumerator Spawning()
-    {
-       yield return new WaitForSeconds(2f);
-       isFullySpawned = true;
-    }
-    
     void FixedUpdate()
-    {   if (!isAttacking && isFullySpawned)
+    {   if (!isAttacking)
         {
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle") || anim.GetCurrentAnimatorStateInfo(0).IsName("BossWalk")){
                 if (distanceToPlayer>4 || distanceToPlayer<-4)
                 {
-                    Debug.Log(distanceToPlayer);
                     rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
                     anim.SetInteger("state",(int)MovementState.walking);
                 } else
@@ -67,49 +56,39 @@ public class Boss : MonoBehaviour
             }
         }
     }
+
     // Update is called once per frame
     void Update()
     {   
         CalculateDistanceToPlayer();
 
-        if (Mathf.Abs(distanceToPlayer)<5 && isFullySpawned)
+        if (attackAvailable)
         {
-            if (meleeAvailable)
-            {
+            if (Mathf.Abs(distanceToPlayer)<5)
+            {   
                 cleaveAttack();
-                StartCoroutine(meleeCountdown());
+                StartCoroutine(attackCountdown());
+            } else
+            {
+                StartCoroutine(fireballAttack());
+                StartCoroutine(attackCountdown());
             }
-        } else if (fireballAvailable && isFullySpawned) 
-        {
-            StartCoroutine(fireballAttack());
-            StartCoroutine(fireballCountdown());
         }
-    }
 
+    }
     void cleaveAttack()
     {   
+        isAttacking = true;
         anim.SetTrigger("startCleave");
         StartCoroutine(DisableMelee());
-    }
-
-     IEnumerator meleeCountdown()
-    {   
-        meleeAvailable = false;
-        yield return new WaitForSeconds(meleeCooldown);
-        meleeAvailable = true;
-    }
-    IEnumerator DisableMelee()
-    {   
-        //yield return new WaitForSeconds(0.25f);
-        m_meleeSensor.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
-        m_meleeSensor.SetActive(false);
+        isAttacking = false;
     }
 
     IEnumerator fireballAttack()
     {
         isAttacking = true;
         Debug.Log("Fire");
+        
         
         Instantiate(prefab, playerObj.transform.position + new Vector3(0,10f,0), Quaternion.identity);
         for (int i = 0 ;  i<fireballAmount; i++)
@@ -123,11 +102,11 @@ public class Boss : MonoBehaviour
         isAttacking = false;
     }
 
-    IEnumerator fireballCountdown()
+    IEnumerator attackCountdown()
     {   
-        fireballAvailable = false;
-        yield return new WaitForSeconds(fireballCooldown);
-        fireballAvailable = true;
+        attackAvailable = false;
+        yield return new WaitForSeconds(attackCooldown);
+        attackAvailable = true;
     }
 
     private int getState()
@@ -168,10 +147,16 @@ public class Boss : MonoBehaviour
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
-            Debug.Log("Boss died");
-            anim.SetInteger("state",(int)MovementState.death);
+            onBossMiniDeath.Invoke();
+            Destroy(this.gameObject);
         }
     }
 
-    
+    IEnumerator DisableMelee()
+    {   
+        //yield return new WaitForSeconds(0.25f);
+        m_meleeSensor.SetActive(true);
+        yield return new WaitForSeconds(0.25f);
+        m_meleeSensor.SetActive(false);
+    }
 }

@@ -43,4 +43,27 @@ public class CameraController : MonoBehaviour
     {
         Debug.Log("OnCollisionEnter2D");
     }
+
+    public void Shake()
+    {
+        StartCoroutine(ShakingCamera());
+    }
+
+    private IEnumerator ShakingCamera(float magnitude = 0.25f)
+    {
+        Vector3 originalPos = transform.position;
+        float t = 0f, x, y;
+        while (t < 5f)
+        {
+            x = Random.Range(-1f, 1f) * magnitude;
+            y = Random.Range(-1f, 1f) * magnitude;
+
+            transform.position = originalPos + new Vector3(x, y, 0);
+
+            t += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPos;
+    }
 }

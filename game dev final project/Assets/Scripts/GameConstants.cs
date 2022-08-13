@@ -103,4 +103,7 @@ public  class GameConstants : ScriptableObject
     public float jumperHealth = 20.0f;
     public float spitterHealth = 20.0f;
     public float exploderHealth = 20.0f;
+
+    // for Game Mechanics
+    public float enemySightlines = 15f;
 }

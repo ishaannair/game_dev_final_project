@@ -47,10 +47,7 @@ public class JumperEnemy : MonoBehaviour
             sr.flipX = false;
         }
 
-        if (Mathf.Abs(distanceToPlayer)>=10)
-        {
-            rb.velocity = new Vector2(Mathf.Sign(distanceToPlayer) * velocity, rb.velocity.y);
-        } else
+        if (Math.Abs(distanceToPlayer)<10f)
         {
             if (jumpAvailable)
             {
@@ -58,6 +55,9 @@ public class JumperEnemy : MonoBehaviour
                 jumpAvailable = false;
                 StartCoroutine(JumpCountdown());
             }
+        } else if (Math.Abs(distanceToPlayer)<gameConstants.enemySightlines)
+        {
+             rb.velocity = new Vector2(Mathf.Sign(distanceToPlayer) * velocity, rb.velocity.y);
         }
 
         if (health<=0f)
@@ -97,6 +97,7 @@ public class JumperEnemy : MonoBehaviour
     public void TakeDamage(float damage){
         health -= damage;
         Debug.Log("Jumper took damage");
+        StartCoroutine(Knockback());
         if(health <= 0){
             Destroy(this.gameObject);
         }
@@ -117,11 +118,16 @@ public class JumperEnemy : MonoBehaviour
         return (int)MovementState.idle;
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Melee")){
-            // currentHealth-=10f;
-            // Debug.Log("Enemy's current health: " + currentHealth);
+    IEnumerator Knockback()
+    {   
+        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float distanceMoved = 0;
+        //yield return new WaitForSeconds(0.5f);
+        while (distanceMoved<2f)
+        {
+            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
+            distanceMoved+=0.2f;
+            yield return null;
         }
     }
 }
