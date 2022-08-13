@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class SpitterEnemy : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class SpitterEnemy : MonoBehaviour
     void Update()
     {
         CalculateDistanceToPlayer();
-        if (Mathf.Abs(distanceToPlayer)<20 && attackAvailable){
+        if (Mathf.Abs(distanceToPlayer)<gameConstants.enemySightlines && attackAvailable){
             anim.SetTrigger("Attack");
             Instantiate(prefab, transform.position + new Vector3(1.5f*Mathf.Sign(distanceToPlayer),0,0), Quaternion.identity);
             attackAvailable = false;
@@ -92,8 +93,22 @@ public class SpitterEnemy : MonoBehaviour
         }
         health -= damage;
         Debug.Log("Spitter Health: "+ health + " took " + damage + " damage");
+        Debug.Log("Spitter took damage");
+        StartCoroutine(Knockback());
         if(health <= 0){
             Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator Knockback()
+    {   
+        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float distanceMoved = 0;
+        while (distanceMoved<2f)
+        {
+            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
+            distanceMoved+=0.2f;
+            yield return null;
         }
     }
 }

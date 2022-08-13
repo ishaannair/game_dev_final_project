@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class ExploderEnemy : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class ExploderEnemy : MonoBehaviour
     private Animator anim;
     private float distanceToPlayer;
     private float playerRelativeX;
-    private float speed = 0.025f;
+    private float speed = 0.075f;
     public Vector2 velocity = new Vector2(1, 0);
     public bool isExploding = false;
     public EnemyVariant variant = EnemyVariant.flesh;
@@ -40,7 +41,7 @@ public class ExploderEnemy : MonoBehaviour
 
     void FixedUpdate()
     {   
-        if (!isExploding)
+        if (!isExploding && Math.Abs(distanceToPlayer)<gameConstants.enemySightlines)
         {
             rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
         }
@@ -75,7 +76,6 @@ public class ExploderEnemy : MonoBehaviour
             Debug.Log("enemyDied");
             Destroy(gameObject);
         }       
-        //Debug.Log("U"+ enemyHealth);
     }
 
     IEnumerator Explode()
@@ -134,8 +134,22 @@ public class ExploderEnemy : MonoBehaviour
         }
         health -= damage;
         Debug.Log("Exploder Health: "+ health + " took " + damage + " damage");
+        Debug.Log("Exploder took damage");
+        StartCoroutine(Knockback());
         if(health <= 0){
             Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator Knockback()
+    {   
+        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float distanceMoved = 0;
+        while (distanceMoved<2f)
+        {
+            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
+            distanceMoved+=0.2f;
+            yield return null;
         }
     }
 }

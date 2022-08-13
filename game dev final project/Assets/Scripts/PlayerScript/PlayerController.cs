@@ -282,24 +282,42 @@ public class PlayerController : MonoBehaviour
         JumperEnemy jumperScript;
         ExploderEnemy exploderScript;
         SpitterEnemy spitterScript;
+        BossMini bossMiniScript;
+        Boss bossScript;
         for(int i = 0; i < hitColliders.Length; i++){
             Collider2D col = hitColliders[i];
+
             if(!col.gameObject.CompareTag("Enemy")){
                 continue;
             }
-            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
-            if(jumperScript == null){
-                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
-                if(exploderScript == null){
-                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                    spitterScript.TakeDamage(playerMeleeDamage.Value);
+            
+            bossMiniScript = col.gameObject.GetComponent<BossMini>();
+            if(bossMiniScript == null)
+            {
+                bossScript = col.gameObject.GetComponent<Boss>();
+                if (bossScript == null){
+                     jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                    if(jumperScript == null){
+                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                        if(exploderScript == null){
+                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                            spitterScript.TakeDamage(playerMeleeDamage.Value);
+                            continue;
+                        }
+                        exploderScript.TakeDamage(playerMeleeDamage.Value);
+                        continue;
+                    }
+                    jumperScript.TakeDamage(playerMeleeDamage.Value);
                     continue;
                 }
-                exploderScript.TakeDamage(playerMeleeDamage.Value);
+                bossScript.TakeDamage(playerMeleeDamage.Value);
                 continue;
             }
-            jumperScript.TakeDamage(playerMeleeDamage.Value);
+            bossMiniScript.TakeDamage(playerMeleeDamage.Value);
             continue;
+           
+            
+           
         }
      
          // start the cooldown timer

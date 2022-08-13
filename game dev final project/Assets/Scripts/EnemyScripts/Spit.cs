@@ -5,13 +5,13 @@ using UnityEngine;
 public class Spit : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
-    public Vector2 velocity = new Vector2(3, 0);
+    public float velocity = 5f;
 
     private GameObject playerObj = null;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Color color;
-    private float distanceToPlayer;
+    private Vector2 pathToPlayer;
     private bool isBeingSpawned = true;
     private float speed = 1.3f;
     // Start is called before the first frame update
@@ -30,7 +30,7 @@ public class Spit : MonoBehaviour
     void FixedUpdate()
     {   
         if (!isBeingSpawned){
-            rigidBody.MovePosition(rigidBody.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
+            rigidBody.MovePosition(rigidBody.position + pathToPlayer*velocity * Time.fixedDeltaTime);
         }
     }
 
@@ -60,15 +60,10 @@ public class Spit : MonoBehaviour
 
     void CalculateDistanceToPlayer()
     {   
+        
         float xDist = playerObj.transform.position.x - this.transform.position.x;
         float yDist = playerObj.transform.position.y - this.transform.position.y;
-
-        if (playerObj.transform.position.x<this.transform.position.x)
-        {
-            distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
-        } else{
-            distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
-        }
+        pathToPlayer = new Vector2(xDist,yDist).normalized;
     }
 }
 

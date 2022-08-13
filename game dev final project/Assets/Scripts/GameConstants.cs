@@ -120,4 +120,6 @@ public  class GameConstants : ScriptableObject
     public bool bootUpgradeDblJmp = false;
     public bool bootUpgradeSprint = false;
     public bool bootUpgradeDecay = false;
+    // for Game Mechanics
+    public float enemySightlines = 15f;
 }
