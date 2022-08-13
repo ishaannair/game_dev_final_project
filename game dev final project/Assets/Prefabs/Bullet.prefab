@@ -126,6 +126,7 @@ MonoBehaviour:
   velocity5: {x: 9.96195, y: 0.87156}
   velocity350: {x: 9.84808, y: -1.73648}
   velocity355: {x: 9.96195, y: -0.87156}
+  damageMultiplier: {fileID: 11400000, guid: c451f751b1a678e49abfdbf27f834446, type: 2}
 --- !u!61 &1089601653947176098
 BoxCollider2D:
   m_ObjectHideFlags: 0

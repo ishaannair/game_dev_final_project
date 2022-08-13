@@ -20,13 +20,16 @@ public class ConsumablesManager : MonoBehaviour
     public FloatVariable playerMoveSpeed;
     public FloatVariable playerHealthDecay;
     public IntVariable playerCooldown;
+    public FloatVariable cooldownMultiplier;
+
 
     public ConsumablesInventory consumablesInventory;
     public List<GameObject> consumablesIcons;
     public Sprite defaultSprite;
 
     void Start()
-    {
+    {   
+        cooldownMultiplier.SetValue(1.0f);
         if (!consumablesInventory.gameStarted)
         {
             consumablesInventory.gameStarted = true;
@@ -85,14 +88,13 @@ public class ConsumablesManager : MonoBehaviour
 
             // Increase damage and move speed
             playerMeleeDamage.ApplyChange(c.damageSpeedBooster);
-            playerRangedDamage.ApplyChange(c.damageSpeedBooster);
-            playerMoveSpeed.ApplyChange(c.damageSpeedBooster);
+            playerRangedDamage.ApplyChange((float) c.damageSpeedBooster/10);
+            playerMoveSpeed.ApplyChange(c.damageSpeedBooster/5);
             StartCoroutine(removeEffect("adrenal", c));
         } else if (c.cooldownBooster>0){
             Debug.Log("cooldown");
-            playerCooldown.ApplyChange(-c.cooldownBooster); // Decrease cooldowns
-            Debug.Log(playerCooldown.Value);
-
+            cooldownMultiplier.SetValue(cooldownMultiplier.Value * (float)c.cooldownBooster/10); // Decrease cooldowns
+            Debug.Log(cooldownMultiplier.Value);
             StartCoroutine(removeEffect("thermal", c));
         } else if (c.slowDecayBooster>0){
             // Debug.Log("decay");
@@ -115,13 +117,13 @@ public class ConsumablesManager : MonoBehaviour
         if (consumableType == "adrenal"){
             // Debug.Log("damage dropping");
             playerMeleeDamage.ApplyChange(-c.damageSpeedBooster);
-            playerRangedDamage.ApplyChange(-c.damageSpeedBooster);
-            playerMoveSpeed.ApplyChange(-c.damageSpeedBooster);
+            playerRangedDamage.ApplyChange((float) -c.damageSpeedBooster/10);
+            playerMoveSpeed.ApplyChange(-c.damageSpeedBooster/5);
         } else if (consumableType == "thermal"){
             Debug.Log("cooldown dropping");
-            playerCooldown.ApplyChange(c.cooldownBooster);
-            Debug.Log(playerCooldown.Value);
-
+            // cooldownMultiplier.ApplyChange(-c.cooldownBooster);
+            cooldownMultiplier.SetValue(cooldownMultiplier.Value * 2/3); // Decrease cooldowns
+            Debug.Log(cooldownMultiplier.Value);
         } else if (consumableType == "radX"){
             // Debug.Log("decay dropping");
             playerHealthDecay.ApplyChange(c.slowDecayBooster);

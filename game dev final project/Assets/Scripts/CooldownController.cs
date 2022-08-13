@@ -9,6 +9,7 @@ public class CooldownController : MonoBehaviour
     public IntVariable magazine;
     private Slider slider;
     public FloatVariable cooldownTimer;
+    public FloatVariable cooldownMultiplier;
 
     void Awake()
     {
@@ -42,7 +43,7 @@ public class CooldownController : MonoBehaviour
                         break;
                 }
             }
-            cooldownTimer.ApplyChange(-Time.fixedDeltaTime);
+            cooldownTimer.ApplyChange(-Time.fixedDeltaTime*cooldownMultiplier.Value);
             slider.value = slider.maxValue - (cooldownTimer.Value - Time.fixedDeltaTime);
         }
     }

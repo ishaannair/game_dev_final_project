@@ -13,6 +13,7 @@ public class BulletController : MonoBehaviour
     public Vector2 velocity350 = new Vector2(9.84808f, -1.73648f);
     public Vector2 velocity355 = new Vector2(9.96195f, -0.87156f);
     private Vector2 direction;
+    public FloatVariable damageMultiplier;
     
     // Start is called before the first frame update
     void Awake()
@@ -83,13 +84,13 @@ public class BulletController : MonoBehaviour
                         exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
                         if(exploderScript == null){
                             spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(gameConstants.blasterDamage);
+                            spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                             break;
                         }
-                        exploderScript.TakeDamage(gameConstants.blasterDamage);
+                        exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                         break;
                     }
-                    jumperScript.TakeDamage(gameConstants.blasterDamage);
+                    jumperScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                     break;
                 case GunType.shotgun:
                     jumperScript = col.gameObject.GetComponent<JumperEnemy>();
@@ -97,13 +98,13 @@ public class BulletController : MonoBehaviour
                         exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
                         if(exploderScript == null){
                             spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(gameConstants.blasterDamage);
+                            spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                             break;
                         }
-                        exploderScript.TakeDamage(gameConstants.blasterDamage);
+                        exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                         break;
                     }
-                    jumperScript.TakeDamage(gameConstants.blasterDamage);
+                    jumperScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                     break;
                 default:
                     break;

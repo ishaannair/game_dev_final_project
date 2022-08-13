@@ -8,8 +8,10 @@ public class BulletSpawnManager : MonoBehaviour
     public IntVariable magazine;
     private float cooldownTimer;
     // Start is called before the first frame update
+    public FloatVariable rangedDamageMultiplier;
     void Start()
-    {
+    {   
+        rangedDamageMultiplier.SetValue(1.0f);
         switch(gameConstants.gunType){
             case GunType.blaster:
                 magazine.SetValue(gameConstants.blasterAmmoClip);

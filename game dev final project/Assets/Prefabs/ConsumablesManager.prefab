@@ -51,6 +51,7 @@ MonoBehaviour:
   playerMoveSpeed: {fileID: 11400000, guid: c7d7baf69a74de44f9e7217cc04f3194, type: 2}
   playerHealthDecay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
   playerCooldown: {fileID: 11400000, guid: 5c9b111a38ee60a4da98ae19e7a6c6f7, type: 2}
+  cooldownMultiplier: {fileID: 11400000, guid: ed3ed8be858ee2e429001ad81675e2d7, type: 2}
   consumablesInventory: {fileID: 11400000, guid: 15df424ff5b915140aac1d0bf107af1c, type: 2}
   consumablesIcons:
   - {fileID: 0}
