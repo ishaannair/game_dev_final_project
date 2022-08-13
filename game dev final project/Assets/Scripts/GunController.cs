@@ -8,6 +8,13 @@ public enum GunType{
     rocketlauncher = 2,
 }
 
+public enum GunElement{
+    neutral = 0,
+    fire = 1,
+    shock = 2,
+    corrosive = 3,
+}
+
 public class GunController : MonoBehaviour
 {
     public CustomBulletEvent onShoot;

@@ -20,6 +20,7 @@ public class JumperEnemy : MonoBehaviour
     public float velocity = 3f;
     private float maxHealth = 50f;
     private float currentHealth;
+    public EnemyVariant variant = EnemyVariant.flesh;
     
     private enum MovementState {idle, running, jumping} 
 
@@ -95,8 +96,27 @@ public class JumperEnemy : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
+        switch(variant){
+            case EnemyVariant.flesh:
+                if(gameConstants.gunElement == GunElement.fire){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.energized:
+                if(gameConstants.gunElement == GunElement.shock){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.armored:
+                if(gameConstants.gunElement == GunElement.corrosive){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            default:
+                break;
+        }
         health -= damage;
-        Debug.Log("Jumper took damage");
+        Debug.Log("Jumper Health: "+ health, + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }

@@ -18,7 +18,7 @@ public class ExploderEnemy : MonoBehaviour
     private float speed = 0.025f;
     public Vector2 velocity = new Vector2(1, 0);
     public bool isExploding = false;
-
+    public EnemyVariant variant = EnemyVariant.flesh;
     public UnityEvent onEnemyHit;
 
     private float health;
@@ -113,8 +113,27 @@ public class ExploderEnemy : MonoBehaviour
         }
     }
     public void TakeDamage(float damage){
+        switch(variant){
+            case EnemyVariant.flesh:
+                if(gameConstants.gunElement == GunElement.fire){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.energized:
+                if(gameConstants.gunElement == GunElement.shock){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.armored:
+                if(gameConstants.gunElement == GunElement.corrosive){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            default:
+                break;
+        }
         health -= damage;
-        Debug.Log("Jumper took damage");
+        Debug.Log("Exploder Health: "+ health, + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }

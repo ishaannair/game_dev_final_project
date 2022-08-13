@@ -58,6 +58,8 @@ public  class GameConstants : ScriptableObject
     // for Weapon equipped
 
     public GunType gunType = GunType.blaster;
+    public GunElement gunElement = GunElement.neutral;
+    public float elementMultiplier = 1.5f;
 
     // for Weapon Cooldowns
     public float blasterReloadTime = 15.0f;

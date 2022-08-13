@@ -6,6 +6,7 @@ public class SpitterEnemy : MonoBehaviour
 {
     public GameConstants gameConstants;
     public  GameObject prefab;
+    public EnemyVariant variant = EnemyVariant.flesh;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
     private Animator anim;
@@ -70,7 +71,27 @@ public class SpitterEnemy : MonoBehaviour
     }
     
     public void TakeDamage(float damage){
+        switch(variant){
+            case EnemyVariant.flesh:
+                if(gameConstants.gunElement == GunElement.fire){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.energized:
+                if(gameConstants.gunElement == GunElement.shock){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            case EnemyVariant.armored:
+                if(gameConstants.gunElement == GunElement.corrosive){
+                    damage = damage * gameConstants.elementMultiplier;
+                }
+                break;
+            default:
+                break;
+        }
         health -= damage;
+        Debug.Log("Spitter Health: "+ health, + " took " + damage + " damage");
         if(health <= 0){
             Destroy(this.gameObject);
         }
