@@ -3,7 +3,20 @@ guid: 50c3168f4d5be8043aaaaa691227b37a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameConstants: {instanceID: 0}
+  - health: {instanceID: 0}
+  - decay: {instanceID: 0}
+  - GunHandler: {instanceID: 0}
+  - RocketGun: {instanceID: 0}
+  - ShotGun: {instanceID: 0}
+  - BlasterGun: {instanceID: 0}
+  - Bullets: {instanceID: 0}
+  - consumable1: {instanceID: 0}
+  - consumable2: {instanceID: 0}
+  - consumable3: {instanceID: 0}
+  - playerMeleeDamage: {fileID: 11400000, guid: 096511a948b94bb42a8f983b81308326, type: 2}
+  - playerMoveSpeed: {fileID: 11400000, guid: c7d7baf69a74de44f9e7217cc04f3194, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
