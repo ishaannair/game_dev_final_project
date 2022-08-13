@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Upgrade : MonoBehaviour
 {
-
+    public string upgradeName;
     
 }

@@ -8,11 +8,12 @@ public  class GameConstants : ScriptableObject
     // for Resources values
     public int totalScrap = 0;
     public int totalBlueprints = 0;
+    public int scrapRate = 5;
 
     // for HP Decay calculation
     public float startingPlayerHP = 100;
     public float startingTimer = 600;
-    public float startingDecay = 1;
+    public float startingDecay = 5;
 
     // for Player movement
     public float startingPlayerMaxSpeed = 10;
@@ -105,4 +106,18 @@ public  class GameConstants : ScriptableObject
     public float jumperHealth = 20.0f;
     public float spitterHealth = 20.0f;
     public float exploderHealth = 20.0f;
+
+    // For Upgrade Check
+    public bool helmetUpgradeResource = false;
+    public bool helmetUpgradeDamage = false;
+    public bool helmetUpgradeReload = false;
+    public bool torsoUpgradeHP = false;
+    public bool torsoUpgradeDecay = false;
+    public bool torsoUpgradeSpeed = false;
+    public bool gloveUpgradeAtkSpd = false;
+    public bool gloveUpgradeDblDmg = false;
+    public bool gloveUpgradeMeleeDmg = false;
+    public bool bootUpgradeDblJmp = false;
+    public bool bootUpgradeSprint = false;
+    public bool bootUpgradeDecay = false;
 }
