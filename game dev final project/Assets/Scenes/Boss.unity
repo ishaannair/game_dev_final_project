@@ -182,6 +182,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6257982182129756768, guid: c396adf3876b3a34e9888fa2000c63d9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8930642218743276600, guid: c396adf3876b3a34e9888fa2000c63d9, type: 3}
       propertyPath: m_IsTrigger
       value: 0
@@ -511,6 +515,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 798573510}
+  boss: {fileID: 0}
   endLimit: {fileID: 1684846453}
 --- !u!114 &1296985518
 MonoBehaviour:

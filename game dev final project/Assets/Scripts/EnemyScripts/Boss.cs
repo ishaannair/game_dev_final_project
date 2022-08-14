@@ -29,6 +29,12 @@ public class Boss : MonoBehaviour
 
     private enum MovementState {idle, walking, cleaving, throwing, death,spawning}
 
+    private AudioSource audioSource;
+    public AudioClip fireAudio;
+    public AudioClip attackAudio;
+    public AudioClip damageAudio;
+    public AudioClip victoryAudio;
+
     // Start is called before the first frame update
     void Start()
     {       
@@ -40,6 +46,8 @@ public class Boss : MonoBehaviour
 
         m_meleeSensor = this.transform.Find("MeleeSensor").gameObject;
         m_meleeSensor.SetActive(false);
+
+        audioSource = GetComponent<AudioSource>();
 
         StartCoroutine(Spawning());
 
@@ -88,7 +96,10 @@ public class Boss : MonoBehaviour
 
     void cleaveAttack()
     {   
+
         anim.SetTrigger("startCleave");
+        
+        
         StartCoroutine(DisableMelee());
     }
 
@@ -103,11 +114,14 @@ public class Boss : MonoBehaviour
         //yield return new WaitForSeconds(0.25f);
         m_meleeSensor.SetActive(true);
         yield return new WaitForSeconds(0.25f);
+        audioSource.PlayOneShot(attackAudio, 3.0f);
         m_meleeSensor.SetActive(false);
+        yield return new WaitForSeconds(1.0f);
     }
 
     IEnumerator fireballAttack()
     {
+        audioSource.PlayOneShot(fireAudio, 5.0f);
         isAttacking = true;
         Debug.Log("Fire");
         
@@ -165,9 +179,11 @@ public class Boss : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
+        audioSource.PlayOneShot(damageAudio);
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
+            audioSource.PlayOneShot(victoryAudio);
             Debug.Log("Boss died");
             anim.SetInteger("state",(int)MovementState.death);
         }

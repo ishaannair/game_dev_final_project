@@ -27,6 +27,11 @@ public class BossMini : MonoBehaviour
     private int fireballAmount = 4;
 
     private enum MovementState {idle, walking, cleaving, throwing, death}
+    private AudioSource audioSource;
+    public AudioClip fireAudio;
+    public AudioClip attackAudio;
+    public AudioClip damageAudio;
+    public AudioClip victoryAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,6 +44,8 @@ public class BossMini : MonoBehaviour
 
         m_meleeSensor = this.transform.Find("MeleeSensor").gameObject;
         m_meleeSensor.SetActive(false);
+        
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -86,6 +93,7 @@ public class BossMini : MonoBehaviour
 
     IEnumerator fireballAttack()
     {
+        audioSource.PlayOneShot(fireAudio, 5.0f);
         isAttacking = true;
         Debug.Log("Fire");
         
@@ -144,9 +152,12 @@ public class BossMini : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
+        
+        audioSource.PlayOneShot(damageAudio);
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
+            audioSource.PlayOneShot(victoryAudio);
             onBossMiniDeath.Invoke();
             Destroy(this.gameObject);
         }
@@ -157,6 +168,8 @@ public class BossMini : MonoBehaviour
         //yield return new WaitForSeconds(0.25f);
         m_meleeSensor.SetActive(true);
         yield return new WaitForSeconds(0.25f);
+        
+        audioSource.PlayOneShot(attackAudio, 3.0f);
         m_meleeSensor.SetActive(false);
     }
 }

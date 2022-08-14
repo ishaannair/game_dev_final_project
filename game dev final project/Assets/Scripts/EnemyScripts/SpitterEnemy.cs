@@ -18,6 +18,9 @@ public class SpitterEnemy : MonoBehaviour
     private bool attackAvailable = true;
     private float attackCooldown = 5;
     private float health;
+    public AudioClip deathAudio;
+    public AudioClip damagedAudio;
+    private AudioSource audioSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +28,7 @@ public class SpitterEnemy : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         health = gameConstants.spitterHealth;
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -42,6 +46,8 @@ public class SpitterEnemy : MonoBehaviour
         if (health<=0f)
         {   
             anim.SetTrigger("Death");
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(this.gameObject, deathAudio.length);
         }       
        
     }
@@ -74,6 +80,7 @@ public class SpitterEnemy : MonoBehaviour
     }
     
     public void TakeDamage(float damage){
+        audioSource.PlayOneShot(damagedAudio);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){
@@ -98,8 +105,11 @@ public class SpitterEnemy : MonoBehaviour
         Debug.Log("Spitter took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            
             Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            audioSource.PlayOneShot(deathAudio);
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(this.gameObject, deathAudio.length);
         }
     }
 
