@@ -1,13 +1,16 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using Random=UnityEngine.Random;
 
 public class ExploderEnemy : MonoBehaviour
 {
     public GameConstants gameConstants;
     public  GameObject prefab;
+    public GameObject[] scraps;
     private  GameObject  circle;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -137,6 +140,7 @@ public class ExploderEnemy : MonoBehaviour
         Debug.Log("Exploder took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }

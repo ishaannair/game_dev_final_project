@@ -148,7 +148,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
+  scraps:
+  - {fileID: 2991940091498218675, guid: 9f99de2d71895474f9ef9fb226a1286b, type: 3}
+  - {fileID: 959734920009210320, guid: 0eed40bfdef1e30438216e0f10938c30, type: 3}
+  - {fileID: 3560283789639850539, guid: 23c4a6d545f60f44f89cfbcab654ede6, type: 3}
   velocity: 3
+  variant: 0
 --- !u!95 &7073328621936586805
 Animator:
   serializedVersion: 4

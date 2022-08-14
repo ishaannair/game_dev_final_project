@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random=UnityEngine.Random;
+
+
 public class JumperEnemy : MonoBehaviour
 {
     public GameConstants gameConstants;
     private GameObject playerObj = null;
+    public GameObject[] scraps;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
@@ -120,6 +124,7 @@ public class JumperEnemy : MonoBehaviour
         Debug.Log("Jumper took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
