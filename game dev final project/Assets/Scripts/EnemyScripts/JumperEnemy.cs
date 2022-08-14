@@ -26,17 +26,23 @@ public class JumperEnemy : MonoBehaviour
     private float currentHealth;
     public EnemyVariant variant = EnemyVariant.flesh;
     
-    private enum MovementState {idle, running, jumping_up, jumping_down} 
+    private enum MovementState {idle, running, jumping}
+
+    public AudioClip deathAudio;
+    public AudioClip attackAudio;
+    public AudioClip damagedAudio;
+    private AudioSource audioSource;
+
 
     // Start is called before the first frame update
     void Start()
     {       
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
-        
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         health = gameConstants.jumperHealth;
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -57,6 +63,8 @@ public class JumperEnemy : MonoBehaviour
         {
             if (jumpAvailable)
             {
+
+                
                 rb.AddForce(new Vector3(5*distanceToPlayer,60,0), ForceMode2D.Impulse);
                 jumpAvailable = false;
                 StartCoroutine(JumpCountdown());
@@ -65,10 +73,21 @@ public class JumperEnemy : MonoBehaviour
         {
              rb.velocity = new Vector2(Mathf.Sign(distanceToPlayer) * velocity, rb.velocity.y);
         }
+
+        if (health<=0f)
+        {   
+            Debug.Log("enemyDied");
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(gameObject, deathAudio.length);
+        }       
     }
 
     IEnumerator JumpCountdown()
     {
+        
+        if (GetComponent<SpriteRenderer>().isVisible) {
+            audioSource.PlayOneShot(attackAudio, 5.0f);
+        }
         yield return new WaitForSeconds(jumpCooldown);
         jumpAvailable = true;
     }
@@ -86,7 +105,17 @@ public class JumperEnemy : MonoBehaviour
         }
     }
 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.CompareTag("Player")){
+            
+            Debug.Log("Collided with Player");
+            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+        }
+    }
+
     public void TakeDamage(float damage){
+        audioSource.PlayOneShot(damagedAudio);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){
@@ -111,19 +140,19 @@ public class JumperEnemy : MonoBehaviour
         Debug.Log("Jumper took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            
             Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
+            audioSource.PlayOneShot(deathAudio, 5.0f);
+            GetComponent<SpriteRenderer>().enabled = false;
+            Destroy(this.gameObject, deathAudio.length);
         }
     }
 
     private int getState()
-    {   
-        if (rb.velocity.y>.1f)
+    {
+        if (Math.Abs(rb.velocity.y)>.01f)
         {
-            return (int)MovementState.jumping_up;
-        } else if( rb.velocity.y<-1f)
-        {
-            return (int)MovementState.jumping_down;
+            return (int)MovementState.jumping;
         }
 
         if (Math.Abs(rb.velocity.x)>.01f)

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public  Transform player; // Mario's Transform
+    public  Transform player;
+    public  Transform boss; // Mario's Transform
     public  Transform endLimit; // GameObject that indicates end of map
     private  float offsetX; // initial x-offset between camera and Mario
     private  float offsetY; // initial x-offset between camera and Mario
@@ -20,7 +21,7 @@ public class CameraController : MonoBehaviour
         viewportHalfWidth  =  Mathf.Abs(bottomLeft.x  -  this.transform.position.x);
 
         offsetX  =  this.transform.position.x  -  player.position.x;
-        offsetX  =  this.transform.position.y  -  player.position.y;
+        offsetY  =  this.transform.position.y  -  player.position.y;
         startX  =  this.transform.position.x;
         endX  =  endLimit.transform.position.x  -  viewportHalfWidth;
 
@@ -35,7 +36,7 @@ public class CameraController : MonoBehaviour
         if (desiredX  >  startX  &&  desiredX  <  endX){
             this.transform.position  =  new  Vector3(desiredX, this.transform.position.y, this.transform.position.z);
         }
-        //this.transform.position  =  new  Vector3(this.transform.position.x, player.position.y+boss.position.y, this.transform.position.z);
+        this.transform.position  =  new  Vector3(this.transform.position.x, (player.position.y+2*boss.position.y)/2+7, this.transform.position.z);
         
     }
 

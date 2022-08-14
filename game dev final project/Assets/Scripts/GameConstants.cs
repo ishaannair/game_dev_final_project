@@ -139,4 +139,6 @@ public  class GameConstants : ScriptableObject
     public float bossHealth = 200f;
 
     public float enemyKnockbackTime = 10;
+// for boss
+    public bool bigBossHasSpawned=false;
 }

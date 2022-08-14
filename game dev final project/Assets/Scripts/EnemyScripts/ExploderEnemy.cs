@@ -25,6 +25,11 @@ public class ExploderEnemy : MonoBehaviour
     public EnemyVariant variant = EnemyVariant.flesh;
     public UnityEvent onEnemyHit;
 
+    private AudioSource audioSource;
+    public AudioClip explodeAudio;
+    public AudioClip creepAudio;
+    public AudioClip damagedAudio;
+
     private float health;
 
     // Start is called before the first frame update
@@ -39,6 +44,7 @@ public class ExploderEnemy : MonoBehaviour
         color.a = 0.1f;
         sr.color = color;
         health = gameConstants.exploderHealth;
+        audioSource = GetComponent<AudioSource>();
     }
 
 
@@ -63,7 +69,6 @@ public class ExploderEnemy : MonoBehaviour
         {
             sr.flipX = true;
         }
-
         if (Mathf.Abs(distanceToPlayer)<3){
             StartCoroutine(Explode());
             isExploding = true;
@@ -83,6 +88,7 @@ public class ExploderEnemy : MonoBehaviour
 
     IEnumerator Explode()
     {       
+        
         while (sr.color.a<1 ){
             color.a +=  speed * Time.deltaTime;
             sr.color = color;
@@ -91,6 +97,7 @@ public class ExploderEnemy : MonoBehaviour
 
         if (isExploding)
         {   
+            audioSource.PlayOneShot(explodeAudio);
             anim.SetTrigger("Explode");
         }
         playerObj.GetComponent<PlayerController>().EnemyHit(gameConstants.exploderDamage);
@@ -110,6 +117,7 @@ public class ExploderEnemy : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
+        audioSource.PlayOneShot(damagedAudio);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){

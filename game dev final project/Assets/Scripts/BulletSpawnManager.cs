@@ -9,8 +9,13 @@ public class BulletSpawnManager : MonoBehaviour
     private float cooldownTimer;
     // Start is called before the first frame update
     public FloatVariable rangedDamageMultiplier;
+    private AudioSource audioSource;
+    public AudioClip blaster;
+    public AudioClip shotgun;
+    public AudioClip rocket;
     void Start()
     {   
+        audioSource = GetComponent<AudioSource>();
         rangedDamageMultiplier.SetValue(1.0f);
         switch(gameConstants.gunType){
             case GunType.blaster:
@@ -57,12 +62,14 @@ public class BulletSpawnManager : MonoBehaviour
                         item.transform.localPosition = gameConstants.shotgunLeftPool;
                     }
                 }else if(i == BulletType.blasterBullet){
+                    audioSource.PlayOneShot(blaster, 0.7f);
                     if(gameConstants.playerFaceRightState){
                         item.transform.localPosition = gameConstants.blasterRightPool;
                     }else{
                         item.transform.localPosition = gameConstants.blasterLeftPool;
                     }
                 }else if(i == BulletType.rocket){
+                    audioSource.PlayOneShot(rocket, 0.7f);
                     if(gameConstants.playerFaceRightState){
                         item.transform.localPosition = gameConstants.rocketRightPool;
                     }else{
@@ -70,6 +77,7 @@ public class BulletSpawnManager : MonoBehaviour
                     }
                 }
                 if(i == BulletType.shotgunBullet){
+                    audioSource.PlayOneShot(shotgun, 0.4f);
                     switch(index){
                         case 1:
                             item.transform.eulerAngles = new Vector3(0, 0, 5.0f);

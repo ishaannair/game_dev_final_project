@@ -75,36 +75,61 @@ public class BulletController : MonoBehaviour
         JumperEnemy jumperScript;
         ExploderEnemy exploderScript;
         SpitterEnemy spitterScript;
+        BossMini bossMiniScript;
+        Boss bossScript;
         if (col.gameObject.CompareTag("Enemy")){
             Debug.Log("Collided with Enemy");
             switch(gameConstants.gunType){
                 case GunType.blaster:
-                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
-                    if(jumperScript == null){
-                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
-                        if(exploderScript == null){
-                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                    bossMiniScript = col.gameObject.GetComponent<BossMini>();
+                    if(bossMiniScript == null)
+                    {
+                        bossScript = col.gameObject.GetComponent<Boss>();
+                        if (bossScript == null){
+                            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                            if(jumperScript == null){
+                                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                                if(exploderScript == null){
+                                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                                    spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                                    break;
+                                }   
+                                exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                                break;
+                            }
+                            jumperScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                             break;
                         }
-                        exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                        bossScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                         break;
                     }
-                    jumperScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                    bossMiniScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                     break;
+           
                 case GunType.shotgun:
-                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
-                    if(jumperScript == null){
-                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
-                        if(exploderScript == null){
-                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                    bossMiniScript = col.gameObject.GetComponent<BossMini>();
+                    if(bossMiniScript == null)
+                    {
+                        bossScript = col.gameObject.GetComponent<Boss>();
+                        if (bossScript == null){
+                            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                            if(jumperScript == null){
+                                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                                if(exploderScript == null){
+                                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                                    spitterScript.TakeDamage(gameConstants.shotgunDamage * damageMultiplier.Value);
+                                    break;
+                                }   
+                                exploderScript.TakeDamage(gameConstants.shotgunDamage * damageMultiplier.Value);
+                                break;
+                            }
+                            jumperScript.TakeDamage(gameConstants.shotgunDamage * damageMultiplier.Value);
                             break;
                         }
-                        exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                        bossScript.TakeDamage(gameConstants.shotgunDamage * damageMultiplier.Value);
                         break;
                     }
-                    jumperScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
+                    bossMiniScript.TakeDamage(gameConstants.shotgunDamage * damageMultiplier.Value);
                     break;
                 default:
                     break;

@@ -3,7 +3,11 @@ guid: f1149bd9e6690a347b33803a907ad35b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - gameConstants: {instanceID: 0}
+  - blaster: {fileID: 8300000, guid: 9b424f13d77f0624991af99958ab1c67, type: 3}
+  - shotgun: {fileID: 8300000, guid: ef40691a263b3c745aefcae240ff2f63, type: 3}
+  - rocket: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
