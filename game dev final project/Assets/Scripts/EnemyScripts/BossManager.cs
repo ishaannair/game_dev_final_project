@@ -9,6 +9,7 @@ public class BossManager : MonoBehaviour
     public GameObject boss;
     public GameConstants gameConstants;
     // Start is called before the first frame update
+
     void Start()
     {
         

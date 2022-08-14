@@ -126,5 +126,17 @@ public  class GameConstants : ScriptableObject
     // for Game Mechanics
     public float enemySightlines = 15f;
     public float enemyKnockbackDistance = 2f;
+    //for Enemy Attack
+    public float jumperDamage = 4f;
+    public float spitterDamage = 2f;
+    public float exploderDamage = 8f;
+    public float bossMeleeDamage = 10f;
+    public float bossFireballDamage = 5f;
+
+    public float bossSlashDuration = 0.5f;
+    
+    public float bossMiniHealth = 100f;
+    public float bossHealth = 200f;
+
     public float enemyKnockbackTime = 10;
 }

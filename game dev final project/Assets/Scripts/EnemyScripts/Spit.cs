@@ -6,6 +6,7 @@ public class Spit : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     public float velocity = 5f;
+    public GameConstants gameConstants;
 
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -53,7 +54,8 @@ public class Spit : MonoBehaviour
 
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
-            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
+            col.gameObject.GetComponent<PlayerController>().EnemyHit(gameConstants.spitterDamage);
+            
             Destroy(gameObject);
         }
     }

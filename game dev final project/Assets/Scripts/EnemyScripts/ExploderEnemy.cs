@@ -93,6 +93,7 @@ public class ExploderEnemy : MonoBehaviour
         {   
             anim.SetTrigger("Explode");
         }
+        playerObj.GetComponent<PlayerController>().EnemyHit(gameConstants.exploderDamage);
     }
 
     void CalculateDistanceToPlayer()
@@ -108,13 +109,6 @@ public class ExploderEnemy : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Melee")){
-            // enemyHealth -=10f;
-            // Debug.Log("Enemy Health: "+ enemyHealth);
-        }
-    }
     public void TakeDamage(float damage){
         switch(variant){
             case EnemyVariant.flesh:

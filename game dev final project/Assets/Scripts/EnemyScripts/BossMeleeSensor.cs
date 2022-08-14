@@ -4,21 +4,14 @@ using UnityEngine;
 
 public class BossMeleeSensor : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    
+    public GameConstants gameConstants;
+   
     void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Boss Hit Player");
+        if (other.gameObject.CompareTag("Player")){
+            other.gameObject.GetComponent<PlayerController>().EnemyHit(gameConstants.bossMeleeDamage);
+            Debug.Log("Damage Player via Melee");
+            gameObject.SetActive(false);
+        }
     }
 }

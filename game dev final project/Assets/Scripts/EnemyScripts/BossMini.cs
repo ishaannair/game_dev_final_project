@@ -6,14 +6,14 @@ using UnityEngine.Events;
 public class BossMini : MonoBehaviour
 {
     private GameObject playerObj = null;
+    public GameConstants gameConstants;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
-    private GameObject   m_meleeSensor;
     public  GameObject prefab;
     public GameObject boss;
     private float distanceToPlayer;
-    private float playerRelativeX;
+    private float playerRelativeY;
     public UnityEvent onBossMiniDeath;
 
     private bool attackAvailable = true;
@@ -35,18 +35,18 @@ public class BossMini : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
-        bossHealth = maxBossHealth;
+        bossHealth = gameConstants.bossMiniHealth;
 
-        m_meleeSensor = this.transform.Find("MeleeSensor").gameObject;
-        m_meleeSensor.SetActive(false);
     }
+
 
     void FixedUpdate()
     {   if (!isAttacking)
         {
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("BossIdle") || anim.GetCurrentAnimatorStateInfo(0).IsName("BossWalk")){
-                if (distanceToPlayer>4 || distanceToPlayer<-4)
+                if (Mathf.Abs(distanceToPlayer)>5)
                 {
+                    Debug.Log(distanceToPlayer);
                     rb.MovePosition(rb.position + Mathf.Sign(distanceToPlayer)*velocity * Time.fixedDeltaTime);
                     anim.SetInteger("state",(int)MovementState.walking);
                 } else
@@ -64,7 +64,7 @@ public class BossMini : MonoBehaviour
 
         if (attackAvailable)
         {
-            if (Mathf.Abs(distanceToPlayer)<5)
+            if (Mathf.Abs(distanceToPlayer)<5 && Mathf.Abs(playerRelativeY)<2.5f)
             {   
                 cleaveAttack();
                 StartCoroutine(attackCountdown());
@@ -130,16 +130,15 @@ public class BossMini : MonoBehaviour
     {   
         float xDist = playerObj.transform.position.x - this.transform.position.x;
         float yDist = playerObj.transform.position.y - this.transform.position.y;
+        playerRelativeY = distanceToPlayer;
 
         if (playerObj.transform.position.x<this.transform.position.x)
         {
             distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
             sr.flipX = false;
-            m_meleeSensor.transform.localPosition = new Vector3(0,0,0);
         } else{
             distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
             sr.flipX = true;
-            m_meleeSensor.transform.localPosition = new Vector3(2f,0,0);
         }
     }
 
@@ -155,8 +154,23 @@ public class BossMini : MonoBehaviour
     IEnumerator DisableMelee()
     {   
         //yield return new WaitForSeconds(0.25f);
-        m_meleeSensor.SetActive(true);
-        yield return new WaitForSeconds(0.25f);
-        m_meleeSensor.SetActive(false);
+        yield return new WaitForSeconds(gameConstants.bossSlashDuration / 2);
+        Collider2D[] hitColliders;
+        if(sr.flipX){
+            hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x + 1f, this.transform.position.y), 0.9f);
+        }else{
+            hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x - 1f, this.transform.position.y), 0.9f);
+        }
+
+        for(int i = 0; i < hitColliders.Length; i++){
+            Collider2D col = hitColliders[i];
+
+            if(col.gameObject.CompareTag("Player")){
+                col.GetComponent<PlayerController>().EnemyHit(gameConstants.bossMeleeDamage);
+                continue;
+            }
+        }
     }
+
+    
 }

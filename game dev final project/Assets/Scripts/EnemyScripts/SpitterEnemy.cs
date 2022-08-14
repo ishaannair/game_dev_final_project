@@ -64,14 +64,6 @@ public class SpitterEnemy : MonoBehaviour
             distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
         }
     }
-
-    void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.gameObject.CompareTag("Melee")){
-            // enemyHealth -=10f;
-            // Debug.Log("Enemy Health: "+ enemyHealth);
-        }
-    }
     
     public void TakeDamage(float damage){
         switch(variant){

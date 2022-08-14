@@ -401,7 +401,6 @@ public class PlayerController : MonoBehaviour
     }
     public IEnumerator S_Activation()
      {
-        
          IsSlashAvailable = false;
          yield return new WaitForSeconds(gameConstants.playerSlashDuration);
 
@@ -416,6 +415,15 @@ public class PlayerController : MonoBehaviour
             invul = true;
             StartCoroutine(InvulFrames());
             Debug.Log(decay.Value);
+        }
+    }
+
+    public void EnemyHit(float damage){
+        if (!invul){
+            invul = true;
+            Debug.Log("Player hit by Enemy for: " + damage);
+            health.ApplyChange(-1*damage);
+            StartCoroutine(InvulFrames());
         }
     }
 

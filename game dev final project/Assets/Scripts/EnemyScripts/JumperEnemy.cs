@@ -26,12 +26,13 @@ public class JumperEnemy : MonoBehaviour
     private float currentHealth;
     public EnemyVariant variant = EnemyVariant.flesh;
     
-    private enum MovementState {idle, running, jumping} 
+    private enum MovementState {idle, running, jumping_up, jumping_down} 
 
     // Start is called before the first frame update
     void Start()
     {       
         if (playerObj == null) playerObj = GameObject.FindGameObjectWithTag("Player");
+        
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         health = gameConstants.jumperHealth;
@@ -64,12 +65,6 @@ public class JumperEnemy : MonoBehaviour
         {
              rb.velocity = new Vector2(Mathf.Sign(distanceToPlayer) * velocity, rb.velocity.y);
         }
-
-        if (health<=0f)
-        {   
-            Debug.Log("enemyDied");
-            Destroy(gameObject);
-        }       
     }
 
     IEnumerator JumpCountdown()
@@ -88,14 +83,6 @@ public class JumperEnemy : MonoBehaviour
             distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
         } else{
             distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Player")){
-            Debug.Log("Collided with Player");
-            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
         }
     }
 
@@ -130,10 +117,14 @@ public class JumperEnemy : MonoBehaviour
     }
 
     private int getState()
-    {
-        if (Math.Abs(rb.velocity.y)>.01f)
+    {   
+        Debug.Log(rb.velocity);
+        if (rb.velocity.y>.1f)
         {
-            return (int)MovementState.jumping;
+            return (int)MovementState.jumping_up;
+        } else if( rb.velocity.y<-1f)
+        {
+            return (int)MovementState.jumping_down;
         }
 
         if (Math.Abs(rb.velocity.x)>.01f)

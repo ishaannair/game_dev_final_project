@@ -6,6 +6,7 @@ public class Fireball : MonoBehaviour
 {
     private Rigidbody2D rigidBody;
     private Vector2 velocity = new Vector2(0, 6);
+    public GameConstants gameConstants;
 
     private GameObject playerObj = null;
     public  GameObject prefab;
@@ -15,6 +16,7 @@ public class Fireball : MonoBehaviour
     private float distanceToPlayer;
     private bool isBeingSpawned = true;
     private float speed = 0.72f;
+
     // Start is called before the first frame update
     void Start()
     {   
@@ -58,6 +60,7 @@ public class Fireball : MonoBehaviour
         if (col.gameObject.CompareTag("Player")){
             Debug.Log("Collided with Player");
             Instantiate(prefab, transform.position, Quaternion.identity);
+            col.gameObject.GetComponent<PlayerController>().EnemyHit(gameConstants.bossFireballDamage);
             Destroy(gameObject);
         }
     }
