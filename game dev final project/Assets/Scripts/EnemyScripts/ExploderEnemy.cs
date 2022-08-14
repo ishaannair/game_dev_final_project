@@ -97,7 +97,7 @@ public class ExploderEnemy : MonoBehaviour
 
         if (isExploding)
         {   
-            audioSource.PlayOneShot(explodeAudio);
+            audioSource.PlayOneShot(explodeAudio,0.1f);
             anim.SetTrigger("Explode");
         }
         playerObj.GetComponent<PlayerController>().EnemyHit(gameConstants.exploderDamage);

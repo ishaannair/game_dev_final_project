@@ -550,6 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1991893021}
+  boss: {fileID: 0}
   endLimit: {fileID: 1684846453}
 --- !u!114 &1296985518
 MonoBehaviour:
@@ -974,7 +975,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   boss: {fileID: 6257982182129756768, guid: c396adf3876b3a34e9888fa2000c63d9, type: 3}
-  gameConstants: {fileID: 0}
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
 --- !u!114 &1570189444
 MonoBehaviour:
   m_ObjectHideFlags: 0
