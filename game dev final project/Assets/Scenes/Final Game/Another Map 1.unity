@@ -827,7 +827,7 @@ GameObject:
   - component: {fileID: 58118567}
   m_Layer: 0
   m_Name: SciFi_DungeonTileset16x16_0x72Like_52
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1669,6 +1669,7 @@ GameObject:
   - component: {fileID: 145085708}
   - component: {fileID: 145085707}
   - component: {fileID: 145085709}
+  - component: {fileID: 145085710}
   m_Layer: 0
   m_Name: end
   m_TagString: Untagged
@@ -1769,6 +1770,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &145085710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145085706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec7784ab36a3b1e42994dbee4ebb3294, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &147845066
 GameObject:
   m_ObjectHideFlags: 0
@@ -8197,7 +8210,7 @@ GameObject:
   - component: {fileID: 805409528}
   m_Layer: 0
   m_Name: SciFi_DungeonTileset16x16_0x72Like_52
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14449,7 +14462,7 @@ GameObject:
   - component: {fileID: 1375326998}
   m_Layer: 0
   m_Name: SciFi_DungeonTileset16x16_0x72Like_52
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15293,7 +15306,7 @@ GameObject:
   - component: {fileID: 1473919995}
   m_Layer: 0
   m_Name: SciFi_DungeonTileset16x16_0x72Like_52 (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18173,7 +18186,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1705670899}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 159.8, y: -6.9, z: -0.08305723}
+  m_LocalPosition: {x: 166.44, y: -6.7, z: -0.08305723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18742,7 +18755,7 @@ GameObject:
   - component: {fileID: 1755082666}
   m_Layer: 0
   m_Name: SciFi_DungeonTileset16x16_0x72Like_52
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
