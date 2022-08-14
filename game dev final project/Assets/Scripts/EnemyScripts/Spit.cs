@@ -46,8 +46,8 @@ public class Spit : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {   
-        if (col.gameObject.CompareTag("Barrier")){
-            Debug.Log("Collided with barrier");
+        if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground")){
+            Debug.Log("Collided with environment");
             Destroy(gameObject);
         }
 

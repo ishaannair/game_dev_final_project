@@ -146,13 +146,13 @@ public class JumperEnemy : MonoBehaviour
 
     IEnumerator Knockback()
     {   
-        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float knockbackDir = Math.Sign(this.transform.position.x - playerObj.transform.position.x);
         float distanceMoved = 0;
-        //yield return new WaitForSeconds(0.5f);
-        while (distanceMoved<2f)
-        {
-            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
-            distanceMoved+=0.2f;
+        float distanceMovedPerTime = gameConstants.enemyKnockbackDistance / gameConstants.enemyKnockbackTime;
+        while (distanceMoved<gameConstants.enemyKnockbackDistance)
+        {   
+            rb.MovePosition(rb.position + new Vector2(distanceMovedPerTime , 0)*knockbackDir);
+            distanceMoved+=distanceMovedPerTime;
             yield return null;
         }
     }
