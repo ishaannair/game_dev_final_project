@@ -52,6 +52,7 @@ public class PlayerController : MonoBehaviour
     private bool doubleJumpAvailable = false;
     public bool isJumpAvailable = true;
     public bool dodgeAvailable = false;
+    public int scrapCount = 0;
 
 
 
