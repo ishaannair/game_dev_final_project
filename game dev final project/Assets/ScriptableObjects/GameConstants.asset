@@ -14,14 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalScrap: 0
   totalBlueprints: 0
+  scrapRate: 5
   startingPlayerHP: 1000
   startingTimer: 1000
   startingDecay: 50
-  startingPlayerMaxSpeed: 5
+  startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 10
   startingPlayerForce: 100
   playerSpeed: 5
-  playerFaceRightState: 0
+  playerFaceRightState: 1
+  playerJumpDuration: 1
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
   playerSlashDuration: 0.2
@@ -77,3 +79,16 @@ MonoBehaviour:
   jumperHealth: 20
   spitterHealth: 20
   exploderHealth: 20
+  helmetUpgradeResource: 0
+  helmetUpgradeDamage: 0
+  helmetUpgradeReload: 0
+  torsoUpgradeHP: 0
+  torsoUpgradeDecay: 0
+  torsoUpgradeSpeed: 0
+  gloveUpgradeAtkSpd: 0
+  gloveUpgradeDblDmg: 0
+  gloveUpgradeMeleeDmg: 0
+  bootUpgradeDblJmp: 0
+  bootUpgradeDodge: 1
+  bootUpgradeDecay: 0
+  enemySightlines: 15
