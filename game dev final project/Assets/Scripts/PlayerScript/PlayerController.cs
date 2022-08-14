@@ -116,15 +116,15 @@ public class PlayerController : MonoBehaviour
         
         // dynamic rigidbody
         float moveHorizontal = Input.GetAxis("Horizontal");
-        if (Mathf.Abs(moveHorizontal) > 0){
+        
+        if (Input.GetKeyUp("a") && !Input.GetKeyDown("d") || Input.GetKeyUp("d") && !Input.GetKeyDown("a") || Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)){
+            // stop
+            PlayerBody.velocity = new Vector2(0.0f, PlayerBody.velocity.y);
+        }else if (Mathf.Abs(moveHorizontal) > 0){
             Vector2 movement = new Vector2(moveHorizontal * playerMoveSpeed.Value, PlayerBody.velocity.y);
             // if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
             //         PlayerBody.AddForce(movement * gameConstants.playerSpeed);
             PlayerBody.velocity = movement;
-        }
-        if (Input.GetKeyUp("a") && !Input.GetKeyDown("d") || Input.GetKeyUp("d") && !Input.GetKeyDown("a")){
-            // stop
-            PlayerBody.velocity = Vector2.zero;
         }
 
         if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable){
@@ -220,12 +220,12 @@ public class PlayerController : MonoBehaviour
             // dashing skill
             ActivateDodge();
         }
-      if (Input.GetKeyDown("a") && gameConstants.playerFaceRightState){
+      if (Input.GetKey(KeyCode.A) && gameConstants.playerFaceRightState){
           gameConstants.playerFaceRightState = false;
           playerSprite.flipX = false;
       }
 
-      if (Input.GetKeyDown("d") && !gameConstants.playerFaceRightState){
+      if (Input.GetKey(KeyCode.D) && !gameConstants.playerFaceRightState){
           gameConstants.playerFaceRightState = true;
           playerSprite.flipX = true;
       }
@@ -328,7 +328,17 @@ public class PlayerController : MonoBehaviour
          }
          SlashActivated=true;// a variable that counters the shift key to prevent any clashes within the 2 abilities.
          // made it here then ability is available to use...
-         Collider2D[] hitColliders;
+         StartCoroutine(HitDelay());
+        
+     
+         // start the cooldown timer
+         StartCoroutine(S_Activation());//used to deploy the ability.
+        //  StartCoroutine(S_StartCooldown());// After ablity is deployed put certain time for cooldown.
+        
+     }
+    public IEnumerator HitDelay(){
+        yield return new WaitForSeconds(gameConstants.playerSlashDuration / 2);
+        Collider2D[] hitColliders;
         if(gameConstants.playerFaceRightState){
             hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x + 0.4f, this.transform.position.y), 0.9f);
         }else{
@@ -386,12 +396,7 @@ public class PlayerController : MonoBehaviour
             
            
         }
-     
-         // start the cooldown timer
-         StartCoroutine(S_Activation());//used to deploy the ability.
-        //  StartCoroutine(S_StartCooldown());// After ablity is deployed put certain time for cooldown.
-        
-     }
+    }
     public IEnumerator S_Activation()
      {
         
