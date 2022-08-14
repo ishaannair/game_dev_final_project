@@ -239,7 +239,6 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
   // called when the cube hits the floor
   void OnCollisionEnter2D(Collision2D col)
   {
@@ -259,6 +258,9 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Player found " + scrap + " scrap");
       }
   }
+
+
+  
 
 
 //   Custom functions
