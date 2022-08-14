@@ -11,6 +11,7 @@ public class RocketController : MonoBehaviour
     public GameConstants gameConstants;
     private Vector2 direction;
     public GameObject impact;
+    public FloatVariable damageMultiplier;
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,16 +46,31 @@ public class RocketController : MonoBehaviour
                     JumperEnemy jumperScript;
                     ExploderEnemy exploderScript;
                     SpitterEnemy spitterScript;
-                    jumperScript = col.gameObject.GetComponent<JumperEnemy>();
-                    if(jumperScript == null){
-                        exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
-                        if(exploderScript == null){
-                            spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
-                            spitterScript.TakeDamage(gameConstants.rocketDamage);
+                    BossMini bossMiniScript;
+                    Boss bossScript;
+                    bossMiniScript = col.gameObject.GetComponent<BossMini>();
+                    if(bossMiniScript == null){
+                        bossScript = col.gameObject.GetComponent<Boss>();
+                        if (bossScript == null){
+                            jumperScript = col.gameObject.GetComponent<JumperEnemy>();
+                            if(jumperScript == null){
+                                exploderScript = col.gameObject.GetComponent<ExploderEnemy>();
+                                if(exploderScript == null){
+                                    spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
+                                    spitterScript.TakeDamage(gameConstants.rocketDamage * damageMultiplier.Value);
+                                    continue;
+                                }
+                                exploderScript.TakeDamage(gameConstants.rocketDamage * damageMultiplier.Value);
+                                continue;
+                            }
+                            jumperScript.TakeDamage(gameConstants.rocketDamage * damageMultiplier.Value);
+                            continue;
                         }
-                        exploderScript.TakeDamage(gameConstants.rocketDamage);
+                        bossScript.TakeDamage(gameConstants.rocketDamage * damageMultiplier.Value);
+                        continue;
                     }
-                    jumperScript.TakeDamage(gameConstants.rocketDamage);
+                    bossMiniScript.TakeDamage(gameConstants.rocketDamage * damageMultiplier.Value);
+                    continue;
                 }
             }
             // Debug.Log(this.gameObject.transform.position);

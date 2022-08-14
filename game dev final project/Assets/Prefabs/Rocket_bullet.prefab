@@ -170,3 +170,4 @@ MonoBehaviour:
   velocity: {x: 7, y: 0}
   gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
   impact: {fileID: 4794043405585894037, guid: 02e1b586d95894042bd96b5bf1e2f7cc, type: 3}
+  damageMultiplier: {fileID: 11400000, guid: c451f751b1a678e49abfdbf27f834446, type: 2}

@@ -32,6 +32,7 @@ public class BossManager : MonoBehaviour
     public void BossMiniDeathResponse()
     {   
         Debug.Log("Mini Boss Death");
+        Debug.Log("STATE: " + gameConstants.bigBossHasSpawned);
         if (!gameConstants.bigBossHasSpawned){
             gameConstants.bigBossHasSpawned=true;
             GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");

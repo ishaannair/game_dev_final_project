@@ -22,7 +22,7 @@ MonoBehaviour:
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
   playerSpeed: 5
-  playerFaceRightState: 1
+  playerFaceRightState: 0
   playerJumpDuration: 1
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
@@ -52,7 +52,7 @@ MonoBehaviour:
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 1
+  onCooldown: 0
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100
@@ -93,4 +93,13 @@ MonoBehaviour:
   bootUpgradeDecay: 0
   enemySightlines: 15
   enemyKnockbackDistance: 2
+  jumperDamage: 4
+  spitterDamage: 2
+  exploderDamage: 8
+  bossMeleeDamage: 10
+  bossFireballDamage: 5
+  bossSlashDuration: 0.5
+  bossMiniHealth: 100
+  bossHealth: 200
   enemyKnockbackTime: 10
+  bigBossHasSpawned: 1

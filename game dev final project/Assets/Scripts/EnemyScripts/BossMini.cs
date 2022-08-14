@@ -36,6 +36,7 @@ public class BossMini : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         bossHealth = gameConstants.bossMiniHealth;
+        gameConstants.bigBossHasSpawned=false;
 
     }
 
@@ -135,10 +136,15 @@ public class BossMini : MonoBehaviour
         if (playerObj.transform.position.x<this.transform.position.x)
         {
             distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
-            sr.flipX = false;
+            if( !anim.GetCurrentAnimatorStateInfo(0).IsName("BossCleave")){
+                sr.flipX = false;
+            }
+                
         } else{
             distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
-            sr.flipX = true;
+            if( !anim.GetCurrentAnimatorStateInfo(0).IsName("BossCleave")){
+                sr.flipX = true;
+            }
         }
     }
 
@@ -153,7 +159,7 @@ public class BossMini : MonoBehaviour
 
     IEnumerator DisableMelee()
     {   
-        //yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameConstants.bossSlashDuration / 2);
         Collider2D[] hitColliders;
         if(sr.flipX){

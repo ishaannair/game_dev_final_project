@@ -133,7 +133,7 @@ public  class GameConstants : ScriptableObject
     public float bossMeleeDamage = 10f;
     public float bossFireballDamage = 5f;
 
-    public float bossSlashDuration = 0.5f;
+    public float bossSlashDuration = 1f;
     
     public float bossMiniHealth = 100f;
     public float bossHealth = 200f;

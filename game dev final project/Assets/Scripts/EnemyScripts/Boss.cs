@@ -94,7 +94,7 @@ public class Boss : MonoBehaviour
     }
     IEnumerator DisableMelee()
     {   
-        //yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.5f);
         yield return new WaitForSeconds(gameConstants.bossSlashDuration / 2);
         Collider2D[] hitColliders;
         if(sr.flipX){
@@ -159,14 +159,21 @@ public class Boss : MonoBehaviour
         float xDist = playerObj.transform.position.x - this.transform.position.x;
         float yDist = playerObj.transform.position.y - this.transform.position.y;
         playerRelativeY = yDist;    
+
         if (playerObj.transform.position.x<this.transform.position.x)
         {
             distanceToPlayer = -Mathf.Sqrt(xDist*xDist + yDist*yDist);
-            sr.flipX = false;
+            if( !anim.GetCurrentAnimatorStateInfo(0).IsName("BossCleave")){
+                sr.flipX = false;
+            }
+                
         } else{
             distanceToPlayer =  Mathf.Sqrt(xDist*xDist + yDist*yDist);
-            sr.flipX = true;
+            if( !anim.GetCurrentAnimatorStateInfo(0).IsName("BossCleave")){
+                sr.flipX = true;
+            }
         }
+        
     }
 
     public void TakeDamage(float damage){
