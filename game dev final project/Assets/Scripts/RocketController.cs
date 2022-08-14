@@ -10,12 +10,12 @@ public class RocketController : MonoBehaviour
     private SpriteRenderer sprite;
     public GameConstants gameConstants;
     private Vector2 direction;
+    public GameObject impact;
     // Start is called before the first frame update
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
-        
     }
 
     void OnEnable()
@@ -35,8 +35,9 @@ public class RocketController : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Ground")  || col.gameObject.CompareTag("Enemy")){
-            Debug.Log("Collided with something");
+        if (col.gameObject.CompareTag("Barrier") || col.gameObject.CompareTag("Enemy")){
+            Instantiate(impact, this.transform.position, Quaternion.identity);
+            Debug.Log("Collided with something: " + col.gameObject.tag);
             this.gameObject.SetActive(false);
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.gameObject.transform.position.x, this.gameObject.transform.position.y), 2.25f);
             foreach(Collider2D hitCol in hitColliders){

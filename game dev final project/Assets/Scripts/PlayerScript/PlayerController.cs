@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     public GameConstants gameConstants;
     private Rigidbody2D PlayerBody;
+    private AudioSource audioSource;
     private bool onGroundState = true;
     public FloatVariable health;
     public FloatVariable decay;
@@ -54,8 +55,12 @@ public class PlayerController : MonoBehaviour
     public bool dodgeAvailable = false;
     public int scrapCount = 0;
 
-
-
+    // Audio clips
+    public AudioClip jump;
+    public AudioClip land;
+    public AudioClip step;
+    public AudioClip slash;
+    public AudioClip hit;
 
 
     void  Start()
@@ -72,6 +77,7 @@ public class PlayerController : MonoBehaviour
         gameConstants.playerFaceRightState = false;
         playerMeleeDamage.SetValue(gameConstants.meleeLevel1Damage); // Create function to check upgrades if more levels are created
         playerMoveSpeed.SetValue(gameConstants.playerSpeed);
+        audioSource = GetComponent<AudioSource>();
 
         // Spawn guns
         if(gameConstants.gunType == GunType.shotgun){
@@ -102,7 +108,6 @@ public class PlayerController : MonoBehaviour
         if (gameConstants.bootUpgradeDodge){
             dodgeAvailable = true;
         }
-        
       
         // grandChild= GameObject.Find("Gun");
 
@@ -130,6 +135,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable){
             PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
             onGroundState = false;
+            audioSource.PlayOneShot(jump, 0.7f);
             StartCoroutine(JumpCooldown());
         }
 
@@ -187,8 +193,9 @@ public class PlayerController : MonoBehaviour
         // Slashing
         if (Input.GetMouseButtonDown(0)){
             if (playerWeapon==1){
-            ActivateSlash();
-            Debug.Log("Pressed primary button.");
+                audioSource.PlayOneShot(slash, 0.5f);
+                ActivateSlash();
+                Debug.Log("Pressed primary button.");
             }
             // if (playerWeapon==1){
             //     playerAnimator.SetBool("Swordcut", SlashActivated);
@@ -242,9 +249,11 @@ public class PlayerController : MonoBehaviour
   // called when the cube hits the floor
   void OnCollisionEnter2D(Collision2D col)
   {
-      if (col.gameObject.CompareTag("Ground")) {
+      if (col.collider.gameObject.CompareTag("Ground")) {
       onGroundState = true;
-
+    if(this.transform.position.y > col.collider.gameObject.transform.position.y){
+        audioSource.PlayOneShot(land, 0.1f);
+    }
       if (gameConstants.bootUpgradeDblJmp){
         doubleJumpAvailable = true;
       }
@@ -412,6 +421,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(float damage){
         if(!invul){
+            audioSource.PlayOneShot(hit, 0.3f);
             decay.ApplyChange(damage);
             invul = true;
             StartCoroutine(InvulFrames());
@@ -430,4 +440,7 @@ public class PlayerController : MonoBehaviour
         
          
     //  }
+    public void StepSound(){
+        audioSource.PlayOneShot(step, 0.025f);
+    }
 }
