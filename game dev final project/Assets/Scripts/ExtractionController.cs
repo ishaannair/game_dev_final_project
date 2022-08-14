@@ -23,6 +23,7 @@ public class ExtractionController : MonoBehaviour
             int playerScrap = col.gameObject.GetComponent<PlayerController>().scrapCount;
             gameConstants.totalScrap += playerScrap;
             Debug.Log("Extracted " + col.gameObject.GetComponent<PlayerController>().scrapCount);
+            col.gameObject.GetComponent<PlayerController>().scrapCount = 0;
         }
     }
 }

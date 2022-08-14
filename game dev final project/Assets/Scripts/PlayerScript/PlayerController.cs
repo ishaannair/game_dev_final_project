@@ -252,6 +252,12 @@ public class PlayerController : MonoBehaviour
 
     //   Debug.Log("true");
       }
+      if (col.gameObject.CompareTag("Scrap")){
+        Destroy(col.gameObject);
+        int scrap = Random.Range(gameConstants.scrapRate - 2, gameConstants.scrapRate + 3);
+        scrapCount += scrap;
+        Debug.Log("Player found " + scrap + " scrap");
+      }
   }
 
 
