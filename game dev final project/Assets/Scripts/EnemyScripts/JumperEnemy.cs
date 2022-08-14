@@ -118,7 +118,6 @@ public class JumperEnemy : MonoBehaviour
 
     private int getState()
     {   
-        Debug.Log(rb.velocity);
         if (rb.velocity.y>.1f)
         {
             return (int)MovementState.jumping_up;
