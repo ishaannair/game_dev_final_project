@@ -125,4 +125,6 @@ public  class GameConstants : ScriptableObject
     public bool bootUpgradeDecay = false;
     // for Game Mechanics
     public float enemySightlines = 15f;
+    public float enemyKnockbackDistance = 2f;
+    public float enemyKnockbackTime = 10;
 }

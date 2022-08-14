@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random=UnityEngine.Random;
 
 public class SpitterEnemy : MonoBehaviour
 {
     public GameConstants gameConstants;
     public  GameObject prefab;
+    public GameObject[] scraps;
     public EnemyVariant variant = EnemyVariant.flesh;
     private GameObject playerObj = null;
     private Rigidbody2D rb;
@@ -96,18 +98,20 @@ public class SpitterEnemy : MonoBehaviour
         Debug.Log("Spitter took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
 
     IEnumerator Knockback()
     {   
-        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float knockbackDir = Math.Sign(this.transform.position.x - playerObj.transform.position.x);
         float distanceMoved = 0;
-        while (distanceMoved<2f)
-        {
-            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
-            distanceMoved+=0.2f;
+        float distanceMovedPerTime = gameConstants.enemyKnockbackDistance / gameConstants.enemyKnockbackTime;
+        while (distanceMoved<gameConstants.enemyKnockbackDistance)
+        {   
+            rb.MovePosition(rb.position + new Vector2(distanceMovedPerTime , 0)*knockbackDir);
+            distanceMoved+=distanceMovedPerTime;
             yield return null;
         }
     }

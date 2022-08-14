@@ -2,10 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Random=UnityEngine.Random;
+
+
 public class JumperEnemy : MonoBehaviour
 {
     public GameConstants gameConstants;
     private GameObject playerObj = null;
+    public GameObject[] scraps;
     private Rigidbody2D rb;
     private SpriteRenderer sr;
     private Animator anim;
@@ -120,6 +124,7 @@ public class JumperEnemy : MonoBehaviour
         Debug.Log("Jumper took damage");
         StartCoroutine(Knockback());
         if(health <= 0){
+            Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }
     }
@@ -141,13 +146,13 @@ public class JumperEnemy : MonoBehaviour
 
     IEnumerator Knockback()
     {   
-        float knockbackDir = Math.Sign(playerObj.transform.position.x - this.transform.position.x);
+        float knockbackDir = Math.Sign(this.transform.position.x - playerObj.transform.position.x);
         float distanceMoved = 0;
-        //yield return new WaitForSeconds(0.5f);
-        while (distanceMoved<2f)
-        {
-            rb.MovePosition(rb.position + new Vector2(-0.2f, 0)*knockbackDir);
-            distanceMoved+=0.2f;
+        float distanceMovedPerTime = gameConstants.enemyKnockbackDistance / gameConstants.enemyKnockbackTime;
+        while (distanceMoved<gameConstants.enemyKnockbackDistance)
+        {   
+            rb.MovePosition(rb.position + new Vector2(distanceMovedPerTime , 0)*knockbackDir);
+            distanceMoved+=distanceMovedPerTime;
             yield return null;
         }
     }
