@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 0
+  totalScrap: 240
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
   startingTimer: 1000
   startingDecay: 50
   startingPlayerMaxSpeed: 10
-  startingPlayerJumpSpeed: 10
+  startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
   playerSpeed: 5
   playerFaceRightState: 1
@@ -92,3 +92,5 @@ MonoBehaviour:
   bootUpgradeDodge: 1
   bootUpgradeDecay: 0
   enemySightlines: 15
+  enemyKnockbackDistance: 2
+  enemyKnockbackTime: 10
