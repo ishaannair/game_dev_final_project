@@ -127,4 +127,6 @@ public  class GameConstants : ScriptableObject
     public float enemySightlines = 15f;
     public float enemyKnockbackDistance = 2f;
     public float enemyKnockbackTime = 10;
+// for boss
+    public bool bigBossHasSpawned=false;
 }

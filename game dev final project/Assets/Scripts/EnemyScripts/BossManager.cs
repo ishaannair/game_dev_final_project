@@ -8,6 +8,7 @@ public class BossManager : MonoBehaviour
     private bool spawnFinalBoss = false; 
     public GameObject boss;
     public GameConstants gameConstants;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +31,16 @@ public class BossManager : MonoBehaviour
     public void BossMiniDeathResponse()
     {   
         Debug.Log("Mini Boss Death");
-        GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-        CameraController cameraScript = mainCamera.GetComponent<CameraController>();
-        
-        StartCoroutine(DestroyStage());
-        cameraScript.Shake();
+        if (!gameConstants.bigBossHasSpawned){
+            gameConstants.bigBossHasSpawned=true;
+            GameObject mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            CameraController cameraScript = mainCamera.GetComponent<CameraController>();
+            
+            StartCoroutine(DestroyStage());
+            cameraScript.Shake();
+            
+        }
+
     }
 
     private IEnumerator DestroyStage()
