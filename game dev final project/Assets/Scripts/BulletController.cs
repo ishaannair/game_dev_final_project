@@ -93,7 +93,7 @@ public class BulletController : MonoBehaviour
                                     spitterScript = col.gameObject.GetComponent<SpitterEnemy>();
                                     spitterScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                                     break;
-                                }
+                                }   
                                 exploderScript.TakeDamage(gameConstants.blasterDamage * damageMultiplier.Value);
                                 break;
                             }
