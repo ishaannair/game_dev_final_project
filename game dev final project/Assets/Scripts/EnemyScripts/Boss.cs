@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class Boss : MonoBehaviour
 {
     private GameObject playerObj = null;
@@ -193,7 +193,18 @@ public class Boss : MonoBehaviour
             audioSource.PlayOneShot(victoryAudio);
             Debug.Log("Boss died");
             anim.SetInteger("state",(int)MovementState.death);
+            StartCoroutine(Endscreen());
+            
+            
         }
+
+        IEnumerator Endscreen()  //  <-  its a standalone method
+    {
+        Debug.Log("Hello");
+        yield return new WaitForSeconds(1);
+        Debug.Log("ByeBye");
+        SceneManager.LoadScene("EndScreen", LoadSceneMode.Single);
+    }
     }
 
     

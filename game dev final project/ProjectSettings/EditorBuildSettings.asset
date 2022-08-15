@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Final Game/UpgradesScene.unity
     guid: 6762340e381a99d479b826b22addae8c
   - enabled: 1
+    path: Assets/Scenes/Final Game/Introduction.unity
+    guid: 42d765dadf0104d4db912609b974cafd
+  - enabled: 1
     path: Assets/Scenes/Final Game/Boss 1.unity
     guid: f3b6a82cf1d38c240acf39e16f29e5f9
   m_configObjects: {}

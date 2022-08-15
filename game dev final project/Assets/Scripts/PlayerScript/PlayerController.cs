@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     public FloatVariable decay;
     public bool invul = false;
 
-    private bool OnDeath;
+    private bool OnDeath=false;
     //Dashing Variables 
      public bool IsDashAvailable = true;
     private bool DashActivated=false;
@@ -127,14 +127,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyUp("a") && !Input.GetKeyDown("d") || Input.GetKeyUp("d") && !Input.GetKeyDown("a") || Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)){
             // stop
             PlayerBody.velocity = new Vector2(0.0f, PlayerBody.velocity.y);
-        }else if (Mathf.Abs(moveHorizontal) > 0){
+        }else if (Mathf.Abs(moveHorizontal) > 0 && !OnDeath){
             Vector2 movement = new Vector2(moveHorizontal * playerMoveSpeed.Value, PlayerBody.velocity.y);
             // if (PlayerBody.velocity.magnitude < gameConstants.startingPlayerMaxSpeed)
             //         PlayerBody.AddForce(movement * gameConstants.playerSpeed);
             PlayerBody.velocity = movement;
         }
 
-        if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable){
+        if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable && !OnDeath){
             PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
             onGroundState = false;
             StartCoroutine(JumpCooldown());
