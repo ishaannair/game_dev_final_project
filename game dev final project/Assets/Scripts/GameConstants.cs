@@ -127,9 +127,9 @@ public  class GameConstants : ScriptableObject
     public float enemySightlines = 15f;
     public float enemyKnockbackDistance = 2f;
     //for Enemy Attack
-    public float jumperDamage = 4f;
-    public float spitterDamage = 2f;
-    public float exploderDamage = 8f;
+    public float jumperDamage = 400f;
+    public float spitterDamage = 200f;
+    public float exploderDamage = 100f;
     public float bossMeleeDamage = 10f;
     public float bossFireballDamage = 5f;
 

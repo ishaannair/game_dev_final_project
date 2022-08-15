@@ -15,8 +15,8 @@ public class Boss : MonoBehaviour
 
     private bool fireballAvailable = true;
     private bool meleeAvailable = true;
-    private float fireballCooldown = 6f;
-    private float meleeCooldown = 3f;
+    private float fireballCooldown = 4f;
+    private float meleeCooldown = 1.5f;
     private float bossHealth;
     private Vector2 velocity = new Vector2(3, 0);
     private int state=0;

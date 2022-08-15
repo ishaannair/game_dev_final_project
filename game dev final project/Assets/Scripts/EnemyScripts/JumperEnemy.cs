@@ -105,15 +105,6 @@ public class JumperEnemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
-    {
-        if (col.gameObject.CompareTag("Player")){
-            
-            Debug.Log("Collided with Player");
-            col.gameObject.GetComponent<PlayerController>().TakeDamage(1);
-        }
-    }
-
     public void TakeDamage(float damage){
         audioSource.PlayOneShot(damagedAudio);
         switch(variant){

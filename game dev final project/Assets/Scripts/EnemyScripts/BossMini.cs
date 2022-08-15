@@ -17,7 +17,7 @@ public class BossMini : MonoBehaviour
     public UnityEvent onBossMiniDeath;
 
     private bool attackAvailable = true;
-    private int attackCooldown = 6;
+    private int attackCooldown = 3;
     private float bossHealth;
     private float maxBossHealth = 30f;
     private Vector2 velocity = new Vector2(3, 0);
