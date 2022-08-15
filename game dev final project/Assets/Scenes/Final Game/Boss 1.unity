@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8762490702999886340, guid: 539862bd85f7a2740afef04c1fb57c6a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: InventoryScene
+      value: UpgradesScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539862bd85f7a2740afef04c1fb57c6a, type: 3}
@@ -791,7 +791,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278190666833336508, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: InventoryScene
+      value: UpgradesScene
       objectReference: {fileID: 0}
     - target: {fileID: 6278190666833336508, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

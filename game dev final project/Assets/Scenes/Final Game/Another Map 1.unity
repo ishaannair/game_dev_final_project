@@ -1365,7 +1365,7 @@ Transform:
   - {fileID: 268838687}
   - {fileID: 1025819599}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &124756075
 PrefabInstance:
@@ -1815,7 +1815,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &145085709
 BoxCollider2D:
@@ -15048,7 +15048,7 @@ Transform:
   - {fileID: 1198317040}
   - {fileID: 1718823145}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1422376691
 PrefabInstance:
@@ -15310,6 +15310,10 @@ PrefabInstance:
     - target: {fileID: 8762490702999886339, guid: 539862bd85f7a2740afef04c1fb57c6a, type: 3}
       propertyPath: m_Sprite
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762490702999886340, guid: 539862bd85f7a2740afef04c1fb57c6a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: UpgradesScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539862bd85f7a2740afef04c1fb57c6a, type: 3}
@@ -20115,7 +20119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6278190666833336508, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: InventoryScene
+      value: UpgradesScene
       objectReference: {fileID: 0}
     - target: {fileID: 6278190666833336508, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName

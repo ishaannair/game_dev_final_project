@@ -30,7 +30,7 @@ public class MenuController : MonoBehaviour
               // disable them
               eachChild.gameObject.SetActive(false);
               Time.timeScale = 1.0f;
-              SceneManager.LoadScene("InventoryScene", LoadSceneMode.Single);
+              SceneManager.LoadScene("UpgradesScene", LoadSceneMode.Single);
           
       }
   }
