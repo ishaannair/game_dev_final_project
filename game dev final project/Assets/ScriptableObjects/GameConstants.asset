@@ -16,13 +16,13 @@ MonoBehaviour:
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
-  startingTimer: 1000
+  startingTimer: 5000
   startingDecay: 50
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
   playerSpeed: 5
-  playerFaceRightState: 0
+  playerFaceRightState: 1
   playerJumpDuration: 1
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
@@ -85,10 +85,10 @@ MonoBehaviour:
   torsoUpgradeHP: 0
   torsoUpgradeDecay: 0
   torsoUpgradeSpeed: 0
-  gloveUpgradeAtkSpd: 1
-  gloveUpgradeDblDmg: 1
-  gloveUpgradeMeleeDmg: 1
-  bootUpgradeDblJmp: 0
+  gloveUpgradeAtkSpd: 0
+  gloveUpgradeDblDmg: 0
+  gloveUpgradeMeleeDmg: 0
+  bootUpgradeDblJmp: 1
   bootUpgradeDodge: 1
   bootUpgradeDecay: 0
   enemySightlines: 15
