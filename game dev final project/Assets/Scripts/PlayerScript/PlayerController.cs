@@ -182,6 +182,9 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("consumable 3");
         }
+        if (Input.GetKeyDown("t")){
+            health.SetValue(1000.0f);
+        }
     }
     // Update is called once per frame
     void Update()
