@@ -52,7 +52,7 @@ MonoBehaviour:
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 0
+  onCooldown: 1
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100
@@ -93,13 +93,13 @@ MonoBehaviour:
   bootUpgradeDecay: 0
   enemySightlines: 15
   enemyKnockbackDistance: 2
-  jumperDamage: 4
-  spitterDamage: 2
-  exploderDamage: 8
-  bossMeleeDamage: 10
-  bossFireballDamage: 5
+  jumperDamage: 40
+  spitterDamage: 20
+  exploderDamage: 80
+  bossMeleeDamage: 100
+  bossFireballDamage: 50
   bossSlashDuration: 0.5
-  bossMiniHealth: 100
-  bossHealth: 200
+  bossMiniHealth: 250
+  bossHealth: 500
   enemyKnockbackTime: 10
   bigBossHasSpawned: 1
