@@ -62,6 +62,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip slash;
     public AudioClip hit;
 
+    public GameObject pauseScreen;
+
 
     void  Start()
     {
@@ -183,7 +185,13 @@ public class PlayerController : MonoBehaviour
     }
     // Update is called once per frame
     void Update()
-    {
+    {   
+    
+        if(Input.GetKeyDown(KeyCode.Escape)){
+            Debug.Log("esc");
+            pauseScreen.SetActive(!pauseScreen.activeSelf);
+        }
+
         playerAnimator.SetFloat("xSpeed", Mathf.Abs(PlayerBody.velocity.x));
         playerAnimator.SetBool("OnGround", onGroundState);
         playerAnimator.SetBool("OnDash", DashActivated);
