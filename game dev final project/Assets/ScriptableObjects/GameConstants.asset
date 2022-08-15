@@ -22,7 +22,7 @@ MonoBehaviour:
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
   playerSpeed: 7
-  playerFaceRightState: 0
+  playerFaceRightState: 1
   playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
@@ -52,7 +52,7 @@ MonoBehaviour:
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 1
+  onCooldown: 0
   blasterDamage: 10
   shotgunDamage: 15
   rocketDamage: 100
@@ -76,20 +76,20 @@ MonoBehaviour:
   meleeLevel1Damage: 12.5
   meleeLevel2Damage: 20
   meleeLevel3Damage: 30
-  jumperHealth: 20
+  jumperHealth: 50
   spitterHealth: 20
-  exploderHealth: 20
+  exploderHealth: 80
   helmetUpgradeResource: 0
   helmetUpgradeDamage: 0
   helmetUpgradeReload: 0
   torsoUpgradeHP: 0
-  torsoUpgradeDecay: 1
-  torsoUpgradeSpeed: 1
-  gloveUpgradeAtkSpd: 1
+  torsoUpgradeDecay: 0
+  torsoUpgradeSpeed: 0
+  gloveUpgradeAtkSpd: 0
   gloveUpgradeDblDmg: 0
   gloveUpgradeMeleeDmg: 0
-  bootUpgradeDblJmp: 1
-  bootUpgradeDodge: 1
+  bootUpgradeDblJmp: 0
+  bootUpgradeDodge: 0
   bootUpgradeDecay: 0
   enemySightlines: 15
   enemyKnockbackDistance: 2
