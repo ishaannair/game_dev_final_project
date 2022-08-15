@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
   m_Name: InitGameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 4
+  totalScrap: 2
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
   startingTimer: 1000
-  startingDecay: 15
+  startingDecay: 11.25
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 15
   startingPlayerForce: 100
   playerSpeed: 5
-  playerFaceRightState: 0
+  playerFaceRightState: 1
   playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
@@ -46,16 +46,16 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 0
+  gunType: 1
   gunElement: 0
   elementMultiplier: 1.5
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 1
-  blasterDamage: 10
-  shotgunDamage: 8
-  rocketDamage: 100
+  onCooldown: 0
+  blasterDamage: 12
+  shotgunDamage: 9.6
+  rocketDamage: 120.00001
   rocketRadius: 2.25
   blasterAmmoClip: 12
   shotgunAmmoClip: 6
