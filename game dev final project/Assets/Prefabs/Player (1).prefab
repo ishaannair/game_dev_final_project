@@ -214,7 +214,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &8090507983345830160
 BoxCollider2D:
@@ -285,6 +285,7 @@ MonoBehaviour:
   step: {fileID: 8300000, guid: e36cc8359ad801942a38dd7050d85806, type: 3}
   slash: {fileID: 8300000, guid: 9c6f21b13b4121947a67a247f735e1d6, type: 3}
   hit: {fileID: 8300000, guid: 3e083c48ccb170746b8e2b9a03543508, type: 3}
+  pauseScreen: {fileID: 0}
 --- !u!82 &6387530307520184044
 AudioSource:
   m_ObjectHideFlags: 0
