@@ -8152,8 +8152,8 @@ Transform:
   - {fileID: 1323527207}
   - {fileID: 496635435}
   - {fileID: 944994207}
-  - {fileID: 876291061}
   - {fileID: 549637401}
+  - {fileID: 876291061}
   m_Father: {fileID: 310717127}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14227,7 +14227,7 @@ PrefabInstance:
     - target: {fileID: 8090507983345830167, guid: 93268543163b9a74689813aed061716a, type: 3}
       propertyPath: onPlayerDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1792005290}
+      objectReference: {fileID: 0}
     - target: {fileID: 8090507983345830167, guid: 93268543163b9a74689813aed061716a, type: 3}
       propertyPath: onPlayerDeath.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -19268,11 +19268,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3132844727718977668, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
   m_PrefabInstance: {fileID: 1792005286}
   m_PrefabAsset: {fileID: 0}
---- !u!223 &1792005290 stripped
-Canvas:
-  m_CorrespondingSourceObject: {fileID: 3132844726280488945, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
-  m_PrefabInstance: {fileID: 1792005286}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1792005291 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8048405268919070194, guid: d36786f3a8819c04ab6b5aae34ce78d5, type: 3}
@@ -19295,6 +19290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ac623776168c740bb5bf8d3ac4a9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
+  health: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+  decay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
 --- !u!114 &1792005294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19307,6 +19305,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58ac623776168c740bb5bf8d3ac4a9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameConstants: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
+  health: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+  decay: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
 --- !u!1 &1793007610
 GameObject:
   m_ObjectHideFlags: 0
