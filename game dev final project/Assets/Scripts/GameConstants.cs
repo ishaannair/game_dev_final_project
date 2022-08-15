@@ -141,4 +141,5 @@ public  class GameConstants : ScriptableObject
     public float enemyKnockbackTime = 10;
     // for boss
     public bool bigBossHasSpawned = false;
+
 }

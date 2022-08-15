@@ -20,3 +20,4 @@ MonoBehaviour:
   slowDecayBooster: 0
   cooldownBooster: 0
   duration: 0
+  cost: 25

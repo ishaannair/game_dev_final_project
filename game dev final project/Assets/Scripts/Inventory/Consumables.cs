@@ -24,6 +24,8 @@ public class Consumables : ScriptableObject
 
 	// effect of powerup
     public int duration;
+    public int cost;
+
 
     public List<int> Utilise(){
         return new List<int> {healthBooster, damageSpeedBooster, slowDecayBooster, cooldownBooster};

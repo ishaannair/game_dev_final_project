@@ -16,18 +16,25 @@ public class Dropdown : MonoBehaviour
     public CustomConsumableEvent onCraft;
     public List<Consumables> consumablesList;
     public int dropdownIndex;
+    public GameConstants gameConstants;
+    public Text scrapText;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     public void switchFunc() {
         for (int i = 0; i < 4; i ++){
             if (currentSprite == consumablesList[i].consumablesSprite){
+
                 // Debug.Log("Same Sprite");
-                onCraft.Invoke(consumablesList[i], dropdownIndex);
+                if (gameConstants.totalScrap - consumablesList[i].cost >=0){
+                    gameConstants.totalScrap -= consumablesList[i].cost;
+                    onCraft.Invoke(consumablesList[i], dropdownIndex);
+                    scrapText.text = gameConstants.totalScrap.ToString();
+                }
             }
         }
         // dropdownImage.GetComponent<Image>().sprite = currentSprite;
