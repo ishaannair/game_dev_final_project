@@ -12,17 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 970
+  totalScrap: 80
   totalBlueprints: 0
-  scrapRate: 20
+  scrapRate: 5
   startingPlayerHP: 1000
-  startingTimer: 1100
-  startingDecay: 8.4375
+  startingTimer: 1000
+  startingDecay: 11.25
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
-  playerSpeed: 10
-  playerFaceRightState: 1
+  playerSpeed: 7
+  playerFaceRightState: 0
   playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
@@ -46,16 +46,16 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 0
+  gunType: 1
   gunElement: 1
   elementMultiplier: 1.5
-  blasterReloadTime: 12
-  shotgunReloadTime: 16
-  rocketReloadTime: 24
-  onCooldown: 0
-  blasterDamage: 12
-  shotgunDamage: 18
-  rocketDamage: 120.00001
+  blasterReloadTime: 15
+  shotgunReloadTime: 20
+  rocketReloadTime: 30
+  onCooldown: 1
+  blasterDamage: 10
+  shotgunDamage: 15
+  rocketDamage: 100
   rocketRadius: 2.25
   blasterAmmoClip: 12
   shotgunAmmoClip: 6
@@ -73,23 +73,23 @@ MonoBehaviour:
   rocketRightPool: {x: -0.688, y: 0.019, z: 0}
   rocketLeftPool: {x: 0.692, y: 0.019, z: 0}
   meleeLevel: 1
-  meleeLevel1Damage: 15.625
+  meleeLevel1Damage: 12.5
   meleeLevel2Damage: 20
   meleeLevel3Damage: 30
   jumperHealth: 20
   spitterHealth: 20
   exploderHealth: 20
-  helmetUpgradeResource: 1
+  helmetUpgradeResource: 0
   helmetUpgradeDamage: 0
   helmetUpgradeReload: 0
   torsoUpgradeHP: 0
-  torsoUpgradeDecay: 0
-  torsoUpgradeSpeed: 0
-  gloveUpgradeAtkSpd: 0
+  torsoUpgradeDecay: 1
+  torsoUpgradeSpeed: 1
+  gloveUpgradeAtkSpd: 1
   gloveUpgradeDblDmg: 0
   gloveUpgradeMeleeDmg: 0
-  bootUpgradeDblJmp: 0
-  bootUpgradeDodge: 0
+  bootUpgradeDblJmp: 1
+  bootUpgradeDodge: 1
   bootUpgradeDecay: 0
   enemySightlines: 15
   enemyKnockbackDistance: 2
@@ -102,4 +102,4 @@ MonoBehaviour:
   bossMiniHealth: 250
   bossHealth: 500
   enemyKnockbackTime: 10
-  bigBossHasSpawned: 0
+  bigBossHasSpawned: 1
