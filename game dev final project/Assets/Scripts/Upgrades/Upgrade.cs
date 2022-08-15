@@ -65,7 +65,7 @@ public class Upgrade : MonoBehaviour
                 gameConstants.startingDecay *= 0.75f;
                 break;
             case "torsoUpgradeSpeed":
-                gameConstants.playerSpeed += 5;
+                gameConstants.playerSpeed += 2;
                 break;
             
             case "gloveUpgradeAtkSpd":

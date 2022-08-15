@@ -182,9 +182,14 @@ public class PlayerController : MonoBehaviour
             }
             Debug.Log("consumable 3");
         }
-        if (Input.GetKeyDown("t")){
-            health.SetValue(1000.0f);
+
+        if (Input.GetKeyDown("e") && dodgeAvailable && onGroundState){
+            // dashing skill
+            ActivateDodge();
         }
+        // if (Input.GetKeyDown("t")){
+        //     health.SetValue(1000.0f);
+        // }
     }
     // Update is called once per frame
     void Update()
@@ -234,10 +239,6 @@ public class PlayerController : MonoBehaviour
         //     NewGun.transform.localPosition=new Vector3(0, 0.48f, 0);
         // }
         //Dashing 
-        if (Input.GetKeyDown("e") && dodgeAvailable && onGroundState){
-            // dashing skill
-            ActivateDodge();
-        }
       if (Input.GetKey(KeyCode.A) && gameConstants.playerFaceRightState){
           gameConstants.playerFaceRightState = false;
           playerSprite.flipX = false;
@@ -321,11 +322,11 @@ public class PlayerController : MonoBehaviour
      {
          isJumpAvailable = false;
          IsDashAvailable = false;
-         playerMoveSpeed.SetValue(playerMoveSpeed.Value * 2);
+         playerMoveSpeed.SetValue(playerMoveSpeed.Value * 1.25f);
          Debug.Log(playerMoveSpeed.Value);
          yield return new WaitForSeconds(gameConstants.playerDashDuration);
         //  gameConstants.startingPlayerMaxSpeed = 10f;
-         playerMoveSpeed.SetValue(playerMoveSpeed.Value*0.5f);
+         playerMoveSpeed.SetValue(playerMoveSpeed.Value*0.8f);
          Debug.Log(playerMoveSpeed.Value);
 
          DashActivated=false;

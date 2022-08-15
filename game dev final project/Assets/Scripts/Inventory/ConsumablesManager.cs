@@ -45,6 +45,9 @@ public class ConsumablesManager : MonoBehaviour
                 if (c != null)
                 {
                     AddConsumablesUI(i, c.consumablesSprite);
+                } 
+                else{
+                    consumablesIcons[i].SetActive(false);
                 }
             }
         }
@@ -56,7 +59,6 @@ public class ConsumablesManager : MonoBehaviour
         {
             // consumablesIcons[i].SetActive(false);
             consumablesIcons[i].GetComponent<Image>().sprite = defaultSprite;
-
         }
     }
         
