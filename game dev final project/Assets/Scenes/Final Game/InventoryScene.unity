@@ -371,7 +371,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5355170176513940485, guid: 9d0932d2178756d488630a7babf78662, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Final_map
+      value: Another Map 1
       objectReference: {fileID: 0}
     - target: {fileID: 7455635913464127952, guid: 9d0932d2178756d488630a7babf78662, type: 3}
       propertyPath: m_Pivot.x

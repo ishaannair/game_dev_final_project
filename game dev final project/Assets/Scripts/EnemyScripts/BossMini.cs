@@ -28,6 +28,12 @@ public class BossMini : MonoBehaviour
 
     private enum MovementState {idle, walking, cleaving, throwing, death}
 
+    private AudioSource audioSource;
+    public AudioClip fireAudio;
+    public AudioClip attackAudio;
+    public AudioClip damageAudio;
+    public AudioClip victoryAudio;
+
     // Start is called before the first frame update
     void Start()
     {       
@@ -37,6 +43,7 @@ public class BossMini : MonoBehaviour
         anim = GetComponent<Animator>();
         bossHealth = gameConstants.bossMiniHealth;
         gameConstants.bigBossHasSpawned=false;
+        audioSource = GetComponent<AudioSource>();
 
     }
 
@@ -79,6 +86,7 @@ public class BossMini : MonoBehaviour
     }
     void cleaveAttack()
     {   
+        audioSource.PlayOneShot(attackAudio, 5.0f);
         isAttacking = true;
         anim.SetTrigger("startCleave");
         StartCoroutine(DisableMelee());
@@ -87,6 +95,7 @@ public class BossMini : MonoBehaviour
 
     IEnumerator fireballAttack()
     {
+        audioSource.PlayOneShot(fireAudio, 5.0f);
         isAttacking = true;
         Debug.Log("Fire");
         
@@ -149,11 +158,15 @@ public class BossMini : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
+        audioSource.PlayOneShot(damageAudio, 3.0f);
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
+            audioSource.PlayOneShot(victoryAudio, 7.0f);
             onBossMiniDeath.Invoke();
-            Destroy(this.gameObject);
+            GetComponent<SpriteRenderer>().enabled = false;
+
+            Destroy(this.gameObject, 2.0f);
         }
     }
 

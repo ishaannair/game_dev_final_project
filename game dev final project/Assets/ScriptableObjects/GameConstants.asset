@@ -16,7 +16,7 @@ MonoBehaviour:
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
-  startingTimer: 1000
+  startingTimer: 10000
   startingDecay: 50
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 12
@@ -26,7 +26,7 @@ MonoBehaviour:
   playerJumpDuration: 1
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
-  playerSlashDuration: 0.2
+  playerSlashDuration: 0.16000001
   playerSlashCooldownDuration: 0.1
   ductTapeScrapCost: 15
   adrenalScrapCost: 25
@@ -46,7 +46,7 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 2
+  gunType: 0
   gunElement: 1
   elementMultiplier: 1.5
   blasterReloadTime: 15
@@ -73,7 +73,7 @@ MonoBehaviour:
   rocketRightPool: {x: -0.688, y: 0.019, z: 0}
   rocketLeftPool: {x: 0.692, y: 0.019, z: 0}
   meleeLevel: 1
-  meleeLevel1Damage: 10
+  meleeLevel1Damage: 12.5
   meleeLevel2Damage: 20
   meleeLevel3Damage: 30
   jumperHealth: 20
@@ -85,9 +85,9 @@ MonoBehaviour:
   torsoUpgradeHP: 0
   torsoUpgradeDecay: 0
   torsoUpgradeSpeed: 0
-  gloveUpgradeAtkSpd: 0
-  gloveUpgradeDblDmg: 0
-  gloveUpgradeMeleeDmg: 0
+  gloveUpgradeAtkSpd: 1
+  gloveUpgradeDblDmg: 1
+  gloveUpgradeMeleeDmg: 1
   bootUpgradeDblJmp: 0
   bootUpgradeDodge: 1
   bootUpgradeDecay: 0
@@ -102,4 +102,4 @@ MonoBehaviour:
   bossMiniHealth: 250
   bossHealth: 500
   enemyKnockbackTime: 10
-  bigBossHasSpawned: 1
+  bigBossHasSpawned: 0
