@@ -101,9 +101,11 @@ public class Boss : MonoBehaviour
     }
     IEnumerator DisableMelee()
     {   
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
+        
+        audioSource.PlayOneShot(attackAudio, 1.0f);
+        yield return new WaitForSeconds(0.2f);
         yield return new WaitForSeconds(gameConstants.bossSlashDuration / 2);
-        audioSource.PlayOneShot(attackAudio, 3.0f);
         Collider2D[] hitColliders;
         if(sr.flipX){
             hitColliders = Physics2D.OverlapCircleAll(new Vector2(this.transform.position.x + 1f, this.transform.position.y), 4f);
@@ -125,7 +127,7 @@ public class Boss : MonoBehaviour
     {
         isAttacking = true;
         Debug.Log("Fire");
-        audioSource.PlayOneShot(fireAudio, 5.0f);
+        audioSource.PlayOneShot(fireAudio, 0.8f);
         
         Instantiate(prefab, playerObj.transform.position + new Vector3(0,10f,0), Quaternion.identity);
         for (int i = 0 ;  i<fireballAmount; i++)
@@ -186,11 +188,11 @@ public class Boss : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        audioSource.PlayOneShot(damageAudio, 3.0f);
+        audioSource.PlayOneShot(damageAudio, 0.7f);
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
-            audioSource.PlayOneShot(victoryAudio);
+            audioSource.PlayOneShot(victoryAudio, 0.5f);
             Debug.Log("Boss died");
             anim.SetInteger("state",(int)MovementState.death);
             StartCoroutine(Endscreen());

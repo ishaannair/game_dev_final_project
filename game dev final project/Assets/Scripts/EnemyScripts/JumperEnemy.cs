@@ -86,7 +86,7 @@ public class JumperEnemy : MonoBehaviour
     {
         
         if (GetComponent<SpriteRenderer>().isVisible) {
-            audioSource.PlayOneShot(attackAudio, 5.0f);
+            audioSource.PlayOneShot(attackAudio, 0.7f);
         }
         yield return new WaitForSeconds(jumpCooldown);
         jumpAvailable = true;
@@ -106,7 +106,7 @@ public class JumperEnemy : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        audioSource.PlayOneShot(damagedAudio);
+        audioSource.PlayOneShot(damagedAudio, 0.3f);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){
@@ -133,7 +133,7 @@ public class JumperEnemy : MonoBehaviour
         if(health <= 0){
             
             Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(deathAudio, 5.0f);
+            audioSource.PlayOneShot(deathAudio);
             GetComponent<SpriteRenderer>().enabled = false;
             Destroy(this.gameObject, deathAudio.length);
         }

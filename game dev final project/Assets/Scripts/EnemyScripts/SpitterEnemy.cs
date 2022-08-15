@@ -72,7 +72,7 @@ public class SpitterEnemy : MonoBehaviour
     }
     
     public void TakeDamage(float damage){
-        audioSource.PlayOneShot(damagedAudio);
+        audioSource.PlayOneShot(damagedAudio, 0.25f);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){
@@ -99,7 +99,7 @@ public class SpitterEnemy : MonoBehaviour
         if(health <= 0){
             
             Instantiate(scraps[Random.Range(0,3)], transform.position, Quaternion.identity);
-            audioSource.PlayOneShot(deathAudio);
+            audioSource.PlayOneShot(deathAudio, 0.25f);
             GetComponent<SpriteRenderer>().enabled = false;
             Destroy(this.gameObject, deathAudio.length);
         }

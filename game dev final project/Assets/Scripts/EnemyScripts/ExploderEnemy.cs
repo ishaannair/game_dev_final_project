@@ -97,7 +97,7 @@ public class ExploderEnemy : MonoBehaviour
 
         if (isExploding)
         {   
-            audioSource.PlayOneShot(explodeAudio,0.1f);
+            audioSource.PlayOneShot(explodeAudio,0.02f);
             anim.SetTrigger("Explode");
         }
         playerObj.GetComponent<PlayerController>().EnemyHit(gameConstants.exploderDamage);
@@ -117,7 +117,7 @@ public class ExploderEnemy : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        audioSource.PlayOneShot(damagedAudio);
+        audioSource.PlayOneShot(damagedAudio, 0.1f);
         switch(variant){
             case EnemyVariant.flesh:
                 if(gameConstants.gunElement == GunElement.fire){

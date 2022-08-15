@@ -74,7 +74,7 @@ public class BossMini : MonoBehaviour
         {
             if (Mathf.Abs(distanceToPlayer)<5 && Mathf.Abs(playerRelativeY)<2.5f)
             {   
-                cleaveAttack();
+                StartCoroutine(cleaveAttack());
                 StartCoroutine(attackCountdown());
             } else
             {
@@ -84,18 +84,19 @@ public class BossMini : MonoBehaviour
         }
 
     }
-    void cleaveAttack()
+    IEnumerator cleaveAttack()
     {   
-        audioSource.PlayOneShot(attackAudio, 5.0f);
         isAttacking = true;
         anim.SetTrigger("startCleave");
         StartCoroutine(DisableMelee());
         isAttacking = false;
+        yield return new WaitForSeconds(0.3f);
+        audioSource.PlayOneShot(attackAudio, 1.0f);
     }
 
     IEnumerator fireballAttack()
     {
-        audioSource.PlayOneShot(fireAudio, 5.0f);
+        audioSource.PlayOneShot(fireAudio, 0.8f);
         isAttacking = true;
         Debug.Log("Fire");
         
@@ -158,11 +159,11 @@ public class BossMini : MonoBehaviour
     }
 
     public void TakeDamage(float damage){
-        audioSource.PlayOneShot(damageAudio, 3.0f);
+        audioSource.PlayOneShot(damageAudio, 0.7f);
         bossHealth -= damage;
         Debug.Log("Boss took damage");
         if(bossHealth <= 0){
-            audioSource.PlayOneShot(victoryAudio, 7.0f);
+            audioSource.PlayOneShot(victoryAudio, 3.0f);
             onBossMiniDeath.Invoke();
             GetComponent<SpriteRenderer>().enabled = false;
 
