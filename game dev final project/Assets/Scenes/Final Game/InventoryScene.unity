@@ -504,6 +504,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Another Map 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5355170176513940486, guid: 9d0932d2178756d488630a7babf78662, type: 3}
+      propertyPath: decay
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
+    - target: {fileID: 5355170176513940486, guid: 9d0932d2178756d488630a7babf78662, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+    - target: {fileID: 5355170176513940486, guid: 9d0932d2178756d488630a7babf78662, type: 3}
+      propertyPath: gameConstants
+      value: 
+      objectReference: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
     - target: {fileID: 7455635913464127952, guid: 9d0932d2178756d488630a7babf78662, type: 3}
       propertyPath: m_Pivot.x
       value: 0

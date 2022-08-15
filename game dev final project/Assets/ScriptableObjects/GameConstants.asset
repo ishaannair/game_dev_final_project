@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 80
+  totalScrap: 0
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
@@ -46,7 +46,7 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 1
+  gunType: 2
   gunElement: 1
   elementMultiplier: 1.5
   blasterReloadTime: 15
@@ -83,13 +83,13 @@ MonoBehaviour:
   helmetUpgradeDamage: 0
   helmetUpgradeReload: 0
   torsoUpgradeHP: 0
-  torsoUpgradeDecay: 1
-  torsoUpgradeSpeed: 1
-  gloveUpgradeAtkSpd: 1
+  torsoUpgradeDecay: 0
+  torsoUpgradeSpeed: 0
+  gloveUpgradeAtkSpd: 0
   gloveUpgradeDblDmg: 0
   gloveUpgradeMeleeDmg: 0
-  bootUpgradeDblJmp: 1
-  bootUpgradeDodge: 1
+  bootUpgradeDblJmp: 0
+  bootUpgradeDodge: 0
   bootUpgradeDecay: 0
   enemySightlines: 15
   enemyKnockbackDistance: 2
@@ -102,4 +102,4 @@ MonoBehaviour:
   bossMiniHealth: 250
   bossHealth: 500
   enemyKnockbackTime: 10
-  bigBossHasSpawned: 1
+  bigBossHasSpawned: 0
