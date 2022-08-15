@@ -263,6 +263,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: InventoryScene
       objectReference: {fileID: 0}
+    - target: {fileID: 5355170176513940486, guid: 7f62b56b94d755948afddd786be52939, type: 3}
+      propertyPath: decay
+      value: 
+      objectReference: {fileID: 11400000, guid: c6f9113ae8895b54b870a6735e1c5753, type: 2}
+    - target: {fileID: 5355170176513940486, guid: 7f62b56b94d755948afddd786be52939, type: 3}
+      propertyPath: health
+      value: 
+      objectReference: {fileID: 11400000, guid: 7be60a3d8563dec4f89eb7d82565b36a, type: 2}
+    - target: {fileID: 5355170176513940486, guid: 7f62b56b94d755948afddd786be52939, type: 3}
+      propertyPath: gameConstants
+      value: 
+      objectReference: {fileID: 11400000, guid: d58b78360d3f07f4798bfc3b9e0f686e, type: 2}
     - target: {fileID: 5466924824248148778, guid: 7f62b56b94d755948afddd786be52939, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -449,7 +461,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7455635913464127956, guid: 7f62b56b94d755948afddd786be52939, type: 3}
       propertyPath: m_Name
-      value: Upgrade UI
+      value: Upgrade UI Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7987945659315774081, guid: 7f62b56b94d755948afddd786be52939, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size

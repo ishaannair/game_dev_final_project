@@ -54,7 +54,7 @@ MonoBehaviour:
   rocketReloadTime: 30
   onCooldown: 1
   blasterDamage: 10
-  shotgunDamage: 15
+  shotgunDamage: 8
   rocketDamage: 100
   rocketRadius: 2.25
   blasterAmmoClip: 12

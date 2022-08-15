@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
         PlayerBody = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         GameObject NewBullets = Instantiate(Bullets, new Vector3(0, 0, 0), Quaternion.identity);
-        health.SetValue(gameConstants.startingTimer);
-        decay.SetValue(gameConstants.startingDecay);
+        // health.SetValue(gameConstants.startingTimer);
+        // decay.SetValue(gameConstants.startingDecay);
         gameConstants.playerFaceRightState = false;
         playerMeleeDamage.SetValue(gameConstants.meleeLevel1Damage); // Create function to check upgrades if more levels are created
         playerMoveSpeed.SetValue(gameConstants.playerSpeed);
