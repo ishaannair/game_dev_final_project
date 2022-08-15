@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Final Game/Boss 1.unity
     guid: f3b6a82cf1d38c240acf39e16f29e5f9
+  - enabled: 1
+    path: Assets/Scenes/Final Game/EndScreen.unity
+    guid: 1c06dcfc443ae044a8ca470c61a858d4
   m_configObjects: {}

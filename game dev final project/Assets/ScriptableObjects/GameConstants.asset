@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
   m_Name: GameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 340
+  totalScrap: 53
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
-  startingTimer: 5000
-  startingDecay: 50
+  startingTimer: 1000
+  startingDecay: 15
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
   playerSpeed: 5
   playerFaceRightState: 1
-  playerJumpDuration: 1
+  playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
   playerSlashDuration: 0.16000001
