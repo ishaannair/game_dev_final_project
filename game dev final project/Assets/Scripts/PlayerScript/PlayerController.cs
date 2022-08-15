@@ -137,8 +137,8 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown("space") && onGroundState && isJumpAvailable){
             PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed, ForceMode2D.Impulse);
             onGroundState = false;
-            audioSource.PlayOneShot(jump, 0.7f);
             StartCoroutine(JumpCooldown());
+            audioSource.PlayOneShot(jump, 0.7f);
         }
 
         if (Input.GetKeyDown("space") && !onGroundState && doubleJumpAvailable && isJumpAvailable){
