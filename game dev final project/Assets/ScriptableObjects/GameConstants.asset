@@ -15,15 +15,15 @@ MonoBehaviour:
   totalScrap: 340
   totalBlueprints: 0
   scrapRate: 5
-  startingPlayerHP: 1000
-  startingTimer: 10000
-  startingDecay: 50
+  startingPlayerHP: 100
+  startingTimer: 1000
+  startingDecay: 37.5
   startingPlayerMaxSpeed: 10
   startingPlayerJumpSpeed: 12
   startingPlayerForce: 100
-  playerSpeed: 5
+  playerSpeed: 10
   playerFaceRightState: 0
-  playerJumpDuration: 1
+  playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
   playerSlashDuration: 0.16000001
@@ -83,8 +83,8 @@ MonoBehaviour:
   helmetUpgradeDamage: 0
   helmetUpgradeReload: 0
   torsoUpgradeHP: 0
-  torsoUpgradeDecay: 0
-  torsoUpgradeSpeed: 0
+  torsoUpgradeDecay: 1
+  torsoUpgradeSpeed: 1
   gloveUpgradeAtkSpd: 1
   gloveUpgradeDblDmg: 1
   gloveUpgradeMeleeDmg: 1
@@ -102,4 +102,4 @@ MonoBehaviour:
   bossMiniHealth: 100
   bossHealth: 200
   enemyKnockbackTime: 10
-  bigBossHasSpawned: 0
+  bigBossHasSpawned: 1

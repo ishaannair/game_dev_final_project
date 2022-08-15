@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class MenuController : MonoBehaviour
+public class EndgameScreenManager : MonoBehaviour
 {
     // Start is called before the first frame update
+ // Start is called before the first frame update
     void Start()
     {
         
@@ -30,7 +31,7 @@ public class MenuController : MonoBehaviour
               // disable them
               eachChild.gameObject.SetActive(false);
               Time.timeScale = 1.0f;
-              SceneManager.LoadScene("InventoryScene", LoadSceneMode.Single);
+              SceneManager.LoadScene("Introduction", LoadSceneMode.Single);
           
       }
   }
