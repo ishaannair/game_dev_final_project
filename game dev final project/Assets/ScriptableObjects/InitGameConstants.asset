@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7dfb744d7016b2c408bd5d45f060c44d, type: 3}
-  m_Name: GameConstants
+  m_Name: InitGameConstants
   m_EditorClassIdentifier: 
-  totalScrap: 0
+  totalScrap: 4
   totalBlueprints: 0
   scrapRate: 5
   startingPlayerHP: 1000
   startingTimer: 1000
-  startingDecay: 11.25
+  startingDecay: 15
   startingPlayerMaxSpeed: 10
-  startingPlayerJumpSpeed: 12
+  startingPlayerJumpSpeed: 15
   startingPlayerForce: 100
-  playerSpeed: 7
-  playerFaceRightState: 1
+  playerSpeed: 5
+  playerFaceRightState: 0
   playerJumpDuration: 0.5
   playerDashDuration: 0.5
   playerDashCooldownDuration: 0.1
-  playerSlashDuration: 0.128
+  playerSlashDuration: 0.16
   playerSlashCooldownDuration: 0.1
   ductTapeScrapCost: 15
   adrenalScrapCost: 25
@@ -46,13 +46,13 @@ MonoBehaviour:
   level2UpgradeScrapCost: 65
   level3UpgradeBlueprintsCost: 3
   level3UpgradeScrapCost: 100
-  gunType: 2
-  gunElement: 1
+  gunType: 0
+  gunElement: 0
   elementMultiplier: 1.5
   blasterReloadTime: 15
   shotgunReloadTime: 20
   rocketReloadTime: 30
-  onCooldown: 0
+  onCooldown: 1
   blasterDamage: 10
   shotgunDamage: 8
   rocketDamage: 100
@@ -102,4 +102,4 @@ MonoBehaviour:
   bossMiniHealth: 250
   bossHealth: 500
   enemyKnockbackTime: 10
-  bigBossHasSpawned: 0
+  bigBossHasSpawned: 1
