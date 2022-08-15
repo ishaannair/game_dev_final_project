@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour
             audioSource.PlayOneShot(jump, 0.7f);
         }
 
-        if (Input.GetKeyDown("space") && !onGroundState && doubleJumpAvailable && isJumpAvailable){
+        if (Input.GetKeyDown("space") && !onGroundState && doubleJumpAvailable && isJumpAvailable && !OnDeath){
             PlayerBody.AddForce(Vector2.up * gameConstants.startingPlayerJumpSpeed * 1.1f, ForceMode2D.Impulse);
             doubleJumpAvailable = false;
         }
@@ -199,7 +199,7 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetBool("OnDeath", OnDeath);
               // toggle state
         // Slashing
-        if (Input.GetMouseButtonDown(0)){
+        if (Input.GetMouseButtonDown(0) && !OnDeath){
             if (playerWeapon==1){
                 audioSource.PlayOneShot(slash, 0.5f);
                 ActivateSlash();
@@ -248,6 +248,7 @@ public class PlayerController : MonoBehaviour
       if(health.Value<=0.0f){
         OnDeath=true;
         onPlayerDeath.Invoke();
+        NewGun.SetActive(false);
       }
     //   weapon swap
 
